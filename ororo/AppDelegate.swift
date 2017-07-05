@@ -20,56 +20,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
        
-//        updateDB()
-        readFromDb()
+        cleanDB()
+        updateDB(completionHandler: { self.readFromDB() })
         return true
     }
     
-    func readFromDb() {
+    func cleanDB() {
         let realm =  try! Realm()
-        print("Start to read movies")
-        realm.objects(Movie.self).forEach { (movie) in
-            print(movie.name)
+        try! realm.write {
+            realm.deleteAll()
         }
-        print("Finish to read movies")
+        print("Finished DB clean\n")
     }
     
-    func updateDB() {
-        let user = "test@example.com"
-        let password = "password"
-        
-        var headers: HTTPHeaders = [:]
-        
-        if let authorizationHeader = Request.authorizationHeader(user: user, password: password) {
-            headers[authorizationHeader.key] = authorizationHeader.value
-        }
-        
+    dynamic var name = ""
+    dynamic var year = ""
+    dynamic var desc = ""
+    dynamic var imdb_rating = ""
+    dynamic var poster_thumb = ""
+    
+    func readFromDB() {
         let realm =  try! Realm()
-        
-        let moviesURL = "https://ororo.tv/api/v2/movies"
-        Alamofire.request(moviesURL, headers: headers)
-            .responseJSON { response in
-                switch response.result {
-                case .success:
-                    if let data = response.data {
-                        print(data)
-                        let moviesJSON = JSON(data: data)
-                        let movieNames = moviesJSON["movies"].arrayValue.map({$0["name"].stringValue})
-                        
-                        try! realm.write {
-                            for movieName in movieNames {
-                                let movie = Movie()
-                                movie.name = movieName
-                                realm.add(movie)
-                                print(movieName)
-                            }
-                        }
-                        
-                    }
-                case .failure(let error):
-                    print(error)
-                }
-                
+        print("Start reading movies:\n")
+        realm.objects(Movie.self).forEach { (movie) in
+            print("Name: \(movie.name)")
+            print("Year: \(movie.year)")
+            print("Description: \(movie.desc)")
+            print("IMDB rating: \(movie.imdb_rating)")
+            print("Poster: \(movie.poster_thumb)\n")
+        }
+    }
+    
+    func updateDB(completionHandler: @escaping (Void) -> Void) {
+        let realm =  try! Realm()
+        print("Start storing movies")
+        OroroAPI.forAllMovies { (movies) in
+            try! realm.write {
+                realm.add(movies)
+                print("\(movies.count) movies are stored\n")
+            }
+            completionHandler()
         }
     }
 

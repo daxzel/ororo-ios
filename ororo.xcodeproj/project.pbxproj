@@ -15,6 +15,7 @@
 		4E60E3D31E676205005A433B /* ororoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E60E3D21E676205005A433B /* ororoTests.swift */; };
 		4E60E3DE1E676205005A433B /* ororoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E60E3DD1E676205005A433B /* ororoUITests.swift */; };
 		4EE667E21F0C5FCB006B1428 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE667E11F0C5FCB006B1428 /* Movie.swift */; };
+		4EE667E41F0D9217006B1428 /* OroroAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE667E31F0D9217006B1428 /* OroroAPI.swift */; };
 		5D9A8B39537E7A8C5200B904 /* Pods_ororoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B19C57D1067D51EFC87C4C2B /* Pods_ororoTests.framework */; };
 		B4594AA9D7AF3C8B5569C4A2 /* Pods_ororo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6B9FD0FF163B1BAC0A8AD8 /* Pods_ororo.framework */; };
 		F64448CE77AF4E5B6DFB7909 /* Pods_ororoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 797CA2A4FBB29F91D4DDBCC0 /* Pods_ororoUITests.framework */; };
@@ -55,6 +56,7 @@
 		4E60E3DD1E676205005A433B /* ororoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ororoUITests.swift; sourceTree = "<group>"; };
 		4E60E3DF1E676205005A433B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4EE667E11F0C5FCB006B1428 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		4EE667E31F0D9217006B1428 /* OroroAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OroroAPI.swift; sourceTree = "<group>"; };
 		5E6ADE16B6DAEA02905E3DF5 /* Pods-ororoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ororoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ororoTests/Pods-ororoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		797CA2A4FBB29F91D4DDBCC0 /* Pods_ororoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ororoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B19C57D1067D51EFC87C4C2B /* Pods_ororoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ororoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -133,6 +135,7 @@
 				4E60E3C61E676205005A433B /* LaunchScreen.storyboard */,
 				4E60E3C91E676205005A433B /* Info.plist */,
 				4EE667E11F0C5FCB006B1428 /* Movie.swift */,
+				4EE667E31F0D9217006B1428 /* OroroAPI.swift */,
 			);
 			path = ororo;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EE667E41F0D9217006B1428 /* OroroAPI.swift in Sources */,
 				4E60E3C01E676205005A433B /* ViewController.swift in Sources */,
 				4E60E3BE1E676205005A433B /* AppDelegate.swift in Sources */,
 				4EE667E21F0C5FCB006B1428 /* Movie.swift in Sources */,
