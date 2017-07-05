@@ -1,0 +1,728 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4E60E3BE1E676205005A433B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E60E3BD1E676205005A433B /* AppDelegate.swift */; };
+		4E60E3C01E676205005A433B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E60E3BF1E676205005A433B /* ViewController.swift */; };
+		4E60E3C31E676205005A433B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E60E3C11E676205005A433B /* Main.storyboard */; };
+		4E60E3C51E676205005A433B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E60E3C41E676205005A433B /* Assets.xcassets */; };
+		4E60E3C81E676205005A433B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E60E3C61E676205005A433B /* LaunchScreen.storyboard */; };
+		4E60E3D31E676205005A433B /* ororoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E60E3D21E676205005A433B /* ororoTests.swift */; };
+		4E60E3DE1E676205005A433B /* ororoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E60E3DD1E676205005A433B /* ororoUITests.swift */; };
+		4EE667E21F0C5FCB006B1428 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE667E11F0C5FCB006B1428 /* Movie.swift */; };
+		5D9A8B39537E7A8C5200B904 /* Pods_ororoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B19C57D1067D51EFC87C4C2B /* Pods_ororoTests.framework */; };
+		B4594AA9D7AF3C8B5569C4A2 /* Pods_ororo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6B9FD0FF163B1BAC0A8AD8 /* Pods_ororo.framework */; };
+		F64448CE77AF4E5B6DFB7909 /* Pods_ororoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 797CA2A4FBB29F91D4DDBCC0 /* Pods_ororoUITests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4E60E3CF1E676205005A433B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4E60E3B21E676205005A433B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4E60E3B91E676205005A433B;
+			remoteInfo = ororo;
+		};
+		4E60E3DA1E676205005A433B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4E60E3B21E676205005A433B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4E60E3B91E676205005A433B;
+			remoteInfo = ororo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0D036019ADB74B18FE01520C /* Pods-ororoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ororoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ororoUITests/Pods-ororoUITests.release.xcconfig"; sourceTree = "<group>"; };
+		1EBF71CB20ABCA973EE819BC /* Pods-ororo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ororo.release.xcconfig"; path = "Pods/Target Support Files/Pods-ororo/Pods-ororo.release.xcconfig"; sourceTree = "<group>"; };
+		2C6B9FD0FF163B1BAC0A8AD8 /* Pods_ororo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ororo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E60E3BA1E676205005A433B /* ororo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ororo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E60E3BD1E676205005A433B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4E60E3BF1E676205005A433B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4E60E3C21E676205005A433B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4E60E3C41E676205005A433B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4E60E3C71E676205005A433B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4E60E3C91E676205005A433B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4E60E3CE1E676205005A433B /* ororoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ororoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E60E3D21E676205005A433B /* ororoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ororoTests.swift; sourceTree = "<group>"; };
+		4E60E3D41E676205005A433B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4E60E3D91E676205005A433B /* ororoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ororoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E60E3DD1E676205005A433B /* ororoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ororoUITests.swift; sourceTree = "<group>"; };
+		4E60E3DF1E676205005A433B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4EE667E11F0C5FCB006B1428 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		5E6ADE16B6DAEA02905E3DF5 /* Pods-ororoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ororoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ororoTests/Pods-ororoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		797CA2A4FBB29F91D4DDBCC0 /* Pods_ororoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ororoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B19C57D1067D51EFC87C4C2B /* Pods_ororoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ororoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B561A65847B7916AC76E7A58 /* Pods-ororoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ororoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ororoTests/Pods-ororoTests.release.xcconfig"; sourceTree = "<group>"; };
+		B8DEBED5F035CCEC5326A358 /* Pods-ororoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ororoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ororoUITests/Pods-ororoUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		F3F3D6E5811567D192E47C83 /* Pods-ororo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ororo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ororo/Pods-ororo.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4E60E3B71E676205005A433B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B4594AA9D7AF3C8B5569C4A2 /* Pods_ororo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4E60E3CB1E676205005A433B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D9A8B39537E7A8C5200B904 /* Pods_ororoTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4E60E3D61E676205005A433B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F64448CE77AF4E5B6DFB7909 /* Pods_ororoUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0B6F4DB6245051033F1F30B4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2C6B9FD0FF163B1BAC0A8AD8 /* Pods_ororo.framework */,
+				B19C57D1067D51EFC87C4C2B /* Pods_ororoTests.framework */,
+				797CA2A4FBB29F91D4DDBCC0 /* Pods_ororoUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4E60E3B11E676205005A433B = {
+			isa = PBXGroup;
+			children = (
+				4E60E3BC1E676205005A433B /* ororo */,
+				4E60E3D11E676205005A433B /* ororoTests */,
+				4E60E3DC1E676205005A433B /* ororoUITests */,
+				4E60E3BB1E676205005A433B /* Products */,
+				B30D209418188BEDD786F33B /* Pods */,
+				0B6F4DB6245051033F1F30B4 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		4E60E3BB1E676205005A433B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4E60E3BA1E676205005A433B /* ororo.app */,
+				4E60E3CE1E676205005A433B /* ororoTests.xctest */,
+				4E60E3D91E676205005A433B /* ororoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4E60E3BC1E676205005A433B /* ororo */ = {
+			isa = PBXGroup;
+			children = (
+				4E60E3BD1E676205005A433B /* AppDelegate.swift */,
+				4E60E3BF1E676205005A433B /* ViewController.swift */,
+				4E60E3C11E676205005A433B /* Main.storyboard */,
+				4E60E3C41E676205005A433B /* Assets.xcassets */,
+				4E60E3C61E676205005A433B /* LaunchScreen.storyboard */,
+				4E60E3C91E676205005A433B /* Info.plist */,
+				4EE667E11F0C5FCB006B1428 /* Movie.swift */,
+			);
+			path = ororo;
+			sourceTree = "<group>";
+		};
+		4E60E3D11E676205005A433B /* ororoTests */ = {
+			isa = PBXGroup;
+			children = (
+				4E60E3D21E676205005A433B /* ororoTests.swift */,
+				4E60E3D41E676205005A433B /* Info.plist */,
+			);
+			path = ororoTests;
+			sourceTree = "<group>";
+		};
+		4E60E3DC1E676205005A433B /* ororoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				4E60E3DD1E676205005A433B /* ororoUITests.swift */,
+				4E60E3DF1E676205005A433B /* Info.plist */,
+			);
+			path = ororoUITests;
+			sourceTree = "<group>";
+		};
+		B30D209418188BEDD786F33B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F3F3D6E5811567D192E47C83 /* Pods-ororo.debug.xcconfig */,
+				1EBF71CB20ABCA973EE819BC /* Pods-ororo.release.xcconfig */,
+				5E6ADE16B6DAEA02905E3DF5 /* Pods-ororoTests.debug.xcconfig */,
+				B561A65847B7916AC76E7A58 /* Pods-ororoTests.release.xcconfig */,
+				B8DEBED5F035CCEC5326A358 /* Pods-ororoUITests.debug.xcconfig */,
+				0D036019ADB74B18FE01520C /* Pods-ororoUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4E60E3B91E676205005A433B /* ororo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4E60E3E21E676205005A433B /* Build configuration list for PBXNativeTarget "ororo" */;
+			buildPhases = (
+				3CB69A28EB4FD6CA4F510344 /* [CP] Check Pods Manifest.lock */,
+				4E60E3B61E676205005A433B /* Sources */,
+				4E60E3B71E676205005A433B /* Frameworks */,
+				4E60E3B81E676205005A433B /* Resources */,
+				C6143449D8B6050613469F35 /* [CP] Embed Pods Frameworks */,
+				880F8025D85FD8C6B5892A1C /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ororo;
+			productName = ororo;
+			productReference = 4E60E3BA1E676205005A433B /* ororo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4E60E3CD1E676205005A433B /* ororoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4E60E3E51E676205005A433B /* Build configuration list for PBXNativeTarget "ororoTests" */;
+			buildPhases = (
+				F082114709872330E97636C5 /* [CP] Check Pods Manifest.lock */,
+				4E60E3CA1E676205005A433B /* Sources */,
+				4E60E3CB1E676205005A433B /* Frameworks */,
+				4E60E3CC1E676205005A433B /* Resources */,
+				6AB209C915DCB2711935B756 /* [CP] Embed Pods Frameworks */,
+				B5FA52CFC36980018BD163EF /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4E60E3D01E676205005A433B /* PBXTargetDependency */,
+			);
+			name = ororoTests;
+			productName = ororoTests;
+			productReference = 4E60E3CE1E676205005A433B /* ororoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4E60E3D81E676205005A433B /* ororoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4E60E3E81E676205005A433B /* Build configuration list for PBXNativeTarget "ororoUITests" */;
+			buildPhases = (
+				A04E8EC9EF9C29D50F769182 /* [CP] Check Pods Manifest.lock */,
+				4E60E3D51E676205005A433B /* Sources */,
+				4E60E3D61E676205005A433B /* Frameworks */,
+				4E60E3D71E676205005A433B /* Resources */,
+				1EA93FE81844ED4194D95C08 /* [CP] Embed Pods Frameworks */,
+				9FA5693C6B388584B6C67075 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4E60E3DB1E676205005A433B /* PBXTargetDependency */,
+			);
+			name = ororoUITests;
+			productName = ororoUITests;
+			productReference = 4E60E3D91E676205005A433B /* ororoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4E60E3B21E676205005A433B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Andrey Tsarevskiy";
+				TargetAttributes = {
+					4E60E3B91E676205005A433B = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+					};
+					4E60E3CD1E676205005A433B = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 4E60E3B91E676205005A433B;
+					};
+					4E60E3D81E676205005A433B = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 4E60E3B91E676205005A433B;
+					};
+				};
+			};
+			buildConfigurationList = 4E60E3B51E676205005A433B /* Build configuration list for PBXProject "ororo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4E60E3B11E676205005A433B;
+			productRefGroup = 4E60E3BB1E676205005A433B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4E60E3B91E676205005A433B /* ororo */,
+				4E60E3CD1E676205005A433B /* ororoTests */,
+				4E60E3D81E676205005A433B /* ororoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4E60E3B81E676205005A433B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E60E3C81E676205005A433B /* LaunchScreen.storyboard in Resources */,
+				4E60E3C51E676205005A433B /* Assets.xcassets in Resources */,
+				4E60E3C31E676205005A433B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4E60E3CC1E676205005A433B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4E60E3D71E676205005A433B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1EA93FE81844ED4194D95C08 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ororoUITests/Pods-ororoUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3CB69A28EB4FD6CA4F510344 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6AB209C915DCB2711935B756 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ororoTests/Pods-ororoTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		880F8025D85FD8C6B5892A1C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ororo/Pods-ororo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9FA5693C6B388584B6C67075 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ororoUITests/Pods-ororoUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A04E8EC9EF9C29D50F769182 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B5FA52CFC36980018BD163EF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ororoTests/Pods-ororoTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C6143449D8B6050613469F35 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ororo/Pods-ororo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F082114709872330E97636C5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4E60E3B61E676205005A433B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E60E3C01E676205005A433B /* ViewController.swift in Sources */,
+				4E60E3BE1E676205005A433B /* AppDelegate.swift in Sources */,
+				4EE667E21F0C5FCB006B1428 /* Movie.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4E60E3CA1E676205005A433B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E60E3D31E676205005A433B /* ororoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4E60E3D51E676205005A433B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E60E3DE1E676205005A433B /* ororoUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4E60E3D01E676205005A433B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4E60E3B91E676205005A433B /* ororo */;
+			targetProxy = 4E60E3CF1E676205005A433B /* PBXContainerItemProxy */;
+		};
+		4E60E3DB1E676205005A433B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4E60E3B91E676205005A433B /* ororo */;
+			targetProxy = 4E60E3DA1E676205005A433B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4E60E3C11E676205005A433B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4E60E3C21E676205005A433B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4E60E3C61E676205005A433B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4E60E3C71E676205005A433B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4E60E3E01E676205005A433B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4E60E3E11E676205005A433B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4E60E3E31E676205005A433B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F3F3D6E5811567D192E47C83 /* Pods-ororo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = ororo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = tsarevskiy.ororo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		4E60E3E41E676205005A433B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1EBF71CB20ABCA973EE819BC /* Pods-ororo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = ororo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = tsarevskiy.ororo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		4E60E3E61E676205005A433B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5E6ADE16B6DAEA02905E3DF5 /* Pods-ororoTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = ororoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = tsarevskiy.ororoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ororo.app/ororo";
+			};
+			name = Debug;
+		};
+		4E60E3E71E676205005A433B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B561A65847B7916AC76E7A58 /* Pods-ororoTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = ororoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = tsarevskiy.ororoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ororo.app/ororo";
+			};
+			name = Release;
+		};
+		4E60E3E91E676205005A433B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8DEBED5F035CCEC5326A358 /* Pods-ororoUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = ororoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = tsarevskiy.ororoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = ororo;
+			};
+			name = Debug;
+		};
+		4E60E3EA1E676205005A433B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0D036019ADB74B18FE01520C /* Pods-ororoUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = ororoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = tsarevskiy.ororoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = ororo;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4E60E3B51E676205005A433B /* Build configuration list for PBXProject "ororo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4E60E3E01E676205005A433B /* Debug */,
+				4E60E3E11E676205005A433B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4E60E3E21E676205005A433B /* Build configuration list for PBXNativeTarget "ororo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4E60E3E31E676205005A433B /* Debug */,
+				4E60E3E41E676205005A433B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4E60E3E51E676205005A433B /* Build configuration list for PBXNativeTarget "ororoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4E60E3E61E676205005A433B /* Debug */,
+				4E60E3E71E676205005A433B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4E60E3E81E676205005A433B /* Build configuration list for PBXNativeTarget "ororoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4E60E3E91E676205005A433B /* Debug */,
+				4E60E3EA1E676205005A433B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4E60E3B21E676205005A433B /* Project object */;
+}
