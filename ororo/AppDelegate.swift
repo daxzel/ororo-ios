@@ -16,7 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
        
@@ -32,12 +31,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         print("Finished DB clean\n")
     }
-    
-    dynamic var name = ""
-    dynamic var year = ""
-    dynamic var desc = ""
-    dynamic var imdb_rating = ""
-    dynamic var poster_thumb = ""
     
     func readFromDB() {
         let realm =  try! Realm()

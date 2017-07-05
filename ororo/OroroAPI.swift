@@ -13,6 +13,8 @@ import Alamofire
 class OroroAPI {
     
     static let moviesURL = "https://ororo.tv/api/v2/movies"
+    static let user = "test@example.com"
+    static let password = "password"
     
     static func parseMovie(json: JSON) -> Movie {
         let movie = Movie()
@@ -27,8 +29,6 @@ class OroroAPI {
     }
     
     static func forAllMovies(completionHandler: @escaping ([Movie]) -> Void) {
-        let user = "test@example.com"
-        let password = "password"
         
         var headers: HTTPHeaders = [:]
         
