@@ -1,5 +1,4 @@
-# ororo-ios
-iOS client to https://ororo.tv
+iOS client to ororo.tv
 Features:
  * Movies
  * Shows
