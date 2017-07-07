@@ -1,0 +1,6 @@
+framework module Pods_ororoTests {
+  umbrella header "Pods-ororoTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
