@@ -24,7 +24,7 @@ class MovieViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         nameLabel.text = nameLabel.text?.appending(movie.name)
-        nameLabel.text = yearLabel.text?.appending(movie.year)
+        yearLabel.text = yearLabel.text?.appending(movie.year)
         ImagesHolder.updateImage(stringUrl: movie.poster_thumb, imageView: movieImage)
     }
     
