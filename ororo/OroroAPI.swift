@@ -25,6 +25,9 @@ class OroroAPI {
         movie.poster_thumb = json["poster_thumb"].stringValue
         movie.backdrop_url = json["backdrop_url"].stringValue
         movie.poster = json["poster"].stringValue
+        movie.countries = json["array_countries"].arrayValue.map({$0.stringValue}).joined(separator: ", ")
+        movie.genres += json["array_genres"].arrayValue.map({$0.stringValue}).joined(separator: ", ")
+
         return movie
     }
     

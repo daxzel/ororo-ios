@@ -38,6 +38,23 @@ class DbHelper {
             completionHandler()
         }
     }
+    
+    static func deleteDb() {
+        let manager = FileManager.default
+        let realmPath = Realm.Configuration.defaultConfiguration.fileURL!.absoluteURL.path
+        let realmPaths = [
+            realmPath as String,
+            realmPath + ".lock",
+            realmPath + ".man management"
+        ]
+        for path in realmPaths {
+            do {
+                try manager.removeItem(atPath: path)
+            } catch {
+                print("\(path) remove error")
+            }
+        }
+    }
 
     
 }

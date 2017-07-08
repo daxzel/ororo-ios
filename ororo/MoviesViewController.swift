@@ -16,15 +16,15 @@ enum SerializationError: Error {
 
 class MoviesViewController: UICollectionViewController {
 
-    var movies: Results<Movie> = DbHelper.readMoviesFromDB()
+    var movies: Results<Movie>? = nil
     let activityView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
-        activityView.center = self.view.center
+        activityView.center = self.collectionView!.center
         collectionView!.addSubview(activityView)
+        activityView.color = UIColor.black
         activityView.startAnimating()
         
         DbHelper.updateMovies { (Void) in
@@ -33,18 +33,18 @@ class MoviesViewController: UICollectionViewController {
             self.collectionView?.reloadData()
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return movies.count
+        
+        if let count = movies?.count {
+            return count
+        } else {
+            return 0
+        }
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let movie = movies[indexPath.item]
+        let movie = movies![indexPath.item]
         let movieCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCell", for: indexPath) as UICollectionViewCell
         
         let movieNameLabel = movieCell.viewWithTag(1) as! UILabel
@@ -60,7 +60,7 @@ class MoviesViewController: UICollectionViewController {
         if let cell = sender as? UICollectionViewCell,
             let indexPath = self.collectionView?.indexPath(for: cell) {
             let destinationViewController = segue.destination as! MovieViewController
-            let movie = movies[indexPath.row]
+            let movie = movies![indexPath.row]
             destinationViewController.movie = movie
         }
     }

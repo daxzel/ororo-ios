@@ -17,7 +17,8 @@ class MovieViewController: UIViewController {
     @IBOutlet weak var countriesLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var movieImage: UIImageView!
-
+    @IBOutlet weak var descriptionLabel: UILabel!
+    
     var movie = Movie()
     
     override func viewDidLoad() {
@@ -25,11 +26,10 @@ class MovieViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         nameLabel.text = nameLabel.text?.appending(movie.name)
         yearLabel.text = yearLabel.text?.appending(movie.year)
+        genreLabel.text = genreLabel.text?.appending(movie.genres)
+        descriptionLabel.text = descriptionLabel.text?.appending(movie.desc)
+        countriesLabel.text = countriesLabel.text?.appending(movie.countries)
         ImagesHolder.updateImage(stringUrl: movie.poster_thumb, imageView: movieImage)
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
 }

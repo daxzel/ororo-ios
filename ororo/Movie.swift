@@ -9,12 +9,16 @@
 import Foundation
 import RealmSwift
 
+
 class Movie: Object {
     dynamic var name = ""
     dynamic var year = ""
+    dynamic var countries = ""
+    dynamic var genres = ""
     dynamic var desc = ""
     dynamic var imdb_rating = ""
-    dynamic var poster_thumb: String = ""
+    dynamic var poster_thumb = ""
     dynamic var backdrop_url = ""
     dynamic var poster = ""
+    
 }
