@@ -10,12 +10,12 @@
 		4E60E3BE1E676205005A433B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E60E3BD1E676205005A433B /* AppDelegate.swift */; };
 		4E60E3C31E676205005A433B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E60E3C11E676205005A433B /* Main.storyboard */; };
 		4E60E3C51E676205005A433B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E60E3C41E676205005A433B /* Assets.xcassets */; };
-		4E60E3C81E676205005A433B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E60E3C61E676205005A433B /* LaunchScreen.storyboard */; };
 		4E60E3D31E676205005A433B /* ororoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E60E3D21E676205005A433B /* ororoTests.swift */; };
 		4E60E3DE1E676205005A433B /* ororoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E60E3DD1E676205005A433B /* ororoUITests.swift */; };
 		4E7C752D1F112ADD001DB5FC /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7C752C1F112ADD001DB5FC /* MoviesViewController.swift */; };
 		4E7C75371F114393001DB5FC /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7C75361F114393001DB5FC /* MovieViewController.swift */; };
 		4E7C75391F115207001DB5FC /* ImagesHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7C75381F115207001DB5FC /* ImagesHolder.swift */; };
+		4E7C753B1F11597D001DB5FC /* DbHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7C753A1F11597D001DB5FC /* DbHelper.swift */; };
 		4EE667E21F0C5FCB006B1428 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE667E11F0C5FCB006B1428 /* Movie.swift */; };
 		4EE667E41F0D9217006B1428 /* OroroAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE667E31F0D9217006B1428 /* OroroAPI.swift */; };
 		5D9A8B39537E7A8C5200B904 /* Pods_ororoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B19C57D1067D51EFC87C4C2B /* Pods_ororoTests.framework */; };
@@ -48,7 +48,6 @@
 		4E60E3BD1E676205005A433B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E60E3C21E676205005A433B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4E60E3C41E676205005A433B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		4E60E3C71E676205005A433B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4E60E3C91E676205005A433B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E60E3CE1E676205005A433B /* ororoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ororoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E60E3D21E676205005A433B /* ororoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ororoTests.swift; sourceTree = "<group>"; };
@@ -59,6 +58,7 @@
 		4E7C752C1F112ADD001DB5FC /* MoviesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesViewController.swift; sourceTree = "<group>"; };
 		4E7C75361F114393001DB5FC /* MovieViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieViewController.swift; sourceTree = "<group>"; };
 		4E7C75381F115207001DB5FC /* ImagesHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagesHolder.swift; sourceTree = "<group>"; };
+		4E7C753A1F11597D001DB5FC /* DbHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbHelper.swift; sourceTree = "<group>"; };
 		4EE667E11F0C5FCB006B1428 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		4EE667E31F0D9217006B1428 /* OroroAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OroroAPI.swift; sourceTree = "<group>"; };
 		5E6ADE16B6DAEA02905E3DF5 /* Pods-ororoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ororoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ororoTests/Pods-ororoTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -136,12 +136,12 @@
 				4E60E3BD1E676205005A433B /* AppDelegate.swift */,
 				4E60E3C11E676205005A433B /* Main.storyboard */,
 				4E60E3C41E676205005A433B /* Assets.xcassets */,
-				4E60E3C61E676205005A433B /* LaunchScreen.storyboard */,
 				4E60E3C91E676205005A433B /* Info.plist */,
 				4EE667E11F0C5FCB006B1428 /* Movie.swift */,
 				4EE667E31F0D9217006B1428 /* OroroAPI.swift */,
 				4E7C75361F114393001DB5FC /* MovieViewController.swift */,
 				4E7C75381F115207001DB5FC /* ImagesHolder.swift */,
+				4E7C753A1F11597D001DB5FC /* DbHelper.swift */,
 			);
 			path = ororo;
 			sourceTree = "<group>";
@@ -293,7 +293,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E60E3C81E676205005A433B /* LaunchScreen.storyboard in Resources */,
 				4E60E3C51E676205005A433B /* Assets.xcassets in Resources */,
 				4E60E3C31E676205005A433B /* Main.storyboard in Resources */,
 			);
@@ -462,6 +461,7 @@
 				4E7C75371F114393001DB5FC /* MovieViewController.swift in Sources */,
 				4E7C752D1F112ADD001DB5FC /* MoviesViewController.swift in Sources */,
 				4E7C75391F115207001DB5FC /* ImagesHolder.swift in Sources */,
+				4E7C753B1F11597D001DB5FC /* DbHelper.swift in Sources */,
 				4E60E3BE1E676205005A433B /* AppDelegate.swift in Sources */,
 				4EE667E21F0C5FCB006B1428 /* Movie.swift in Sources */,
 			);
@@ -505,14 +505,6 @@
 				4E60E3C21E676205005A433B /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		4E60E3C61E676205005A433B /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4E60E3C71E676205005A433B /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

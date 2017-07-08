@@ -7,9 +7,6 @@
 //
 
 import UIKit
-import SwiftyJSON
-import Alamofire
-import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,44 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-       
-//        cleanDB()
-//        updateDB(completionHandler: { self.readFromDB() })
+        DbHelper.cleanDB()
         return true
     }
     
-    func cleanDB() {
-        let realm =  try! Realm()
-        try! realm.write {
-            realm.deleteAll()
-        }
-        print("Finished DB clean\n")
-    }
-    
-    func readFromDB() {
-        let realm =  try! Realm()
-        print("Start reading movies:\n")
-        realm.objects(Movie.self).forEach { (movie) in
-            print("Name: \(movie.name)")
-            print("Year: \(movie.year)")
-            print("Description: \(movie.desc)")
-            print("IMDB rating: \(movie.imdb_rating)")
-            print("Poster: \(movie.poster_thumb)\n")
-        }
-    }
-    
-    func updateDB(completionHandler: @escaping (Void) -> Void) {
-        let realm =  try! Realm()
-        print("Start storing movies")
-        OroroAPI.forAllMovies { (movies) in
-            try! realm.write {
-                realm.add(movies)
-                print("\(movies.count) movies are stored\n")
-            }
-            completionHandler()
-        }
-    }
-
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.

@@ -16,13 +16,22 @@ enum SerializationError: Error {
 
 class MoviesViewController: UICollectionViewController {
 
-    static let realm =  try! Realm()
-    let movies: Results<Movie> = MoviesViewController.realm.objects(Movie.self)
-    var selectedMovie = -1
+    var movies: Results<Movie> = DbHelper.readMoviesFromDB()
+    let activityView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        activityView.center = self.view.center
+        collectionView!.addSubview(activityView)
+        activityView.startAnimating()
+        
+        DbHelper.updateMovies { (Void) in
+            self.movies = DbHelper.readMoviesFromDB()
+            self.activityView.stopAnimating()
+            self.collectionView?.reloadData()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,7 +40,7 @@ class MoviesViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return MoviesViewController.realm.objects(Movie.self).count
+        return movies.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
