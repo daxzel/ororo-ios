@@ -14,7 +14,7 @@ class Movie: Object {
     dynamic var year = ""
     dynamic var desc = ""
     dynamic var imdb_rating = ""
-    dynamic var poster_thumb = ""
+    dynamic var poster_thumb: String = ""
     dynamic var backdrop_url = ""
     dynamic var poster = ""
 }
