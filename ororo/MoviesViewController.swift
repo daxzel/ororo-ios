@@ -9,11 +9,6 @@
 import UIKit
 import RealmSwift
 
-enum SerializationError: Error {
-    case missing(String)
-    case invalid(String, Any)
-}
-
 class MoviesViewController: UICollectionViewController {
 
     var movies: Results<Movie>? = nil
@@ -51,7 +46,7 @@ class MoviesViewController: UICollectionViewController {
         movieNameLabel.text = movie.name
         
         let movieLogo = movieCell.viewWithTag(2) as! UIImageView
-        ImagesHolder.updateImage(stringUrl: movie.poster_thumb, imageView: movieLogo)
+        ImagesHolder.updateImage(stringUrl: movie.posterThumb, imageView: movieLogo)
         
         return movieCell
     }

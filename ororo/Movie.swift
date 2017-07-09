@@ -11,14 +11,19 @@ import RealmSwift
 
 
 class Movie: Object {
+    dynamic var id = ""
     dynamic var name = ""
     dynamic var year = ""
     dynamic var countries = ""
     dynamic var genres = ""
     dynamic var desc = ""
-    dynamic var imdb_rating = ""
-    dynamic var poster_thumb = ""
-    dynamic var backdrop_url = ""
+    dynamic var imdbRating = ""
+    dynamic var posterThumb = ""
+    dynamic var backdropUrl = ""
     dynamic var poster = ""
-    
 }
+
+class MovieDetailed: Movie {
+    dynamic var downloadUrl = ""
+}
+

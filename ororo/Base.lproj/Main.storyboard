@@ -114,6 +114,15 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B06-lc-gLY">
+                                <rect key="frame" x="16" y="586" width="343" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <state key="normal" title="Play"/>
+                                <connections>
+                                    <action selector="playAction:" destination="Cub-lZ-fVw" eventType="touchUpInside" id="koD-5P-3xY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.92549019607843142" green="0.93725490196078431" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
