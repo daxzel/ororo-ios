@@ -61,10 +61,15 @@ class MovieViewController: UIViewController {
         dropDown?.selectionBackgroundColor = ColorHelper.UIColorFromRGB(color: "#2E353D", alpha: 1.0)
         dropDown?.textColor = UIColor.white
         dropDown?.direction = .top
+        dropDown?.shadowColor = ColorHelper.UIColorFromRGB(color: "#000000", alpha: 0.0)
+        dropDown?.selectionAction = { [unowned self] (index: Int, item: String) in
+            self.languageButton.titleLabel?.text = item
+        }
     }
     
     func updateLanguages(languages: [String]) {
         dropDown?.dataSource = languages
+        dropDown?.selectRow(at: dropDown?.dataSource.index(of: "EN"))
     }
     
     func downloadDetails() {
