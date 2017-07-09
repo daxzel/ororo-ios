@@ -46,6 +46,9 @@ class MoviesViewController: UICollectionViewController {
         movieNameLabel.text = movie.name
         
         let movieLogo = movieCell.viewWithTag(2) as! UIImageView
+        //rounded logo
+        movieLogo.layer.cornerRadius = 2.0
+        movieLogo.clipsToBounds = true
         ImagesHolder.updateImage(stringUrl: movie.posterThumb, imageView: movieLogo)
         
         return movieCell

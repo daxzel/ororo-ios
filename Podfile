@@ -7,6 +7,7 @@ target 'ororo' do
   pod 'RealmSwift', '~> 2.8'
   pod 'Alamofire', '~> 4.5'
   pod 'SwiftyJSON', '~> 3.1'
+  pod 'DropDown', '~> 2'
 
   # Pods for ororo
 

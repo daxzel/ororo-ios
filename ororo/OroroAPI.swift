@@ -41,6 +41,13 @@ class OroroAPI {
         let movie = MovieDetailed()
         parseMovieCommon(json: json, movie: movie)
         movie.downloadUrl = json["download_url"].stringValue
+        let subtitles = json["subtitles"].arrayValue.map { (json) -> Subtitle in
+            let subtitle = Subtitle()
+            subtitle.lang = json["lang"].stringValue
+            subtitle.url = json["url"].stringValue
+            return subtitle
+        }
+        movie.subtitles += subtitles
         return movie
     }
     

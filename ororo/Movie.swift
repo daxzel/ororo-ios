@@ -9,6 +9,10 @@
 import Foundation
 import RealmSwift
 
+class Subtitle: Object {
+    dynamic var url = ""
+    dynamic var lang = ""
+}
 
 class Movie: Object {
     dynamic var id = ""
@@ -25,5 +29,6 @@ class Movie: Object {
 
 class MovieDetailed: Movie {
     dynamic var downloadUrl = ""
+    var subtitles = List<Subtitle>()
 }
 
