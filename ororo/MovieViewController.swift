@@ -27,10 +27,13 @@ class MovieViewController: UIViewController {
     @IBOutlet weak var languageView: UIView!
     @IBOutlet weak var languageButton: UIButton!
     
+    @IBOutlet weak var playButton: UIButton!
+    
     var movie: Movie? = nil
     
     var dropDown: DropDown? = nil
     var movieDetailed: MovieDetailed? = nil
+    @IBOutlet weak var downloadButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +50,9 @@ class MovieViewController: UIViewController {
         
         initLanguageField()
         
-        languageButton.layer.cornerRadius = 2.0
+        languageButton.layer.cornerRadius = 5.0
+        playButton.layer.cornerRadius = 5.0
+        downloadButton.layer.cornerRadius = 5.0
         
         downloadDetails()
         
@@ -57,8 +62,8 @@ class MovieViewController: UIViewController {
         dropDown = DropDown()
         dropDown?.anchorView = languageView
         dropDown?.cellHeight = 40
-        dropDown?.backgroundColor = ColorHelper.UIColorFromRGB(color: "#444b54", alpha: 1.0)
-        dropDown?.selectionBackgroundColor = ColorHelper.UIColorFromRGB(color: "#2E353D", alpha: 1.0)
+        dropDown?.backgroundColor = ColorHelper.UIColorFromRGB(color: "#31A480", alpha: 1.0)
+        dropDown?.selectionBackgroundColor = ColorHelper.UIColorFromRGB(color: "#3BC79C", alpha: 1.0)
         dropDown?.textColor = UIColor.white
         dropDown?.direction = .top
         dropDown?.shadowColor = ColorHelper.UIColorFromRGB(color: "#000000", alpha: 0.0)

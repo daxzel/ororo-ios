@@ -1,0 +1,26 @@
+PODS:
+  - Alamofire (4.5.0)
+  - DropDown (2)
+  - Realm (2.8.3):
+    - Realm/Headers (= 2.8.3)
+  - Realm/Headers (2.8.3)
+  - RealmSwift (2.8.3):
+    - Realm (= 2.8.3)
+  - SwiftyJSON (3.1.4)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.5)
+  - DropDown (~> 2)
+  - RealmSwift (~> 2.8)
+  - SwiftyJSON (~> 3.1)
+
+SPEC CHECKSUMS:
+  Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
+  DropDown: 744784d9c9aa505100e942c16acd05430cbb2f0a
+  Realm: 3601ef091c8c499a31101d8563b991e75546cdce
+  RealmSwift: 8183818515471b01a99abdd2970f8e4fd52b6f4a
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+
+PODFILE CHECKSUM: 571817cdf04a3a627aa24121a68a7b82e6fd2ce8
+
+COCOAPODS: 1.2.1

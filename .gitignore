@@ -6,7 +6,6 @@
 build/
 DerivedData/
 .DS_Store
-Podfile.lock
 
 ## Various settings
 *.pbxuser
