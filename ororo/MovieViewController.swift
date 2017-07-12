@@ -86,7 +86,13 @@ class MovieViewController: UIViewController {
             }
         }
     }
-        
+    @IBAction func downloadAction(_ sender: Any) {
+        if let downloadUrl = movieDetailed?.downloadUrl {
+//            let subtitles = movieDetailed?.subtitles {
+            ContentDownloader.load(url: URL(string: downloadUrl)!, movie: movieDetailed!)
+        }
+    }
+    
     @IBAction func playAction(_ sender: UIButton) {
         if let downloadUrl = movieDetailed?.downloadUrl,
             let subtitles = movieDetailed?.subtitles {

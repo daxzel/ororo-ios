@@ -11,7 +11,8 @@ import RealmSwift
 
 class MoviesViewController: UICollectionViewController {
 
-    var movies: Results<Movie>? = nil
+    var moviesProvider: MoviesProviderProtocol? = nil
+    var movies: [Movie]? = nil
     let activityView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
     
     override func viewDidLoad() {
@@ -22,8 +23,8 @@ class MoviesViewController: UICollectionViewController {
         activityView.color = UIColor.black
         activityView.startAnimating()
         
-        DbHelper.updateMovies { (Void) in
-            self.movies = DbHelper.readMoviesFromDB()
+        moviesProvider?.getMovies { (movies) in
+            self.movies = movies
             self.activityView.stopAnimating()
             self.collectionView?.reloadData()
         }

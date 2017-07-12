@@ -8,11 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		4E09BD211F1282B400AF34D9 /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E09BD201F1282B400AF34D9 /* ColorHelper.swift */; };
-		4E09BD291F12EB4900AF34D9 /* MovieNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E09BD281F12EB4900AF34D9 /* MovieNavigationController.swift */; };
+		4E09BD291F12EB4900AF34D9 /* MoviesNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E09BD281F12EB4900AF34D9 /* MoviesNavigationController.swift */; };
 		4E09BD3B1F14343200AF34D9 /* download-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E09BD371F14343200AF34D9 /* download-7.png */; };
 		4E09BD3C1F14343200AF34D9 /* film.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E09BD381F14343200AF34D9 /* film.png */; };
 		4E09BD3D1F14343200AF34D9 /* folder.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E09BD391F14343200AF34D9 /* folder.png */; };
 		4E09BD3E1F14343200AF34D9 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E09BD3A1F14343200AF34D9 /* play.png */; };
+		4E09BD401F14459100AF34D9 /* ContentDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E09BD3F1F14459100AF34D9 /* ContentDownloader.swift */; };
+		4E09BD441F158B2300AF34D9 /* CacheHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E09BD431F158B2300AF34D9 /* CacheHelper.swift */; };
+		4E09BD471F1592D900AF34D9 /* MoviesProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E09BD461F1592D900AF34D9 /* MoviesProviderProtocol.swift */; };
+		4E09BD491F15951F00AF34D9 /* DownloadsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E09BD481F15951F00AF34D9 /* DownloadsNavigationController.swift */; };
 		4E60E3BE1E676205005A433B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E60E3BD1E676205005A433B /* AppDelegate.swift */; };
 		4E60E3C31E676205005A433B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E60E3C11E676205005A433B /* Main.storyboard */; };
 		4E60E3C51E676205005A433B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E60E3C41E676205005A433B /* Assets.xcassets */; };
@@ -52,11 +56,15 @@
 		1EBF71CB20ABCA973EE819BC /* Pods-ororo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ororo.release.xcconfig"; path = "Pods/Target Support Files/Pods-ororo/Pods-ororo.release.xcconfig"; sourceTree = "<group>"; };
 		2C6B9FD0FF163B1BAC0A8AD8 /* Pods_ororo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ororo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E09BD201F1282B400AF34D9 /* ColorHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
-		4E09BD281F12EB4900AF34D9 /* MovieNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieNavigationController.swift; sourceTree = "<group>"; };
+		4E09BD281F12EB4900AF34D9 /* MoviesNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesNavigationController.swift; sourceTree = "<group>"; };
 		4E09BD371F14343200AF34D9 /* download-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "download-7.png"; path = "Icons/download-7.png"; sourceTree = "<group>"; };
 		4E09BD381F14343200AF34D9 /* film.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = film.png; path = Icons/film.png; sourceTree = "<group>"; };
 		4E09BD391F14343200AF34D9 /* folder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = folder.png; path = Icons/folder.png; sourceTree = "<group>"; };
 		4E09BD3A1F14343200AF34D9 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = play.png; path = Icons/play.png; sourceTree = "<group>"; };
+		4E09BD3F1F14459100AF34D9 /* ContentDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentDownloader.swift; sourceTree = "<group>"; };
+		4E09BD431F158B2300AF34D9 /* CacheHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheHelper.swift; sourceTree = "<group>"; };
+		4E09BD461F1592D900AF34D9 /* MoviesProviderProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesProviderProtocol.swift; sourceTree = "<group>"; };
+		4E09BD481F15951F00AF34D9 /* DownloadsNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadsNavigationController.swift; sourceTree = "<group>"; };
 		4E60E3BA1E676205005A433B /* ororo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ororo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E60E3BD1E676205005A433B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E60E3C21E676205005A433B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -132,6 +140,14 @@
 			name = Icons;
 			sourceTree = "<group>";
 		};
+		4E09BD451F15929700AF34D9 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				4E09BD461F1592D900AF34D9 /* MoviesProviderProtocol.swift */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
 		4E60E3B11E676205005A433B = {
 			isa = PBXGroup;
 			children = (
@@ -203,6 +219,8 @@
 				4E7C75381F115207001DB5FC /* ImagesHolder.swift */,
 				4E7C753A1F11597D001DB5FC /* DbHelper.swift */,
 				4E09BD201F1282B400AF34D9 /* ColorHelper.swift */,
+				4E09BD3F1F14459100AF34D9 /* ContentDownloader.swift */,
+				4E09BD431F158B2300AF34D9 /* CacheHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -210,9 +228,11 @@
 		4E7C75481F124055001DB5FC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4E09BD451F15929700AF34D9 /* Common */,
 				4E7C754A1F124584001DB5FC /* MovieViewController.swift */,
 				4E7C752C1F112ADD001DB5FC /* MoviesViewController.swift */,
-				4E09BD281F12EB4900AF34D9 /* MovieNavigationController.swift */,
+				4E09BD281F12EB4900AF34D9 /* MoviesNavigationController.swift */,
+				4E09BD481F15951F00AF34D9 /* DownloadsNavigationController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -526,12 +546,16 @@
 				4EE667E41F0D9217006B1428 /* OroroAPI.swift in Sources */,
 				4E7C752D1F112ADD001DB5FC /* MoviesViewController.swift in Sources */,
 				4E7C754B1F124584001DB5FC /* MovieViewController.swift in Sources */,
+				4E09BD401F14459100AF34D9 /* ContentDownloader.swift in Sources */,
 				4E09BD211F1282B400AF34D9 /* ColorHelper.swift in Sources */,
+				4E09BD471F1592D900AF34D9 /* MoviesProviderProtocol.swift in Sources */,
+				4E09BD441F158B2300AF34D9 /* CacheHelper.swift in Sources */,
 				4E7C75391F115207001DB5FC /* ImagesHolder.swift in Sources */,
-				4E09BD291F12EB4900AF34D9 /* MovieNavigationController.swift in Sources */,
+				4E09BD291F12EB4900AF34D9 /* MoviesNavigationController.swift in Sources */,
 				4E7C753B1F11597D001DB5FC /* DbHelper.swift in Sources */,
 				4E60E3BE1E676205005A433B /* AppDelegate.swift in Sources */,
 				4EE667E21F0C5FCB006B1428 /* Movie.swift in Sources */,
+				4E09BD491F15951F00AF34D9 /* DownloadsNavigationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

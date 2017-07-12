@@ -25,10 +25,20 @@ class Movie: Object {
     dynamic var posterThumb = ""
     dynamic var backdropUrl = ""
     dynamic var poster = ""
+    
+    override static func primaryKey() -> String? {
+        return "id"
+    }
 }
 
 class MovieDetailed: Movie {
     dynamic var downloadUrl = ""
     var subtitles = List<Subtitle>()
+}
+
+class DownloadedMovie: MovieDetailed {
+//    dynamic var movie: Movie? = nil
+//    dynamic var filePath = ""
+//    dynamic var subtitlesPath = ""
 }
 
