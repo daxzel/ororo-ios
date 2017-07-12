@@ -29,6 +29,19 @@ class Movie: Object {
     override static func primaryKey() -> String? {
         return "id"
     }
+    
+    func copyFieldsTo(movie: Movie) {
+        movie.id = id
+        movie.name = name
+        movie.year = year
+        movie.countries = countries
+        movie.genres = genres
+        movie.desc = desc
+        movie.imdbRating = imdbRating
+        movie.posterThumb = posterThumb
+        movie.backdropUrl = backdropUrl
+        movie.poster = poster
+    }
 }
 
 class MovieDetailed: Movie {

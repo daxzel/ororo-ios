@@ -79,16 +79,22 @@ class MovieViewController: UIViewController {
     
     func downloadDetails() {
         if let id = movie?.id {
-            OroroAPI.forOneMovie(id: id) { (movieDetailed) in
-                self.movieDetailed = movieDetailed
-                
-                self.updateLanguages(languages: movieDetailed.subtitles.map({$0.lang.uppercased()}))
+            if ((DbHelper.readDownloadedMovie(id)) != nil) {
+                downloadButton.isEnabled = false
+            } else {
+                OroroAPI.forOneMovie(id: id) { (movieDetailed) in
+                    self.movieDetailed = movieDetailed
+                    
+                    self.updateLanguages(languages: movieDetailed.subtitles.map({$0.lang.uppercased()}))
+                }
             }
         }
     }
+    
     @IBAction func downloadAction(_ sender: Any) {
         if let downloadUrl = movieDetailed?.downloadUrl {
 //            let subtitles = movieDetailed?.subtitles {
+            downloadButton.isEnabled = false
             ContentDownloader.load(url: URL(string: downloadUrl)!, movie: movieDetailed!)
         }
     }

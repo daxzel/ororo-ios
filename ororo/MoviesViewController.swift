@@ -21,6 +21,9 @@ class MoviesViewController: UICollectionViewController {
         activityView.center = self.collectionView!.center
         collectionView!.addSubview(activityView)
         activityView.color = UIColor.black
+    }
+    
+    func updateMovies() {
         activityView.startAnimating()
         
         moviesProvider?.getMovies { (movies) in
@@ -28,6 +31,10 @@ class MoviesViewController: UICollectionViewController {
             self.activityView.stopAnimating()
             self.collectionView?.reloadData()
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        updateMovies()
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -41,6 +48,7 @@ class MoviesViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let movie = movies![indexPath.item]
+        
         let movieCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCell", for: indexPath) as UICollectionViewCell
         
         let movieNameLabel = movieCell.viewWithTag(1) as! UILabel
@@ -49,17 +57,38 @@ class MoviesViewController: UICollectionViewController {
         let movieLogo = movieCell.viewWithTag(2) as! UIImageView
         //rounded logo
         movieLogo.layer.cornerRadius = 2.0
+        
         movieLogo.clipsToBounds = true
         ImagesHolder.updateImage(stringUrl: movie.posterThumb, imageView: movieLogo)
         
+        let downloadProgressLabel = movieCell.viewWithTag(3) as! UILabel
+        // Download progress label
+        if  movie is DownloadedMovie {
+            downloadProgressLabel.layer.cornerRadius = 2.0
+        } else {
+            downloadProgressLabel.isHidden = true
+        }
+        
         return movieCell
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String?, sender: Any?) -> Bool {
+        if let ident = identifier {
+            //TODO do somehow differently
+            if ident == "MovieCellSegue" {
+                if (movies?[0] is DownloadedMovie) {
+                    return false
+                }
+            }
+        }
+        return true
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let cell = sender as? UICollectionViewCell,
             let indexPath = self.collectionView?.indexPath(for: cell) {
-            let destinationViewController = segue.destination as! MovieViewController
             let movie = movies![indexPath.row]
+            let destinationViewController = segue.destination as! MovieViewController
             destinationViewController.movie = movie
         }
     }

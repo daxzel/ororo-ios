@@ -21,6 +21,11 @@ class DbHelper {
         print("Finished DB clean\n")
     }
     
+    static func readDownloadedMovie(_ id: String) -> DownloadedMovie? {
+        return self.realm
+            .object(ofType: DownloadedMovie.self, forPrimaryKey: id)
+    }
+    
     static func readMoviesFromDB() -> Results<Movie> {
         print("Start reading movies:\n")
         return self.realm.objects(Movie.self)
@@ -45,6 +50,12 @@ class DbHelper {
     static func storeMovie(movie: Movie) {
         try! realm.write {
             self.realm.add(movie)
+        }
+    }
+    
+    static func update(updateBlock: (Void) -> Void) {
+        try! realm.write {
+            updateBlock()
         }
     }
     
