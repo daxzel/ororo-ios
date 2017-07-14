@@ -30,6 +30,10 @@
 		4EE667E21F0C5FCB006B1428 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE667E11F0C5FCB006B1428 /* Movie.swift */; };
 		4EE667E41F0D9217006B1428 /* OroroAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE667E31F0D9217006B1428 /* OroroAPI.swift */; };
 		5D9A8B39537E7A8C5200B904 /* Pods_ororoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B19C57D1067D51EFC87C4C2B /* Pods_ororoTests.framework */; };
+		A6FE84B21F1952950077D1EB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6FE84B11F1952950077D1EB /* Launch Screen.storyboard */; };
+		A6FE84B51F1953FA0077D1EB /* ororo-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FE84B41F1953FA0077D1EB /* ororo-logo.png */; };
+		A6FE84BA1F1957890077D1EB /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6FE84B91F1957890077D1EB /* Login.storyboard */; };
+		A6FE84BC1F195AC00077D1EB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FE84BB1F195AC00077D1EB /* LoginViewController.swift */; };
 		B4594AA9D7AF3C8B5569C4A2 /* Pods_ororo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6B9FD0FF163B1BAC0A8AD8 /* Pods_ororo.framework */; };
 		F64448CE77AF4E5B6DFB7909 /* Pods_ororoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 797CA2A4FBB29F91D4DDBCC0 /* Pods_ororoUITests.framework */; };
 /* End PBXBuildFile section */
@@ -85,6 +89,10 @@
 		4EE667E31F0D9217006B1428 /* OroroAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OroroAPI.swift; sourceTree = "<group>"; };
 		5E6ADE16B6DAEA02905E3DF5 /* Pods-ororoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ororoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ororoTests/Pods-ororoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		797CA2A4FBB29F91D4DDBCC0 /* Pods_ororoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ororoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6FE84B11F1952950077D1EB /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		A6FE84B41F1953FA0077D1EB /* ororo-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ororo-logo.png"; path = "Images/ororo-logo.png"; sourceTree = "<group>"; };
+		A6FE84B91F1957890077D1EB /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		A6FE84BB1F195AC00077D1EB /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B19C57D1067D51EFC87C4C2B /* Pods_ororoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ororoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B561A65847B7916AC76E7A58 /* Pods-ororoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ororoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ororoTests/Pods-ororoTests.release.xcconfig"; sourceTree = "<group>"; };
 		B8DEBED5F035CCEC5326A358 /* Pods-ororoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ororoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ororoUITests/Pods-ororoUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -173,13 +181,14 @@
 		4E60E3BC1E676205005A433B /* ororo */ = {
 			isa = PBXGroup;
 			children = (
+				A6FE84B61F19552B0077D1EB /* StoryBoards */,
+				A6FE84B31F1953C20077D1EB /* Images */,
 				4E09BD2E1F142AAB00AF34D9 /* Icons */,
 				4E7C75491F12407E001DB5FC /* Data */,
 				4E7C75481F124055001DB5FC /* Controllers */,
 				4E7C75451F123154001DB5FC /* Helpers */,
 				4E7C753E1F11A671001DB5FC /* Player */,
 				4E60E3BD1E676205005A433B /* AppDelegate.swift */,
-				4E60E3C11E676205005A433B /* Main.storyboard */,
 				4E60E3C41E676205005A433B /* Assets.xcassets */,
 				4E60E3C91E676205005A433B /* Info.plist */,
 			);
@@ -233,6 +242,7 @@
 				4E7C752C1F112ADD001DB5FC /* MoviesViewController.swift */,
 				4E09BD281F12EB4900AF34D9 /* MoviesNavigationController.swift */,
 				4E09BD481F15951F00AF34D9 /* DownloadsNavigationController.swift */,
+				A6FE84BB1F195AC00077D1EB /* LoginViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -243,6 +253,24 @@
 				4EE667E11F0C5FCB006B1428 /* Movie.swift */,
 			);
 			name = Data;
+			sourceTree = "<group>";
+		};
+		A6FE84B31F1953C20077D1EB /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				A6FE84B41F1953FA0077D1EB /* ororo-logo.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		A6FE84B61F19552B0077D1EB /* StoryBoards */ = {
+			isa = PBXGroup;
+			children = (
+				A6FE84B11F1952950077D1EB /* Launch Screen.storyboard */,
+				4E60E3C11E676205005A433B /* Main.storyboard */,
+				A6FE84B91F1957890077D1EB /* Login.storyboard */,
+			);
+			name = StoryBoards;
 			sourceTree = "<group>";
 		};
 		B30D209418188BEDD786F33B /* Pods */ = {
@@ -374,12 +402,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6FE84B51F1953FA0077D1EB /* ororo-logo.png in Resources */,
 				4E60E3C51E676205005A433B /* Assets.xcassets in Resources */,
 				4E60E3C31E676205005A433B /* Main.storyboard in Resources */,
 				4E09BD3B1F14343200AF34D9 /* download-7.png in Resources */,
 				4E09BD3C1F14343200AF34D9 /* film.png in Resources */,
 				4E09BD3D1F14343200AF34D9 /* folder.png in Resources */,
 				4E09BD3E1F14343200AF34D9 /* play.png in Resources */,
+				A6FE84BA1F1957890077D1EB /* Login.storyboard in Resources */,
+				A6FE84B21F1952950077D1EB /* Launch Screen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -545,6 +576,7 @@
 				4E7C75471F123237001DB5FC /* OroroPlayerViewController.swift in Sources */,
 				4EE667E41F0D9217006B1428 /* OroroAPI.swift in Sources */,
 				4E7C752D1F112ADD001DB5FC /* MoviesViewController.swift in Sources */,
+				A6FE84BC1F195AC00077D1EB /* LoginViewController.swift in Sources */,
 				4E7C754B1F124584001DB5FC /* MovieViewController.swift in Sources */,
 				4E09BD401F14459100AF34D9 /* ContentDownloader.swift in Sources */,
 				4E09BD211F1282B400AF34D9 /* ColorHelper.swift in Sources */,
