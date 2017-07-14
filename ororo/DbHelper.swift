@@ -36,14 +36,20 @@ class DbHelper {
         return self.realm.objects(DownloadedMovie.self)
     }
     
-    static func updateMovies(completionHandler: @escaping (Void) -> Void) {
+    static func updateMovies(completionHandler: @escaping (_ result: Result<Any>) -> Void) {
         print("Start storing movies")
-        OroroAPI.forAllMovies { (movies) in
-            try! self.realm.write {
-                realm.add(movies)
-                print("\(movies.count) movies are stored\n")
+        OroroAPI.forAllMovies { (result, movies) in
+            switch (result) {
+                 case .success:
+                    try! self.realm.write {
+                        realm.add(movies)
+                        print("\(movies.count) movies are stored\n")
+                    }
+                    completionHandler(result)
+                 case .failure:
+                    completionHandler(result)
             }
-            completionHandler()
+            
         }
     }
     
