@@ -9,6 +9,21 @@
 import UIKit
 import RealmSwift
 
+class ContentDownloadListener : ContentDownloadListenerProtocol {
+    let downloadProgressLabel: UILabel
+    
+    init(downloadProgressLabel: UILabel) {
+        self.downloadProgressLabel = downloadProgressLabel
+    }
+    
+    func updateProgress(percent: Int64) {
+        downloadProgressLabel.text = String(percent) + "%"
+    }
+    func finished() {
+        downloadProgressLabel.isHidden = true
+    }
+}
+
 class MoviesViewController: UICollectionViewController {
 
     var moviesProvider: MoviesProviderProtocol? = nil
@@ -65,6 +80,8 @@ class MoviesViewController: UICollectionViewController {
         // Download progress label
         if  movie is DownloadedMovie {
             downloadProgressLabel.layer.cornerRadius = 2.0
+            let listener = ContentDownloadListener(downloadProgressLabel: downloadProgressLabel)
+            ContentDownloader.subscribeToDownloadProgress(id: movie.id, listener: listener)
         } else {
             downloadProgressLabel.isHidden = true
         }
