@@ -53,7 +53,6 @@ class MoviesViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
         if let count = movies?.count {
             return count
         } else {
@@ -91,10 +90,9 @@ class MoviesViewController: UICollectionViewController {
     
     override func shouldPerformSegue(withIdentifier identifier: String?, sender: Any?) -> Bool {
         if let ident = identifier {
-            //TODO do somehow differently
             if ident == "MovieCellSegue" {
-                if (movies?[0] is DownloadedMovie) {
-                    return false
+                if let downloadedMovie = movies?[0] as? DownloadedMovie {
+                    return downloadedMovie.isDownloadFinished
                 }
             }
         }

@@ -55,6 +55,7 @@
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="pdf-hE-9VW" id="g3h-Rg-eia"/>
+                        <outlet property="loginButton" destination="0zo-YS-MDX" id="WO8-Pu-sFH"/>
                         <outlet property="passwordTextField" destination="E4Z-l0-UQX" id="ZvV-TP-5hq"/>
                     </connections>
                 </viewController>

@@ -30,9 +30,8 @@ class MovieViewController: UIViewController {
     @IBOutlet weak var playButton: UIButton!
     
     var movie: Movie? = nil
-    
     var dropDown: DropDown? = nil
-    var movieDetailed: MovieDetailed? = nil
+    
     @IBOutlet weak var downloadButton: UIButton!
     
     override func viewDidLoad() {
@@ -44,21 +43,24 @@ class MovieViewController: UIViewController {
         descriptionLabel.text = descriptionLabel.text?.appending(movie!.desc)
         countriesLabel.text = countriesLabel.text?.appending(movie!.countries)
         
+        initImage()
+        
+        initLanguageButton()
+        initDownloadButton()
+        
+        playButton.layer.cornerRadius = 5.0
+        
+        downloadDetails()
+    }
+    
+    func initImage() {
         movieImage.layer.cornerRadius = 2.0
         movieImage.clipsToBounds = true
         ImagesHolder.updateImage(stringUrl: movie!.posterThumb, imageView: movieImage)
-        
-        initLanguageField()
-        
-        languageButton.layer.cornerRadius = 5.0
-        playButton.layer.cornerRadius = 5.0
-        downloadButton.layer.cornerRadius = 5.0
-        
-        downloadDetails()
-        
     }
     
-    func initLanguageField() {
+    func initLanguageButton() {
+        languageButton.layer.cornerRadius = 5.0
         dropDown = DropDown()
         dropDown?.anchorView = languageView
         dropDown?.cellHeight = 40
@@ -77,14 +79,20 @@ class MovieViewController: UIViewController {
         dropDown?.selectRow(at: dropDown?.dataSource.index(of: "EN"))
     }
     
-    func downloadDetails() {
+    func initDownloadButton() {
         if let id = movie?.id {
             if ((DbHelper.readDownloadedMovie(id)) != nil) {
                 downloadButton.isEnabled = false
-            } else {
+            }
+        }
+        downloadButton.layer.cornerRadius = 5.0
+    }
+    
+    func downloadDetails() {
+        if let id = movie?.id {
+            if !(movie is MovieDetailed) {
                 OroroAPI.forOneMovie(id: id) { (movieDetailed) in
-                    self.movieDetailed = movieDetailed
-                    
+                    self.movie = movieDetailed
                     self.updateLanguages(languages: movieDetailed.subtitles.map({$0.lang.uppercased()}))
                 }
             }
@@ -92,28 +100,27 @@ class MovieViewController: UIViewController {
     }
     
     @IBAction func downloadAction(_ sender: Any) {
-        if let downloadUrl = movieDetailed?.downloadUrl {
-//            let subtitles = movieDetailed?.subtitles {
+        if let detailed = movie as? MovieDetailed {
+//          let subtitles = movieDetailed?.subtitles {
             downloadButton.isEnabled = false
-            ContentDownloader.load(url: URL(string: downloadUrl)!, movie: movieDetailed!)
+            ContentDownloader.load(url: URL(string: detailed.downloadUrl)!, movie: movie!)
         }
     }
     
     @IBAction func playAction(_ sender: UIButton) {
-        if let downloadUrl = movieDetailed?.downloadUrl,
-            let subtitles = movieDetailed?.subtitles {
-            
-            if let subtitlesUrl = subtitles.filter({ (subtitle) -> Bool in
+        if let detailed = movie as? MovieDetailed {
+                
+            if let subtitlesUrl = detailed.subtitles.filter({ (subtitle) -> Bool in
                 return (subtitle.lang == self.languageButton.titleLabel!.text?.lowercased())
             }).first?.url {
-                let downloadUrl = URL(string: downloadUrl)!
+                let downloadUrl = URL(string: detailed.downloadUrl)!
                 let subtitlesUrl = URL(string: subtitlesUrl)!
-                
+                    
                 let playerController = OroroPlayerViewController(url: downloadUrl, subtitles: subtitlesUrl)
                 self.present(playerController, animated: true)
-    
             }
         }
+        
     }
 
     @IBAction func selectLanguage(_ sender: Any) {

@@ -50,6 +50,7 @@ class MovieDetailed: Movie {
 }
 
 class DownloadedMovie: MovieDetailed {
+    dynamic var isDownloadFinished = false
 //    dynamic var movie: Movie? = nil
 //    dynamic var filePath = ""
 //    dynamic var subtitlesPath = ""

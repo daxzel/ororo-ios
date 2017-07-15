@@ -19,7 +19,7 @@ protocol OroroAuthentificationProtocol {
 class OroroAPI {
     
     static let moviesURL = "https://ororo.tv/api/v2/movies"
-    static let movieURL = "https://ororo.tv/api/v2/movies/"
+    static let movieURL = "\(moviesURL)/"
     static var email: String? = nil
     static var password: String? = nil
     
