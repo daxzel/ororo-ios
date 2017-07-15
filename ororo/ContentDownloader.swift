@@ -70,6 +70,10 @@ class ContentDownloader {
         if completedUnitCount >= totalUnitCount {
             downloads.removeValue(forKey: id)
             if let listener = listeners[id] {
+                let move = DbHelper.readDownloadedMovie(id)
+                DbHelper.update(updateBlock: { () in
+                    move?.isDownloadFinished = true
+                })
                 listener.finished()
                 listeners.removeValue(forKey: id)
             }
