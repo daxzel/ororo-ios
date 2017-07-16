@@ -20,16 +20,15 @@ class OroroAPI {
     
     static let moviesURL = "https://ororo.tv/api/v2/movies"
     static let movieURL = "\(moviesURL)/"
-    static var email: String? = nil
-    static var password: String? = nil
+    static var auth: (key: String, value: String)? = nil
     
     static func setUpAuth(email: String, password: String) {
-        self.email = email
-        self.password = password
+        auth = Request.authorizationHeader(user: email, password: password)
     }
     
     static func testAuthentication(email: String, password: String, hadler: OroroAuthentificationProtocol) {
-        let header = getHeader(email: email, password: password)
+        auth = Request.authorizationHeader(user: email, password: password)
+        let header = getHeader()
         Alamofire.request(moviesURL, headers: header)
             .response(completionHandler: { (response) in
                 if let statusCode = response.response?.statusCode {
@@ -90,13 +89,10 @@ class OroroAPI {
     }
     
     static internal func getHeader() -> HTTPHeaders {
-        return getHeader(email: email!, password: password!)
-    }
-    
-    static internal func getHeader(email: String, password: String) -> HTTPHeaders {
         var headers: HTTPHeaders = [:]
-        if let authorizationHeader = Request.authorizationHeader(user: email, password: password) {
-            headers[authorizationHeader.key] = authorizationHeader.value
+        if let key = auth?.key,
+            let value = auth?.value {
+            headers[key] = value
         }
         return headers
     }

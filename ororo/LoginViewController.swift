@@ -50,10 +50,23 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var asAnonymousButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initView()
+    }
+    
+    func initView() {
         loginButton?.layer.cornerRadius = 5.0
+        asAnonymousButton?.layer.cornerRadius = 5.0
+    }
+    
+    @IBAction func loginAsAnonymousButton(_ sender: Any) {
+        let email = "test@example.com"
+        let password = "password"
+        OroroAPI.testAuthentication(email: email, password: password,
+                                    hadler: LoginHandler(email: email, password: password, viewController: self))
     }
     
     @IBAction func loginAction(_ sender: Any) {

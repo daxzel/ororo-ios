@@ -24,11 +24,14 @@ class ContentDownloadListener : ContentDownloadListenerProtocol {
     }
 }
 
-class MoviesViewController: UICollectionViewController {
+class MoviesViewController: UICollectionViewController, UISearchResultsUpdating {
 
     var moviesProvider: MoviesProviderProtocol? = nil
     var movies: [Movie]? = nil
+    var filteredMovies: [Movie]? = nil
     let activityView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+    
+    let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +39,16 @@ class MoviesViewController: UICollectionViewController {
         activityView.center = self.collectionView!.center
         collectionView!.addSubview(activityView)
         activityView.color = UIColor.black
+        
+        initSearchBar()
+    }
+    
+    func initSearchBar() {
+        definesPresentationContext = true
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.searchResultsUpdater = self
+        self.navigationItem.titleView = searchController.searchBar
     }
     
     func updateMovies() {
@@ -43,17 +56,19 @@ class MoviesViewController: UICollectionViewController {
         
         moviesProvider?.getMovies { (movies) in
             self.movies = movies
+            self.filteredMovies = movies
             self.activityView.stopAnimating()
             self.collectionView?.reloadData()
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        initSearchBar()
         updateMovies()
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let count = movies?.count {
+        if let count = filteredMovies?.count {
             return count
         } else {
             return 0
@@ -61,7 +76,7 @@ class MoviesViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let movie = movies![indexPath.item]
+        let movie = filteredMovies![indexPath.item]
         
         let movieCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCell", for: indexPath) as UICollectionViewCell
         
@@ -106,6 +121,23 @@ class MoviesViewController: UICollectionViewController {
             let destinationViewController = segue.destination as! MovieViewController
             destinationViewController.movie = movie
         }
+    }
+    
+    func filterContentForSearchText(searchText: String, scope: String = "All") {
+        if searchText.isEmpty {
+            filteredMovies = movies
+        } else {
+            let lowerCaseSearch = searchText.lowercased()
+            filteredMovies = movies?.filter { movie in
+                return movie.name.lowercased().contains(lowerCaseSearch)
+            }
+        }
+        self.collectionView?.reloadData()
+    }
+    
+    @available(iOS 8.0, *)
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchText: searchController.searchBar.text!)
     }
 
 }

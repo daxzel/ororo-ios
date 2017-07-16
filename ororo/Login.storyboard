@@ -40,7 +40,7 @@
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0zo-YS-MDX">
-                                <rect key="frame" x="73" y="343" width="229" height="30"/>
+                                <rect key="frame" x="73" y="333" width="229" height="30"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.19215686269999999" green="0.64313725489999995" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Log in">
@@ -50,10 +50,22 @@
                                     <action selector="loginAction:" destination="f8A-uK-f9L" eventType="touchUpInside" id="kDc-Eg-4S2"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Phu-9L-9V3">
+                                <rect key="frame" x="73" y="388" width="229" height="30"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.19215686269999999" green="0.64313725489999995" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="As Anonymous">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginAsAnonymousButton:" destination="f8A-uK-f9L" eventType="touchUpInside" id="cvb-Bo-Tiq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.1803921568627451" green="0.20784313725490194" blue="0.23921568627450979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
+                        <outlet property="asAnonymousButton" destination="Phu-9L-9V3" id="1ES-Oy-D9L"/>
                         <outlet property="emailTextField" destination="pdf-hE-9VW" id="g3h-Rg-eia"/>
                         <outlet property="loginButton" destination="0zo-YS-MDX" id="WO8-Pu-sFH"/>
                         <outlet property="passwordTextField" destination="E4Z-l0-UQX" id="ZvV-TP-5hq"/>
