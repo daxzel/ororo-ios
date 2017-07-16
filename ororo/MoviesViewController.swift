@@ -92,10 +92,15 @@ class MoviesViewController: UICollectionViewController, UISearchResultsUpdating 
         
         let downloadProgressLabel = movieCell.viewWithTag(3) as! UILabel
         // Download progress label
-        if  movie is DownloadedMovie {
-            downloadProgressLabel.layer.cornerRadius = 2.0
-            let listener = ContentDownloadListener(downloadProgressLabel: downloadProgressLabel)
-            ContentDownloader.subscribeToDownloadProgress(id: movie.id, listener: listener)
+        if  let downloadedMovie = movie as? DownloadedMovie {
+            if downloadedMovie.isDownloadFinished == true {
+                downloadProgressLabel.isHidden = true;
+            } else {
+                downloadProgressLabel.isHidden = false;
+                downloadProgressLabel.layer.cornerRadius = 2.0
+                let listener = ContentDownloadListener(downloadProgressLabel: downloadProgressLabel)
+                ContentDownloader.subscribeToDownloadProgress(id: movie.id, listener: listener)
+            }
         } else {
             downloadProgressLabel.isHidden = true
         }
@@ -106,6 +111,7 @@ class MoviesViewController: UICollectionViewController, UISearchResultsUpdating 
     override func shouldPerformSegue(withIdentifier identifier: String?, sender: Any?) -> Bool {
         if let ident = identifier {
             if ident == "MovieCellSegue" {
+                //TODO change movies?[0]
                 if let downloadedMovie = movies?[0] as? DownloadedMovie {
                     return downloadedMovie.isDownloadFinished
                 }

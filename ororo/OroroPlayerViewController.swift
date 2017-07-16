@@ -175,7 +175,9 @@ class OroroPlayerViewController: AVPlayerViewController {
     
     init(url: URL, subtitles string: URL) {
         super.init(nibName: nil, bundle: nil)
-        self.player = AVPlayer(url: url)
+        let asset = AVURLAsset(url: url)
+        let playerItem = AVPlayerItem(asset: asset)
+        self.player = AVPlayer(playerItem: playerItem)
         self.subtitles = string
     }
     

@@ -47,12 +47,27 @@ class Movie: Object {
 class MovieDetailed: Movie {
     dynamic var downloadUrl = ""
     var subtitles = List<Subtitle>()
+    
+    internal func getPreparedDownloadUrl() -> URL {
+        return URL(string: downloadUrl)!
+    }
+    
+    internal func getPreparedSubtitlesDownloadUrl(lang: String) -> URL {
+        let subtitle = subtitles.filter {$0.lang == lang}.first
+        return URL(string: subtitle!.url)!
+    }
 }
 
 class DownloadedMovie: MovieDetailed {
     dynamic var isDownloadFinished = false
-//    dynamic var movie: Movie? = nil
-//    dynamic var filePath = ""
-//    dynamic var subtitlesPath = ""
+    
+    internal override func getPreparedDownloadUrl() -> URL {
+        return URL(fileURLWithPath: downloadUrl)
+    }
+    
+    internal override func getPreparedSubtitlesDownloadUrl(lang: String) -> URL {
+        let subtitle = subtitles.filter {$0.lang == lang}.first
+        return URL(fileURLWithPath: subtitle!.url)
+    }
 }
 

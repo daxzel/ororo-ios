@@ -101,24 +101,21 @@ class MovieViewController: UIViewController {
     
     @IBAction func downloadAction(_ sender: Any) {
         if let detailed = movie as? MovieDetailed {
-//          let subtitles = movieDetailed?.subtitles {
             downloadButton.isEnabled = false
-            ContentDownloader.load(url: URL(string: detailed.downloadUrl)!, movie: movie!)
+            ContentDownloader.load(movie: detailed)
         }
     }
     
     @IBAction func playAction(_ sender: UIButton) {
         if let detailed = movie as? MovieDetailed {
-                
-            if let subtitlesUrl = detailed.subtitles.filter({ (subtitle) -> Bool in
-                return (subtitle.lang == self.languageButton.titleLabel!.text?.lowercased())
-            }).first?.url {
-                let downloadUrl = URL(string: detailed.downloadUrl)!
-                let subtitlesUrl = URL(string: subtitlesUrl)!
-                    
-                let playerController = OroroPlayerViewController(url: downloadUrl, subtitles: subtitlesUrl)
-                self.present(playerController, animated: true)
-            }
+            
+            let lang = self.languageButton.titleLabel!.text?.lowercased()
+            
+            let subtitlesUrl = detailed.getPreparedSubtitlesDownloadUrl(lang: lang!)
+            let downloadUrl = detailed.getPreparedDownloadUrl()
+            
+            let playerController = OroroPlayerViewController(url: downloadUrl, subtitles: subtitlesUrl)
+            self.present(playerController, animated: true)
         }
         
     }

@@ -22,7 +22,8 @@ class DbHelper {
     }
     
     static func readDownloadedMovie(_ id: String) -> DownloadedMovie? {
-        return self.realm
+        let realm =  try! Realm()
+        return realm
             .object(ofType: DownloadedMovie.self, forPrimaryKey: id)
     }
     
@@ -60,6 +61,7 @@ class DbHelper {
     }
     
     static func update(updateBlock: (Void) -> Void) {
+        let realm =  try! Realm()
         try! realm.write {
             updateBlock()
         }

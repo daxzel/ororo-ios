@@ -17,33 +17,55 @@ protocol ContentDownloadListenerProtocol {
 class ContentDownloader {
     
     static var jobsQueue: DispatchQueue? = nil
-    static var downloads: [String:Progress] = [:]
+    static var downloads: [String:[Progress]] = [:]
     static var listeners: [String:ContentDownloadListenerProtocol] = [:]
     
-    static func load(url: URL, movie: Movie) {
-        let request = try! URLRequest(url: url, method: .get)
+    static func load(movie: MovieDetailed) {
+        let request = try! URLRequest(url: movie.getPreparedDownloadUrl(), method: .get)
         
         let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!as NSURL
-        let toUrl = documentsUrl.appendingPathComponent("movie_\(movie.id)")!
+        
+        let ororoDir = documentsUrl.appendingPathComponent("ororo/")!
+        
+        let filmUrl = ororoDir.appendingPathComponent("movie_\(movie.id).mp4")
 
         // Create object in DB
         let dMovie = DownloadedMovie()
         movie.copyFieldsTo(movie: dMovie)
-        dMovie.downloadUrl = toUrl.absoluteString
-        DbHelper.storeMovie(movie: dMovie)
+        dMovie.downloadUrl = filmUrl.path
         
         let progress = Alamofire.download(request) { (temporaryURL: URL, response: HTTPURLResponse) in
-                (toUrl, [.removePreviousFile, .createIntermediateDirectories])
+                (filmUrl, [.removePreviousFile, .createIntermediateDirectories])
         }.progress
+        downloads[dMovie.id] = [progress]
         
-        downloads[dMovie.id] = progress
+        let subtitles = movie.subtitles.map { (subtile) -> Subtitle in
+            let lang = subtile.lang
+            let subtitleUrl = ororoDir.appendingPathComponent("subtitle_\(lang).srt")
+            
+            let request = try! URLRequest(url: movie.getPreparedSubtitlesDownloadUrl(lang: lang), method: .get)
+            let subtitleProgress = Alamofire.download(request) { (temporaryURL: URL, response: HTTPURLResponse) in
+                (subtitleUrl, [.removePreviousFile, .createIntermediateDirectories])
+            }
+            downloads[dMovie.id]?.append(subtitleProgress.progress)
+            let result = Subtitle()
+            result.lang = lang
+            result.url = subtitleUrl.path
+            return result
+        }
+            
+        subtitles.forEach { (subtitle) in
+            dMovie.subtitles.append(subtitle)
+        }
+        
+        DbHelper.storeMovie(movie: dMovie)
     }
     
     static func subscribeToDownloadProgress(id: String, listener : ContentDownloadListenerProtocol) {
         startAsyncIfNotStarted()
         listeners[id] = listener
         if let download = downloads[id] {
-            notifyListener(id: id, download: download)
+            notifyListener(id: id, progresses: download)
         }
     }
     
@@ -55,7 +77,7 @@ class ContentDownloader {
                     sleep(2)
                     DispatchQueue.global().async {
                         downloads.forEach({ (download) in
-                            notifyListener(id: download.0, download: download.1)
+                            notifyListener(id: download.0, progresses: download.1)
                         })
                     }
                 }
@@ -63,19 +85,27 @@ class ContentDownloader {
         }
     }
     
-    static internal func notifyListener(id: String, download: Progress) {
-        let fractionCompleted = download.fractionCompleted
-        let totalUnitCount = download.totalUnitCount
-        let completedUnitCount = download.completedUnitCount
+    static internal func notifyListener(id: String, progresses: [Progress]) {
+        let filmDownload = progresses[0]
+        
+        let fractionCompleted = filmDownload.fractionCompleted
+        let totalUnitCount = filmDownload.totalUnitCount
+        let completedUnitCount = filmDownload.completedUnitCount
+        
         if completedUnitCount >= totalUnitCount {
-            downloads.removeValue(forKey: id)
-            if let listener = listeners[id] {
-                let move = DbHelper.readDownloadedMovie(id)
-                DbHelper.update(updateBlock: { () in
-                    move?.isDownloadFinished = true
-                })
-                listener.finished()
-                listeners.removeValue(forKey: id)
+            let allDownloadsCompleted = progresses.reduce(true, { (result, progress) -> Bool in
+                return result && (progress.completedUnitCount >= progress.totalUnitCount)
+            })
+            if (allDownloadsCompleted) {
+                self.downloads.removeValue(forKey: id)
+                if let listener = listeners[id] {
+                    let move = DbHelper.readDownloadedMovie(id)
+                    DbHelper.update(updateBlock: { () in
+                        move?.isDownloadFinished = true
+                    })
+                    listener.finished()
+                    listeners.removeValue(forKey: id)
+                }
             }
         } else {
             if let listener = listeners[id] {

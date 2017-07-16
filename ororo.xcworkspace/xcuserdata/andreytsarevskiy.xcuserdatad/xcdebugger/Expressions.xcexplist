@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "MoviesViewController.collectionView(UICollectionView, cellForItemAt : IndexPath) -&gt; UICollectionViewCell:MoviesViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "OroroPlayerViewController.init(url : URL, subtitles : URL) -&gt; OroroPlayerViewController:OroroPlayerViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "static ContentDownloader.notifyListener(id : String, progresses : [Progress]) -&gt; ():ContentDownloader.swift">
+      </ContextState>
+      <ContextState
+         contextName = "OroroPlayerViewController.viewDidAppear(Bool) -&gt; ():OroroPlayerViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "static ContentDownloader.(load(movie : MovieDetailed) -&gt; ()).(closure #2):ContentDownloader.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "subtitleUrl.path">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "static ContentDownloader.load(url : URL, movie : Movie) -&gt; ():ContentDownloader.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "toUrl.path">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "DownloadedMovie.getCorrectDownloadUrl() -&gt; URL:Movie.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MoviesViewController.shouldPerformSegue(withIdentifier : String?, sender : Any?) -&gt; Bool:MoviesViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MovieViewController.playAction(UIButton) -&gt; ():MovieViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "detailed.downloadUrl">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
