@@ -17,6 +17,8 @@
 		4E09BD441F158B2300AF34D9 /* CacheHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E09BD431F158B2300AF34D9 /* CacheHelper.swift */; };
 		4E09BD471F1592D900AF34D9 /* MoviesProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E09BD461F1592D900AF34D9 /* MoviesProviderProtocol.swift */; };
 		4E09BD491F15951F00AF34D9 /* DownloadsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E09BD481F15951F00AF34D9 /* DownloadsNavigationController.swift */; };
+		4E3BFB901F1D68DA00B5B8BB /* Security.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3BFB8F1F1D68DA00B5B8BB /* Security.swift */; };
+		4E3BFB931F1D695000B5B8BB /* SecurityDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3BFB921F1D695000B5B8BB /* SecurityDAO.swift */; };
 		4E60E3BE1E676205005A433B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E60E3BD1E676205005A433B /* AppDelegate.swift */; };
 		4E60E3C31E676205005A433B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E60E3C11E676205005A433B /* Main.storyboard */; };
 		4E60E3C51E676205005A433B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E60E3C41E676205005A433B /* Assets.xcassets */; };
@@ -69,6 +71,8 @@
 		4E09BD431F158B2300AF34D9 /* CacheHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheHelper.swift; sourceTree = "<group>"; };
 		4E09BD461F1592D900AF34D9 /* MoviesProviderProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesProviderProtocol.swift; sourceTree = "<group>"; };
 		4E09BD481F15951F00AF34D9 /* DownloadsNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadsNavigationController.swift; sourceTree = "<group>"; };
+		4E3BFB8F1F1D68DA00B5B8BB /* Security.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Security.swift; sourceTree = "<group>"; };
+		4E3BFB921F1D695000B5B8BB /* SecurityDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecurityDAO.swift; sourceTree = "<group>"; };
 		4E60E3BA1E676205005A433B /* ororo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ororo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E60E3BD1E676205005A433B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E60E3C21E676205005A433B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -154,6 +158,14 @@
 				4E09BD461F1592D900AF34D9 /* MoviesProviderProtocol.swift */,
 			);
 			name = Common;
+			sourceTree = "<group>";
+		};
+		4E3BFB911F1D693A00B5B8BB /* DAO */ = {
+			isa = PBXGroup;
+			children = (
+				4E3BFB921F1D695000B5B8BB /* SecurityDAO.swift */,
+			);
+			name = DAO;
 			sourceTree = "<group>";
 		};
 		4E60E3B11E676205005A433B = {
@@ -250,7 +262,9 @@
 		4E7C75491F12407E001DB5FC /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				4E3BFB911F1D693A00B5B8BB /* DAO */,
 				4EE667E11F0C5FCB006B1428 /* Movie.swift */,
+				4E3BFB8F1F1D68DA00B5B8BB /* Security.swift */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -574,6 +588,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E7C75471F123237001DB5FC /* OroroPlayerViewController.swift in Sources */,
+				4E3BFB901F1D68DA00B5B8BB /* Security.swift in Sources */,
 				4EE667E41F0D9217006B1428 /* OroroAPI.swift in Sources */,
 				4E7C752D1F112ADD001DB5FC /* MoviesViewController.swift in Sources */,
 				A6FE84BC1F195AC00077D1EB /* LoginViewController.swift in Sources */,
@@ -586,6 +601,7 @@
 				4E09BD291F12EB4900AF34D9 /* MoviesNavigationController.swift in Sources */,
 				4E7C753B1F11597D001DB5FC /* DbHelper.swift in Sources */,
 				4E60E3BE1E676205005A433B /* AppDelegate.swift in Sources */,
+				4E3BFB931F1D695000B5B8BB /* SecurityDAO.swift in Sources */,
 				4EE667E21F0C5FCB006B1428 /* Movie.swift in Sources */,
 				4E09BD491F15951F00AF34D9 /* DownloadsNavigationController.swift in Sources */,
 			);

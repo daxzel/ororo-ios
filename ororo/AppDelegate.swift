@@ -15,10 +15,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        DbHelper.deleteDb()
-        CacheHelper.clear()
+//        DbHelper.deleteDb()
+//        CacheHelper.clear()
         
+        checkUserLogged()
         return true
+    }
+    
+    func checkUserLogged() {
+        if let user = SecurityDAO.getUser() {
+            OroroAPI.setUpAuth(user: user)
+            let targetStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            if let targetViewController = targetStoryboard.instantiateInitialViewController() {
+                self.window?.rootViewController = targetViewController
+            }
+        }
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

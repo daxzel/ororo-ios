@@ -22,8 +22,13 @@ class OroroAPI {
     static let movieURL = "\(moviesURL)/"
     static var auth: (key: String, value: String)? = nil
     
-    static func setUpAuth(email: String, password: String) {
+    static func setUpAuth(user: User) {
+        auth = (key: "Authorization", value: user.encryptedUserPassword)
+    }
+    
+    static func setUpAuth(email: String, password: String) -> String {
         auth = Request.authorizationHeader(user: email, password: password)
+        return auth.unsafelyUnwrapped.value
     }
     
     static func testAuthentication(email: String, password: String, hadler: OroroAuthentificationProtocol) {

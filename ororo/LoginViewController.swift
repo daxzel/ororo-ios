@@ -9,6 +9,15 @@
 import Foundation
 import UIKit
 
+func openMainStoryboard(viewController: LoginViewController) {
+    let targetStoryboardName = "Main"
+    let targetStoryboard = UIStoryboard(name: targetStoryboardName, bundle: nil)
+    if let targetViewController = targetStoryboard.instantiateInitialViewController() {
+        viewController.present(targetViewController, animated: true)
+    }
+}
+
+
 class LoginHandler: OroroAuthentificationProtocol {
     
     let viewController: LoginViewController
@@ -22,12 +31,16 @@ class LoginHandler: OroroAuthentificationProtocol {
     }
     
     func authSuccessful() {
-        OroroAPI.setUpAuth(email: email, password: password)
-        let targetStoryboardName = "Main"
-        let targetStoryboard = UIStoryboard(name: targetStoryboardName, bundle: nil)
-        if let targetViewController = targetStoryboard.instantiateInitialViewController() {
-            viewController.present(targetViewController, animated: true)
-        }
+        let encrypted = OroroAPI.setUpAuth(email: email, password: password)
+        storeAuth(email: email, encrypted: encrypted)
+        openMainStoryboard(viewController: viewController)
+    }
+    
+    func storeAuth(email: String, encrypted: String) {
+        let user = User()
+        user.email = email
+        user.encryptedUserPassword = encrypted
+        SecurityDAO.setUser(user: user)
     }
     
     func authUnsuccessful() {
