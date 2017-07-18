@@ -18,8 +18,8 @@ protocol OroroAuthentificationProtocol {
 
 class OroroAPI {
     
-    static let moviesURL = "https://ororo.tv/api/v2/movies"
-    static let movieURL = "\(moviesURL)/"
+    static let testURL = "https://ororo.tv/api/v2/movies"
+    
     static var auth: (key: String, value: String)? = nil
     
     static func setUpAuth(user: User) {
@@ -34,7 +34,7 @@ class OroroAPI {
     static func testAuthentication(email: String, password: String, hadler: OroroAuthentificationProtocol) {
         auth = Request.authorizationHeader(user: email, password: password)
         let header = getHeader()
-        Alamofire.request(moviesURL, headers: header)
+        Alamofire.request(testURL, headers: header)
             .response(completionHandler: { (response) in
                 if let statusCode = response.response?.statusCode {
                     switch(statusCode) {
@@ -53,46 +53,6 @@ class OroroAPI {
             })
     }
     
-    static func forOneMovie(id: String, completionHandler: @escaping (MovieDetailed) -> Void) {
-        
-        Alamofire.request(movieURL + id, headers: getHeader())
-            .responseJSON { response in
-                switch response.result {
-                case .success:
-                    if let data = response.data {
-                        print("Data recieved: \(data)")
-                        let movieJSON = JSON(data: data)
-                        completionHandler(parseMovieDetailed(json: movieJSON))
-                    }
-                case .failure(let error):
-                    print(error)
-            }
-                
-        }
-    }
-    
-    static func forAllMovies(completionHandler: @escaping (_ result: Result<Any>, [Movie]) -> Void) {
-        
-        Alamofire.request(moviesURL, headers: getHeader())
-            .responseJSON { response in
-                switch response.result {
-                case .success:
-                    if let data = response.data {
-                        print("Data recieved: \(data)")
-                        let moviesJSON = JSON(data: data)["movies"]
-                        let movies = moviesJSON.arrayValue.map({ (json) -> Movie in
-                            return parseMovie(json: json)
-                        })
-                        completionHandler(response.result, movies)
-                    }
-                case .failure(let error):
-                    completionHandler(response.result, [])
-                    print(error)
-                }
-                
-        }
-    }
-    
     static internal func getHeader() -> HTTPHeaders {
         var headers: HTTPHeaders = [:]
         if let key = auth?.key,
@@ -100,39 +60,6 @@ class OroroAPI {
             headers[key] = value
         }
         return headers
-    }
-
-    static internal func parseMovie(json: JSON) -> Movie {
-        let movie = Movie()
-        parseMovieCommon(json: json, movie: movie)
-        return movie
-    }
-    
-    static internal func parseMovieDetailed(json: JSON) -> MovieDetailed {
-        let movie = MovieDetailed()
-        parseMovieCommon(json: json, movie: movie)
-        movie.downloadUrl = json["download_url"].stringValue
-        let subtitles = json["subtitles"].arrayValue.map { (json) -> Subtitle in
-            let subtitle = Subtitle()
-            subtitle.lang = json["lang"].stringValue
-            subtitle.url = json["url"].stringValue
-            return subtitle
-        }
-        movie.subtitles += subtitles
-        return movie
-    }
-    
-    static internal func parseMovieCommon(json: JSON, movie: Movie) {
-        movie.id = json["id"].stringValue
-        movie.name = json["name"].stringValue
-        movie.year = json["year"].stringValue
-        movie.desc = json["desc"].stringValue
-        movie.imdbRating = json["imdb_rating"].stringValue
-        movie.posterThumb = json["poster_thumb"].stringValue
-        movie.backdropUrl = json["backdrop_url"].stringValue
-        movie.poster = json["poster"].stringValue
-        movie.countries = json["array_countries"].arrayValue.map({$0.stringValue}).joined(separator: ", ")
-        movie.genres += json["array_genres"].arrayValue.map({$0.stringValue}).joined(separator: ", ")
     }
     
 }

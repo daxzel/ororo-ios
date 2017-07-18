@@ -11,8 +11,8 @@ import UIKit
 import RealmSwift
 
 
-class DownloadsProvider : MoviesProviderProtocol {
-    func getMovies(completionHandler: @escaping ([Movie]) -> Void) {
+class DownloadsProvider : ContentProviderProtocol {
+    func getContent(completionHandler: @escaping ([Content]) -> Void) {
         CacheHelper.getDownloads{ (movies) in
             completionHandler(Array(movies))
         }
@@ -23,6 +23,6 @@ class DownloadsNavigationController: UINavigationController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        (topViewController as! MoviesViewController).moviesProvider = DownloadsProvider()
+        (topViewController as! ContentViewController).contentProvider = DownloadsProvider()
     }
 }

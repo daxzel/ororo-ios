@@ -24,11 +24,11 @@ class ContentDownloadListener : ContentDownloadListenerProtocol {
     }
 }
 
-class MoviesViewController: UICollectionViewController, UISearchResultsUpdating {
+class ContentViewController: UICollectionViewController, UISearchResultsUpdating {
 
-    var moviesProvider: MoviesProviderProtocol? = nil
-    var movies: [Movie]? = nil
-    var filteredMovies: [Movie]? = nil
+    var contentProvider: ContentProviderProtocol? = nil
+    var content: [Content]? = nil
+    var filteredContent: [Content]? = nil
     let activityView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
     
     let searchController = UISearchController(searchResultsController: nil)
@@ -54,9 +54,9 @@ class MoviesViewController: UICollectionViewController, UISearchResultsUpdating 
     func updateMovies() {
         activityView.startAnimating()
         
-        moviesProvider?.getMovies { (movies) in
-            self.movies = movies
-            self.filteredMovies = movies
+        contentProvider?.getContent { (content) in
+            self.content = content
+            self.filteredContent = content
             self.activityView.stopAnimating()
             self.collectionView?.reloadData()
         }
@@ -68,7 +68,7 @@ class MoviesViewController: UICollectionViewController, UISearchResultsUpdating 
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let count = filteredMovies?.count {
+        if let count = filteredContent?.count {
             return count
         } else {
             return 0
@@ -76,7 +76,7 @@ class MoviesViewController: UICollectionViewController, UISearchResultsUpdating 
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let movie = filteredMovies![indexPath.item]
+        let movie = filteredContent![indexPath.item]
         
         let movieCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCell", for: indexPath) as UICollectionViewCell
         
@@ -112,7 +112,7 @@ class MoviesViewController: UICollectionViewController, UISearchResultsUpdating 
         if let ident = identifier {
             if ident == "MovieCellSegue" {
                 //TODO change movies?[0]
-                if let downloadedMovie = movies?[0] as? DownloadedMovie {
+                if let downloadedMovie = content?[0] as? DownloadedMovie {
                     return downloadedMovie.isDownloadFinished
                 }
             }
@@ -123,18 +123,18 @@ class MoviesViewController: UICollectionViewController, UISearchResultsUpdating 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let cell = sender as? UICollectionViewCell,
             let indexPath = self.collectionView?.indexPath(for: cell) {
-            let movie = movies![indexPath.row]
+            let movie = content![indexPath.row]
             let destinationViewController = segue.destination as! MovieViewController
-            destinationViewController.movie = movie
+            destinationViewController.movie = movie as! Movie
         }
     }
     
     func filterContentForSearchText(searchText: String, scope: String = "All") {
         if searchText.isEmpty {
-            filteredMovies = movies
+            filteredContent = content
         } else {
             let lowerCaseSearch = searchText.lowercased()
-            filteredMovies = movies?.filter { movie in
+            filteredContent = content?.filter { movie in
                 return movie.name.lowercased().contains(lowerCaseSearch)
             }
         }

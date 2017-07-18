@@ -31,7 +31,7 @@ class ContentDownloader {
 
         // Create object in DB
         let dMovie = DownloadedMovie()
-        movie.copyFieldsTo(movie: dMovie)
+        movie.copyFieldsTo(content: dMovie)
         dMovie.downloadUrl = filmUrl.path
         
         let progress = Alamofire.download(request) { (temporaryURL: URL, response: HTTPURLResponse) in

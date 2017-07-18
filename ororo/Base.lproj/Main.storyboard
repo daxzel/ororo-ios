@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Movies View Controller-->
+        <!--Content View Controller-->
         <scene sceneID="CnW-sz-uao">
             <objects>
-                <collectionViewController id="zSt-SY-ySq" customClass="MoviesViewController" customModule="ororo" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="zSt-SY-ySq" customClass="ContentViewController" customModule="ororo" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="V8Y-zy-27z">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -76,7 +76,7 @@
             <objects>
                 <navigationController id="l7V-WU-7PY" customClass="DownloadsNavigationController" customModule="ororo" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Downloads" image="folder.png" id="MwT-sQ-83r"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="9tN-tv-4ft">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9tN-tv-4ft">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.94195464910000004" green="0.95128093270000003" blue="0.95128093270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -87,7 +87,24 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AfP-Pv-caL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="198" y="842"/>
+            <point key="canvasLocation" x="198" y="549"/>
+        </scene>
+        <!--TV shows-->
+        <scene sceneID="DUL-Nb-MxH">
+            <objects>
+                <navigationController id="6Zv-vk-g7M" customClass="ShowsNavigationController" customModule="ororo" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="TV shows" image="tv_show.png" id="pE6-XK-zCR"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="V6M-yv-CC2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="zSt-SY-ySq" kind="relationship" relationship="rootViewController" id="75Y-kP-ALn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rQL-G7-Qcu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="198" y="1293"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="vbn-mh-SuT">
@@ -102,7 +119,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="Kr1-tZ-qKZ" kind="relationship" relationship="viewControllers" id="V5r-LZ-2ZI"/>
-                        <segue destination="l7V-WU-7PY" kind="relationship" relationship="viewControllers" id="2HM-r8-YUr"/>
+                        <segue destination="6Zv-vk-g7M" kind="relationship" relationship="viewControllers" id="4iT-af-wih"/>
+                        <segue destination="l7V-WU-7PY" kind="relationship" relationship="viewControllers" id="LuT-tm-WCD"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hy5-IZ-WS4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -242,7 +260,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Kr1-tZ-qKZ" customClass="MoviesNavigationController" customModule="ororo" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Movies" image="film.png" id="Mrc-kU-n2O"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="DZr-JZ-GyC">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DZr-JZ-GyC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.94195464910000004" green="0.95128093270000003" blue="0.95128093270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -254,7 +272,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BpP-ih-zQh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="197.59999999999999" y="32.833583208395808"/>
+            <point key="canvasLocation" x="198" y="-119"/>
         </scene>
     </scenes>
     <resources>
@@ -262,9 +280,10 @@
         <image name="film.png" width="30" height="30"/>
         <image name="folder.png" width="30" height="30"/>
         <image name="play.png" width="168" height="168"/>
+        <image name="tv_show.png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5jD-DW-AQf"/>
+        <segue reference="75Y-kP-ALn"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.84345569350000005" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

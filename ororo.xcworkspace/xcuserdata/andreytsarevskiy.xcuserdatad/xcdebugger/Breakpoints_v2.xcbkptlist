@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ororo/DbHelper.swift"
-            timestampString = "521921614.138419"
+            timestampString = "522111820.742896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
             landmarkName = "deleteDb()"
             landmarkType = "7">
          </BreakpointContent>

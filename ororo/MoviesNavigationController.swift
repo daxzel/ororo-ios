@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 import RealmSwift
 
-class RemoteMoviesProvider : MoviesProviderProtocol {
-    func getMovies(completionHandler: @escaping ([Movie]) -> Void) {
+class RemoteMoviesProvider : ContentProviderProtocol {
+    func getContent(completionHandler: @escaping ([Content]) -> Void) {
         CacheHelper.getMovies { (movies) in
             completionHandler(Array(movies))
         }
@@ -22,6 +22,6 @@ class MoviesNavigationController: UINavigationController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        (topViewController as! MoviesViewController).moviesProvider = RemoteMoviesProvider()
+        (topViewController as! ContentViewController).contentProvider = RemoteMoviesProvider()
     }
 }

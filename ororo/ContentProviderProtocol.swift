@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 
 
-protocol MoviesProviderProtocol {
-    func getMovies(completionHandler: @escaping ([Movie]) -> Void)
+protocol ContentProviderProtocol {
+    func getContent(completionHandler: @escaping ([Content]) -> Void)
 }
 

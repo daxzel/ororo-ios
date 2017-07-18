@@ -91,7 +91,7 @@ class MovieViewController: UIViewController {
     func downloadDetails() {
         if let id = movie?.id {
             if !(movie is MovieDetailed) {
-                OroroAPI.forOneMovie(id: id) { (movieDetailed) in
+                MovieAPI.forOneMovie(id: id) { (movieDetailed) in
                     self.movie = movieDetailed
                     self.updateLanguages(languages: movieDetailed.subtitles.map({$0.lang.uppercased()}))
                 }

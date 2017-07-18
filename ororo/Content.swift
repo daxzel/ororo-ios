@@ -14,7 +14,7 @@ class Subtitle: Object {
     dynamic var lang = ""
 }
 
-class Movie: Object {
+class Content: Object {
     dynamic var id = ""
     dynamic var name = ""
     dynamic var year = ""
@@ -30,18 +30,26 @@ class Movie: Object {
         return "id"
     }
     
-    func copyFieldsTo(movie: Movie) {
-        movie.id = id
-        movie.name = name
-        movie.year = year
-        movie.countries = countries
-        movie.genres = genres
-        movie.desc = desc
-        movie.imdbRating = imdbRating
-        movie.posterThumb = posterThumb
-        movie.backdropUrl = backdropUrl
-        movie.poster = poster
+    func copyFieldsTo(content: Content) {
+        content.id = id
+        content.name = name
+        content.year = year
+        content.countries = countries
+        content.genres = genres
+        content.desc = desc
+        content.imdbRating = imdbRating
+        content.posterThumb = posterThumb
+        content.backdropUrl = backdropUrl
+        content.poster = poster
     }
+}
+
+class Movie: Content {
+    
+}
+
+class Show: Content {
+    
 }
 
 class MovieDetailed: Movie {
