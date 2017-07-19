@@ -13,7 +13,7 @@
         <scene sceneID="CnW-sz-uao">
             <objects>
                 <collectionViewController id="zSt-SY-ySq" customClass="ContentViewController" customModule="ororo" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="V8Y-zy-27z">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="V8Y-zy-27z" customClass="ContentCellCollectionView" customModule="ororo" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.92549019607843142" green="0.93725490196078431" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
@@ -53,9 +53,6 @@
                                         </label>
                                     </subviews>
                                 </view>
-                                <connections>
-                                    <segue destination="Cub-lZ-fVw" kind="show" identifier="MovieCellSegue" id="tav-Ip-ITN"/>
-                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -66,10 +63,32 @@
                     <navigationItem key="navigationItem" id="Rij-M4-hSQ">
                         <barButtonItem key="backBarButtonItem" title="Back" id="DsB-UG-1WD"/>
                     </navigationItem>
+                    <connections>
+                        <segue destination="Cub-lZ-fVw" kind="show" identifier="openMovie" action="showDetailViewController:sender:" id="9iC-sS-L13"/>
+                        <segue destination="Z3i-qN-ag1" kind="show" identifier="openShow" action="showDetailViewController:sender:" id="feq-1l-6EK"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pq6-yj-sDb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1280.8" y="475.41229385307349"/>
+        </scene>
+        <!--ShowViewController-->
+        <scene sceneID="MCd-6Q-cf7">
+            <objects>
+                <viewController storyboardIdentifier="ShowViewController" title="ShowViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Z3i-qN-ag1" customClass="ShowViewController" customModule="ororo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="k0G-DK-f1h"/>
+                        <viewControllerLayoutGuide type="bottom" id="bn1-4q-Pjw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FYs-5z-S4j">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2bG-7y-wJ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2422" y="836"/>
         </scene>
         <!--Downloads-->
         <scene sceneID="fvU-Tf-U4T">
@@ -127,10 +146,10 @@
             </objects>
             <point key="canvasLocation" x="-1177" y="414"/>
         </scene>
-        <!--Movie-->
+        <!--MovieViewController-->
         <scene sceneID="ZwV-aH-IOa">
             <objects>
-                <viewController id="Cub-lZ-fVw" customClass="MovieViewController" customModule="ororo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MovieViewController" title="MovieViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Cub-lZ-fVw" customClass="MovieViewController" customModule="ororo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Din-K5-uxy"/>
                         <viewControllerLayoutGuide type="bottom" id="VFb-Os-09O"/>
@@ -252,7 +271,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hUy-iM-GRr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2111" y="475"/>
+            <point key="canvasLocation" x="2423" y="61"/>
         </scene>
         <!--Movies-->
         <scene sceneID="t8g-G7-5QH">

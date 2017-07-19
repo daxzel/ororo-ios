@@ -24,6 +24,9 @@ class ContentDownloadListener : ContentDownloadListenerProtocol {
     }
 }
 
+class ContentCellCollectionView: UICollectionView {
+}
+
 class ContentViewController: UICollectionViewController, UISearchResultsUpdating {
 
     var contentProvider: ContentProviderProtocol? = nil
@@ -108,25 +111,34 @@ class ContentViewController: UICollectionViewController, UISearchResultsUpdating
         return movieCell
     }
     
-    override func shouldPerformSegue(withIdentifier identifier: String?, sender: Any?) -> Bool {
-        if let ident = identifier {
-            if ident == "MovieCellSegue" {
-                //TODO change movies?[0]
-                if let downloadedMovie = content?[0] as? DownloadedMovie {
-                    return downloadedMovie.isDownloadFinished
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let content = self.content![indexPath.row]
+        switch content {
+            case let downloadedMovie as DownloadedMovie:
+                if downloadedMovie.isDownloadFinished {
+                    openMovieScreen(movie: downloadedMovie)
                 }
-            }
+            case let movie as Movie:
+                openMovieScreen(movie: movie)
+            case let show as  Show:
+                openShowScreen(show: show)
+            default:
+                print("Unrecognized content type")
         }
-        return true
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let cell = sender as? UICollectionViewCell,
-            let indexPath = self.collectionView?.indexPath(for: cell) {
-            let movie = content![indexPath.row]
-            let destinationViewController = segue.destination as! MovieViewController
-            destinationViewController.movie = movie as! Movie
-        }
+    func openMovieScreen(movie: Movie) {
+        let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MovieViewController")
+        let destinationViewController = viewController as! MovieViewController
+        destinationViewController.movie = movie
+        self.navigationController?.pushViewController(viewController!, animated: true)
+    }
+    
+    func openShowScreen(show: Show) {
+        let viewController = self.storyboard?.instantiateViewController(withIdentifier: "ShowViewController")
+        let destinationViewController = viewController as! ShowViewController
+        destinationViewController.show = show
+        self.navigationController?.pushViewController(viewController!, animated: true)
     }
     
     func filterContentForSearchText(searchText: String, scope: String = "All") {
