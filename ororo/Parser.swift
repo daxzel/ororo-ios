@@ -11,6 +11,23 @@ import SwiftyJSON
 
 class Parser {
     
+    static func parseShowDetailed(json: JSON) -> ShowDetailed {
+        let show = ShowDetailed()
+        parseContent(json: json, content: show)
+        let episodes = json["episodes"].arrayValue.map { (json) -> Episode in
+            let episode = Episode()
+            episode.id = json["id"].intValue
+            episode.name = json["name"].stringValue
+            episode.plot = json["plot"].stringValue
+            episode.season = json["season"].intValue
+            episode.number = json["number"].stringValue
+            episode.airdate = json["airdate"].stringValue
+            return episode
+        }
+        show.episodes += episodes
+        return show
+    }
+    
     static func parseMovieDetailed(json: JSON) -> MovieDetailed {
         let movie = MovieDetailed()
         parseContent(json: json, content: movie)

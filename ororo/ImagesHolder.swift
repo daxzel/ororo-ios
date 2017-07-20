@@ -11,7 +11,7 @@ import UIKit
 
 class ImagesHolder {
     
-    static let images: [String: Data?] = [:]
+    static var images: [String: Data?] = [:]
     
     static func updateImage(stringUrl: String, imageView: UIImageView) {
         if let image = images[stringUrl] {
@@ -26,6 +26,7 @@ class ImagesHolder {
         print("Image Download Started \(url.absoluteURL)")
         getDataFromUrl(url: url) { (data, response, error)  in
             guard let data = data, error == nil else { return }
+            self.images[url.absoluteString] = data
             print(response?.suggestedFilename ?? url.lastPathComponent)
             print("Image Download Finished \(url.absoluteURL)")
             DispatchQueue.main.async() { () -> Void in

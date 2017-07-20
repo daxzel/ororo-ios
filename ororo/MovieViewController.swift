@@ -37,6 +37,8 @@ class MovieViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
      
+        self.title = movie?.name
+        
         nameLabel.text = nameLabel.text?.appending(movie!.name)
         yearLabel.text = yearLabel.text?.appending(movie!.year)
         genreLabel.text = genreLabel.text?.appending(movie!.genres)

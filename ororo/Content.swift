@@ -48,8 +48,21 @@ class Movie: Content {
     
 }
 
+class Episode: Object {
+    dynamic var id = -1
+    dynamic var name = ""
+    dynamic var plot = ""
+    dynamic var season = 1
+    dynamic var number = ""
+    dynamic var airdate = ""
+}
+
 class Show: Content {
     
+}
+
+class ShowDetailed: Show {
+    var episodes = List<Episode>()
 }
 
 class MovieDetailed: Movie {

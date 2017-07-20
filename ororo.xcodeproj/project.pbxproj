@@ -27,6 +27,7 @@
 		4E3BFBA01F1ECC6900B5B8BB /* tv_show.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E3BFB9F1F1ECC6900B5B8BB /* tv_show.png */; };
 		4E3BFBA21F1ECD6A00B5B8BB /* ShowsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3BFBA11F1ECD6A00B5B8BB /* ShowsNavigationController.swift */; };
 		4E3BFBA41F20131A00B5B8BB /* ShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3BFBA31F20131A00B5B8BB /* ShowViewController.swift */; };
+		4E3BFBA81F215EBA00B5B8BB /* LDAlignmentImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E3BFBA71F215EBA00B5B8BB /* LDAlignmentImageView.m */; };
 		4E60E3BE1E676205005A433B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E60E3BD1E676205005A433B /* AppDelegate.swift */; };
 		4E60E3C31E676205005A433B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E60E3C11E676205005A433B /* Main.storyboard */; };
 		4E60E3C51E676205005A433B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E60E3C41E676205005A433B /* Assets.xcassets */; };
@@ -89,6 +90,8 @@
 		4E3BFB9F1F1ECC6900B5B8BB /* tv_show.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tv_show.png; path = Icons/tv_show.png; sourceTree = "<group>"; };
 		4E3BFBA11F1ECD6A00B5B8BB /* ShowsNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowsNavigationController.swift; sourceTree = "<group>"; };
 		4E3BFBA31F20131A00B5B8BB /* ShowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowViewController.swift; sourceTree = "<group>"; };
+		4E3BFBA61F215EBA00B5B8BB /* ororo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ororo-Bridging-Header.h"; sourceTree = "<group>"; };
+		4E3BFBA71F215EBA00B5B8BB /* LDAlignmentImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LDAlignmentImageView.m; sourceTree = "<group>"; };
 		4E60E3BA1E676205005A433B /* ororo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ororo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E60E3BD1E676205005A433B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E60E3C21E676205005A433B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -198,6 +201,15 @@
 			name = OroroAPI;
 			sourceTree = "<group>";
 		};
+		4E3BFBA51F215E9000B5B8BB /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				4E3BFBA71F215EBA00B5B8BB /* LDAlignmentImageView.m */,
+				4E3BFBA61F215EBA00B5B8BB /* ororo-Bridging-Header.h */,
+			);
+			name = Component;
+			sourceTree = "<group>";
+		};
 		4E60E3B11E676205005A433B = {
 			isa = PBXGroup;
 			children = (
@@ -223,6 +235,7 @@
 		4E60E3BC1E676205005A433B /* ororo */ = {
 			isa = PBXGroup;
 			children = (
+				4E3BFBA51F215E9000B5B8BB /* Component */,
 				A6FE84B61F19552B0077D1EB /* StoryBoards */,
 				A6FE84B31F1953C20077D1EB /* Images */,
 				4E09BD2E1F142AAB00AF34D9 /* Icons */,
@@ -409,6 +422,7 @@
 				TargetAttributes = {
 					4E60E3B91E676205005A433B = {
 						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 					4E60E3CD1E676205005A433B = {
@@ -636,6 +650,7 @@
 				4E7C75391F115207001DB5FC /* ImagesHolder.swift in Sources */,
 				4E09BD291F12EB4900AF34D9 /* MoviesNavigationController.swift in Sources */,
 				4E7C753B1F11597D001DB5FC /* DbHelper.swift in Sources */,
+				4E3BFBA81F215EBA00B5B8BB /* LDAlignmentImageView.m in Sources */,
 				4E60E3BE1E676205005A433B /* AppDelegate.swift in Sources */,
 				4E3BFB9E1F1EC77E00B5B8BB /* MovieAPI.swift in Sources */,
 				4E3BFB9A1F1EC51000B5B8BB /* ShowAPI.swift in Sources */,
@@ -788,10 +803,13 @@
 			baseConfigurationReference = F3F3D6E5811567D192E47C83 /* Pods-ororo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = ororo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tsarevskiy.ororo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ororo/ororo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -801,10 +819,12 @@
 			baseConfigurationReference = 1EBF71CB20ABCA973EE819BC /* Pods-ororo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = ororo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tsarevskiy.ororo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ororo/ororo-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
