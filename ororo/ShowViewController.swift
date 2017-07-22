@@ -33,7 +33,9 @@ class SeasonViewController: UITableViewController {
     }
     
     func initEpisodesTable() {
-        self.tableView.rowHeight = 40
+        self.tableView.rowHeight = 80
+        
+        self.tableView.register(UINib(nibName: "EpisodeView", bundle: nil), forCellReuseIdentifier: "EpisodeViewCell")
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -41,10 +43,19 @@ class SeasonViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
         let episode = episodes[indexPath.row]
-        cell.textLabel?.text = String(episode.number) + " " + episode.name
-        return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "EpisodeViewCell")
+        
+        let numberLabel = cell?.contentView.viewWithTag(1) as! UILabel
+        numberLabel.text = String(episode.number)
+        
+        let nameLabel = cell?.contentView.viewWithTag(2) as! UILabel
+        nameLabel.text = episode.name
+        
+        let descriptionLabel = cell?.contentView.viewWithTag(3) as! UILabel
+        descriptionLabel.text = episode.plot
+        
+        return cell!
     }
 }
 
@@ -80,11 +91,13 @@ class ShowViewController: UIViewController {
         pagesContainer?.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         pagesView.addSubview(pagesContainer!.view)
         pagesContainer?.didMove(toParentViewController: self)
+        pagesContainer?.topBarBackgroundColor = ColorHelper.UIColorFromRGB(color: "2E353D", alpha: 1.0)
         
         let seasons = self.episodes.group { (episode) in
             return episode.season
         }
-        let viewControllers = seasons.keys.sorted().map { (seasonNumber) -> SeasonViewController in
+        
+        let viewControllers = seasons.keys.sorted().reversed().map { (seasonNumber) -> SeasonViewController in
             let episodes = seasons[seasonNumber]
             let sortedEpisodes = episodes!.sorted { return $0.number > $1.number }
             return self.createSeasonsViewController(episodes: sortedEpisodes, seasonNumber: seasonNumber)
