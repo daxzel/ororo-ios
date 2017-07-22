@@ -1,0 +1,6 @@
+framework module DAPagesContainer {
+  umbrella header "DAPagesContainer-umbrella.h"
+
+  export *
+  module * { export * }
+}

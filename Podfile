@@ -8,6 +8,7 @@ target 'ororo' do
   pod 'Alamofire', '~> 4.5'
   pod 'SwiftyJSON', '~> 3.1'
   pod 'DropDown', '~> 2'
+  pod 'DAPagesContainer', '~> 1.0'
 
   # Pods for ororo
 

@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>DAPagesContainer.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>DropDown.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,21 +52,6 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0100F95F002AE149C52C4B04B2D3B877</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>3951891D5C49FCA6F73CA3012EC41E04</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>3FD8370CBF7B147FA7ABD7C5C65DE6A6</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>5168099F2EBFC99A707C03C9EADE01A5</key>
 		<dict>
 			<key>primary</key>
@@ -72,7 +62,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>5EEB5CAB995CFF8031A912D05ED9D22F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>88E9EC28B8B46C3631E6B242B50F4442</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>91D651BEF1DFE45588531F1525A5B6D2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -82,7 +82,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A12EA1956E8136C7E6BA40F495AA899A</key>
+		<key>BAB131AC7C1413F5837AB99C7E382510</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EA9FB2C5792E82F3B1BBF28384A0ECA3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F578BC9F05A60B17945BE1EE2A85F681</key>
 		<dict>
 			<key>primary</key>
 			<true/>

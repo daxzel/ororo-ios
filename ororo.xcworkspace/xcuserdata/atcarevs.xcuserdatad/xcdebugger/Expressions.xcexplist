@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "ShowViewController.createSeasonsViewController(episodes : [Episode], seasonNumber : Int) -&gt; SeasonViewController:ShowViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "viewController.view">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

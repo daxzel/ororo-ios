@@ -64,6 +64,7 @@ class CacheHelper {
     
     static func clear() {
         defaults.set(false, forKey: moviesLoadedProperty)
+        defaults.set(false, forKey: showsLoadedProperty)
     }
 
 }

@@ -20,7 +20,7 @@ class Parser {
             episode.name = json["name"].stringValue
             episode.plot = json["plot"].stringValue
             episode.season = json["season"].intValue
-            episode.number = json["number"].stringValue
+            episode.number = json["number"].intValue
             episode.airdate = json["airdate"].stringValue
             return episode
         }

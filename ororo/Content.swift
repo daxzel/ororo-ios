@@ -53,7 +53,7 @@ class Episode: Object {
     dynamic var name = ""
     dynamic var plot = ""
     dynamic var season = 1
-    dynamic var number = ""
+    dynamic var number = 1
     dynamic var airdate = ""
 }
 
