@@ -14,6 +14,7 @@ class ShowAPI {
     
     static let showsURL = "https://ororo.tv/api/v2/shows"
     static let showURL = "\(showsURL)/"
+    static let episodeURL = "https://ororo.tv/api/v2/episodes/"
 
     static func getAllShows(completionHandler: @escaping (_ result: Result<Any>, [Show]) -> Void) {
         
@@ -47,6 +48,23 @@ class ShowAPI {
                     if let data = response.data {
                         let movieJSON = JSON(data: data)
                         completionHandler(Parser.parseShowDetailed(json: movieJSON))
+                    }
+                case .failure(let error):
+                    print(error)
+                }
+                
+        }
+    }
+    
+    static func getEpisodeDetailed(id: Int, completionHandler: @escaping (EpisodeDetailed) -> Void) {
+        
+        Alamofire.request(episodeURL + String(id), headers: OroroAPI.getHeader())
+            .responseJSON { response in
+                switch response.result {
+                case .success:
+                    if let data = response.data {
+                        let episodeJson = JSON(data: data)
+                        completionHandler(Parser.parseEpisodeDetailed(json: episodeJson))
                     }
                 case .failure(let error):
                     print(error)
