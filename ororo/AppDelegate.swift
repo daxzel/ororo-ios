@@ -6,6 +6,9 @@
 //  Copyright © 2017 Andrey Tsarevskiy. All rights reserved.
 //
 
+import Foundation
+import AVKit
+import AVFoundation
 import UIKit
 
 @UIApplicationMain
@@ -17,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
 //      DbHelper.deleteDb()
 //      CacheHelper.clear()
+        try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, with: [])
         checkUserLogged()
         return true
     }
