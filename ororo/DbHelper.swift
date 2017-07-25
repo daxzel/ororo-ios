@@ -27,9 +27,17 @@ class DbHelper {
             .object(ofType: DownloadedMovie.self, forPrimaryKey: id)
     }
     
-    static func readDownloadsFromDB() -> Results<DownloadedMovie> {
-        print("Start reading downloaded movies:\n")
-        return self.realm.objects(DownloadedMovie.self)
+    static func readDownloadsFromDB() -> [DownloadedContent] {
+        var downloads: [DownloadedContent] = []
+        let movies = self.realm.objects(DownloadedMovie.self)
+        movies.forEach { (downloaded) in
+            downloads.append(downloaded)
+        }
+        let shows = self.realm.objects(DownloadedShow.self)
+        shows.forEach { (downloaded) in
+            downloads.append(downloaded)
+        }
+        return downloads
     }
     
     static func storeMovie(movie: Movie) {

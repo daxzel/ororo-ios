@@ -36,7 +36,7 @@ class CacheHelper {
         }
     }
     
-    static func getDownloads(completionHandler: @escaping (Results<DownloadedMovie>) -> Void) {
+    static func getDownloads(completionHandler: @escaping ([DownloadedContent]) -> Void) {
         
         completionHandler(DbHelper.readDownloadsFromDB())
     }

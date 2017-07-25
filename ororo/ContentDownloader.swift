@@ -21,44 +21,80 @@ class ContentDownloader {
     static var listeners: [String:ContentDownloadListenerProtocol] = [:]
     
     static func load(movie: MovieDetailed) {
-        let request = try! URLRequest(url: movie.getPreparedDownloadUrl(), method: .get)
+        
+        let prefix = "movie"
+        
+        let dMovie = DownloadedMovie()
+        movie.copyFieldsTo(content: dMovie)
+        dMovie.isDownloadFinished = false
+        
+        load(prefix: prefix, id: movie.id, detailedToDownload: movie, result: dMovie)
+        
+        DbHelper.storeMovie(movie: dMovie)
+    }
+    
+    static func load(show: Show, episode: EpisodeDetailed) {
+        let prefix = "episode"
+        
+        var dShow = ShowDAO.getDownloadedShow(id: show.id)
+        
+        if (dShow == nil) {
+            dShow = DownloadedShow()
+            show.copyFieldsTo(content: dShow!)
+            ShowDAO.saveShow(show: dShow!)
+        }
+        
+        ShowDAO.updateShow {
+            dShow?.isDownloadFinished = false
+        }
+        
+        let dEpisode = DownloadedEpisode()
+        
+        load(prefix: prefix, id: dShow!.id, detailedToDownload: episode, result: dEpisode)
+        
+        ShowDAO.saveEpisode(episode: dEpisode)
+    }
+    
+    static internal func load(prefix: String, id: String, detailedToDownload: DetailedContent,
+                    result: DetailedContent) {
+        
+        let request = try! URLRequest(url: detailedToDownload.getPreparedDownloadUrl(), method: .get)
         
         let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!as NSURL
         
-        let ororoDir = documentsUrl.appendingPathComponent("ororo/")!
+        let contentDir = documentsUrl.appendingPathComponent("ororo/\(prefix)_\(id)/")!
         
-        let filmUrl = ororoDir.appendingPathComponent("movie_\(movie.id).mp4")
-
-        // Create object in DB
-        let dMovie = DownloadedMovie()
-        movie.copyFieldsTo(content: dMovie)
-        dMovie.downloadUrl = filmUrl.path
+        let contentUrl = contentDir.appendingPathComponent("content.mp4")
+        
+        result.setDownloadUrl(url: contentUrl.path)
         
         let progress = Alamofire.download(request) { (temporaryURL: URL, response: HTTPURLResponse) in
-                (filmUrl, [.removePreviousFile, .createIntermediateDirectories])
-        }.progress
-        downloads[dMovie.id] = [progress]
+            (contentUrl, [.removePreviousFile, .createIntermediateDirectories])
+            }.progress
+        downloads[id] = [progress]
         
-        let subtitles = movie.subtitles.map { (subtile) -> Subtitle in
+        loadSubtitles(id: id, detailed: detailedToDownload, contentDir: contentDir)
+    
+    }
+    
+    static internal func loadSubtitles(id: String, detailed: DetailedContent, contentDir: URL) {
+        let subtitles = detailed.subtitles.map { (subtile) -> Subtitle in
             let lang = subtile.lang
-            let subtitleUrl = ororoDir.appendingPathComponent("subtitle_\(lang).srt")
+            let subtitleUrl = contentDir.appendingPathComponent("subtitle_\(lang).srt")
             
-            let request = try! URLRequest(url: movie.getPreparedSubtitlesDownloadUrl(lang: lang), method: .get)
+            let request = try! URLRequest(url: detailed.getPreparedSubtitlesDownloadUrl(lang: lang), method: .get)
             let subtitleProgress = Alamofire.download(request) { (temporaryURL: URL, response: HTTPURLResponse) in
                 (subtitleUrl, [.removePreviousFile, .createIntermediateDirectories])
             }
-            downloads[dMovie.id]?.append(subtitleProgress.progress)
+            downloads[id]?.append(subtitleProgress.progress)
             let result = Subtitle()
             result.lang = lang
             result.url = subtitleUrl.path
             return result
         }
-            
         subtitles.forEach { (subtitle) in
-            dMovie.subtitles.append(subtitle)
+            detailed.subtitles.append(subtitle)
         }
-        
-        DbHelper.storeMovie(movie: dMovie)
     }
     
     static func subscribeToDownloadProgress(id: String, listener : ContentDownloadListenerProtocol) {

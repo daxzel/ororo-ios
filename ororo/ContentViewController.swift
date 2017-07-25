@@ -114,9 +114,9 @@ class ContentViewController: UICollectionViewController, UISearchResultsUpdating
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let content = self.content![indexPath.row]
         switch content {
-            case let downloadedMovie as DownloadedMovie:
-                if downloadedMovie.isDownloadFinished {
-                    openMovieScreen(movie: downloadedMovie)
+            case let downloadedContent as DownloadedContent:
+                if downloadedContent.isDownloadFinished {
+                    openMovieScreen(movie: downloadedContent as! DownloadedMovie)
                 }
             case let movie as Movie:
                 openMovieScreen(movie: movie)

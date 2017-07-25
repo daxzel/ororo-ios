@@ -14,7 +14,8 @@ class Subtitle: Object {
     dynamic var lang = ""
 }
 
-class Content: Object {
+// Show and Movie
+class AbstractContent: Object, Content {
     dynamic var id = ""
     dynamic var name = ""
     dynamic var year = ""
@@ -30,7 +31,7 @@ class Content: Object {
         return "id"
     }
     
-    func copyFieldsTo(content: Content) {
+    func copyFieldsTo(content: AbstractContent) {
         content.id = id
         content.name = name
         content.year = year
@@ -43,5 +44,32 @@ class Content: Object {
         content.poster = poster
     }
 }
+
+protocol Content: class {
+    var id: String { set get }
+    var name: String { set get }
+    var year: String { set get }
+    var countries: String { set get }
+    var genres: String { set get }
+    var desc: String { set get }
+    var imdbRating: String { set get }
+    var posterThumb: String { set get }
+    var backdropUrl: String { set get }
+    var poster: String { set get }
+}
+
+// Episode and Movie
+protocol DetailedContent {
+    var subtitles: List<Subtitle> { get set }
+    
+    var downloadUrl: String { get set }
+    
+    func setDownloadUrl(url: String)
+    
+    func getPreparedDownloadUrl() -> URL
+    
+    func getPreparedSubtitlesDownloadUrl(lang: String) -> URL
+}
+
 
 

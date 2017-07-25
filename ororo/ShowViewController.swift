@@ -71,6 +71,7 @@ class ShowViewController: UIViewController {
     
     func createSeasonsViewController(episodes: [Episode], seasonNumber: Int) -> SeasonViewController {
         let viewController = SeasonViewController()
+        viewController.show = self.show
         viewController.episodes = episodes
         viewController.title = String(seasonNumber)
         return viewController

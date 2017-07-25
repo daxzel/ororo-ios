@@ -11,8 +11,9 @@ import Foundation
 
 class SeasonViewController: UITableViewController, UIPopoverPresentationControllerDelegate {
     
+    var show: Show? = nil
     var episodes: [Episode] = []
-    var playActions: [UIButton: Episode] = [:]
+    var actionsToEpisode: [UIButton: Episode] = [:]
     var popupViewController: UIViewController? = nil
     
     override func viewDidLoad() {
@@ -35,7 +36,12 @@ class SeasonViewController: UITableViewController, UIPopoverPresentationControll
         
         let playButton = popupViewController!.view.viewWithTag(1) as! UIButton
         playButton.addTarget(self, action: #selector(SeasonViewController.playAction(_:)), for: .touchUpInside)
-        playActions[playButton] = episode
+        actionsToEpisode[playButton] = episode
+        
+        let downloadButton = popupViewController!.view.viewWithTag(2) as! UIButton
+        downloadButton.addTarget(self, action: #selector(SeasonViewController.downloadAction(_:)), for: .touchUpInside)
+        actionsToEpisode[downloadButton] = episode
+        
         
         if let cellView = tableView.cellForRow(at: indexPath) {
             popupViewController!.popoverPresentationController?.delegate = self
@@ -49,13 +55,25 @@ class SeasonViewController: UITableViewController, UIPopoverPresentationControll
     @IBAction func playAction(_ sender: UIButton) {
         if (popupViewController != nil) {
             popupViewController?.dismiss(animated: true, completion: nil)
-            if let episode = playActions[sender] {
+            if let episode = actionsToEpisode[sender] {
                 ShowAPI.getEpisodeDetailed(id: episode.id, completionHandler: { (episodeDetailed) in
                     let subtitlesUrl = episodeDetailed.getPreparedSubtitlesDownloadUrl(lang: "en")
                     let downloadUrl = episodeDetailed.getPreparedDownloadUrl()
                     
                     let playerController = OroroPlayerViewController(url: downloadUrl, subtitles: subtitlesUrl)
                     self.present(playerController, animated: true)
+                })
+            }
+            
+        }
+    }
+    
+    @IBAction func downloadAction(_ sender: UIButton) {
+        if (popupViewController != nil) {
+            popupViewController?.dismiss(animated: true, completion: nil)
+            if let episode = actionsToEpisode[sender] {
+                ShowAPI.getEpisodeDetailed(id: episode.id, completionHandler: { (episodeDetailed) in
+                    ContentDownloader.load(show: self.show!, episode: episodeDetailed)
                 })
             }
             

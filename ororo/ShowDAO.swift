@@ -13,7 +13,7 @@ import RealmSwift
 class ShowDAO {
     
     static func getAll() -> Results<Show> {
-         let realm = try! Realm()
+        let realm = try! Realm()
         return realm.objects(Show.self)
     }
     
@@ -21,6 +21,32 @@ class ShowDAO {
         let realm = try! Realm()
         try! realm.write {
             realm.add(shows)
+        }
+    }
+    
+    static func saveShow(show: Show) {
+        let realm = try! Realm()
+        try! realm.write {
+            realm.add(show)
+        }
+    }
+    
+    static func saveEpisode(episode: Episode) {
+        let realm = try! Realm()
+        try! realm.write {
+            realm.add(episode)
+        }
+    }
+    
+    static func getDownloadedShow(id: String) -> DownloadedShow? {
+        let realm = try! Realm()
+        return realm.object(ofType: DownloadedShow.self, forPrimaryKey: id)
+    }
+    
+    static func updateShow(update:() -> Void) {
+        let realm = try! Realm()
+        try! realm.write {
+            update()
         }
     }
 

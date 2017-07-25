@@ -18,7 +18,7 @@ class Episode: Object {
     dynamic var airdate = ""
 }
 
-class Show: Content {
+class Show: AbstractContent {
     
 }
 
@@ -26,9 +26,13 @@ class ShowDetailed: Show {
     var episodes = List<Episode>()
 }
 
-class EpisodeDetailed: Episode {
+class EpisodeDetailed: Episode, DetailedContent {
     dynamic var downloadUrl = ""
     var subtitles = List<Subtitle>()
+    
+    internal func setDownloadUrl(url: String) {
+        downloadUrl = url
+    }
     
     internal func getPreparedDownloadUrl() -> URL {
         return URL(string: downloadUrl)!

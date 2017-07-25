@@ -9,13 +9,17 @@
 import Foundation
 import RealmSwift
 
-class Movie: Content {
+class Movie: AbstractContent {
     
 }
 
-class MovieDetailed: Movie {
+class MovieDetailed: Movie, DetailedContent {
     dynamic var downloadUrl = ""
     var subtitles = List<Subtitle>()
+    
+    internal func setDownloadUrl(url: String) {
+        downloadUrl = url
+    }
     
     internal func getPreparedDownloadUrl() -> URL {
         return URL(string: downloadUrl)!

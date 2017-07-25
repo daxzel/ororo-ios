@@ -8,7 +8,12 @@
 
 import Foundation
 
-class DownloadedMovie: MovieDetailed {
+// Show and Movie
+protocol DownloadedContent: Content {
+    var isDownloadFinished: Bool { set get }
+}
+
+class DownloadedMovie: MovieDetailed, DownloadedContent {
     dynamic var isDownloadFinished = false
     
     internal override func getPreparedDownloadUrl() -> URL {
@@ -19,4 +24,20 @@ class DownloadedMovie: MovieDetailed {
         let subtitle = subtitles.filter {$0.lang == lang}.first
         return URL(fileURLWithPath: subtitle!.url)
     }
+}
+
+class DownloadedEpisode: EpisodeDetailed {
+    internal override func getPreparedDownloadUrl() -> URL {
+        return URL(fileURLWithPath: downloadUrl)
+    }
+    
+    internal override func getPreparedSubtitlesDownloadUrl(lang: String) -> URL {
+        let subtitle = subtitles.filter {$0.lang == lang}.first
+        return URL(fileURLWithPath: subtitle!.url)
+    }
+}
+
+
+class DownloadedShow: Show, DownloadedContent {
+    dynamic var isDownloadFinished = false
 }
