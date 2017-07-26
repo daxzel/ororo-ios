@@ -9,6 +9,22 @@
 import Foundation
 import RealmSwift
 
+protocol SimpleContent: class {
+    var id: Int { set get }
+}
+
+protocol Content: SimpleContent {
+    var name: String { set get }
+    var year: String { set get }
+    var countries: String { set get }
+    var genres: String { set get }
+    var desc: String { set get }
+    var imdbRating: String { set get }
+    var posterThumb: String { set get }
+    var backdropUrl: String { set get }
+    var poster: String { set get }
+}
+
 class Subtitle: Object {
     dynamic var url = ""
     dynamic var lang = ""
@@ -16,7 +32,7 @@ class Subtitle: Object {
 
 // Show and Movie
 class AbstractContent: Object, Content {
-    dynamic var id = ""
+    dynamic var id = -1
     dynamic var name = ""
     dynamic var year = ""
     dynamic var countries = ""
@@ -43,19 +59,6 @@ class AbstractContent: Object, Content {
         content.backdropUrl = backdropUrl
         content.poster = poster
     }
-}
-
-protocol Content: class {
-    var id: String { set get }
-    var name: String { set get }
-    var year: String { set get }
-    var countries: String { set get }
-    var genres: String { set get }
-    var desc: String { set get }
-    var imdbRating: String { set get }
-    var posterThumb: String { set get }
-    var backdropUrl: String { set get }
-    var poster: String { set get }
 }
 
 // Episode and Movie

@@ -21,12 +21,6 @@ class DbHelper {
         print("Finished DB clean\n")
     }
     
-    static func readDownloadedMovie(_ id: String) -> DownloadedMovie? {
-        let realm =  try! Realm()
-        return realm
-            .object(ofType: DownloadedMovie.self, forPrimaryKey: id)
-    }
-    
     static func readDownloadsFromDB() -> [DownloadedContent] {
         var downloads: [DownloadedContent] = []
         let movies = self.realm.objects(DownloadedMovie.self)

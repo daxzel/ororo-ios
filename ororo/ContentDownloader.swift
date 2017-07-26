@@ -16,26 +16,50 @@ protocol ContentDownloadListenerProtocol {
 
 class ContentDownloader {
     
+    static let EPISODE_PREFIX = "episode"
+    static let MOVIE_PREFIX = "movie"
+    static let SHOW_PREFIX = "show"
+    
     static var jobsQueue: DispatchQueue? = nil
-    static var downloads: [String:[Progress]] = [:]
+    static var downloads: [String:DownloadJob] = [:]
     static var listeners: [String:ContentDownloadListenerProtocol] = [:]
     
-    static func load(movie: MovieDetailed) {
+    class DownloadJob {
+        var progresses: [Progress] = []
+        let onFinish: () -> Void
         
-        let prefix = "movie"
+        init(onFinish: @escaping () -> Void) {
+            self.onFinish = onFinish
+        }
+    }
+    
+    static func load(movie: MovieDetailed) {
         
         let dMovie = DownloadedMovie()
         movie.copyFieldsTo(content: dMovie)
         dMovie.isDownloadFinished = false
         
-        load(prefix: prefix, id: movie.id, detailedToDownload: movie, result: dMovie)
+        let contentDir = getDocumentDir().appendingPathComponent("ororo/\(MOVIE_PREFIX)_\(movie.id)/")
+        
+        let movieId = dMovie.id
+        let downloadJob = DownloadJob {
+            DbHelper.update(updateBlock: { () in
+                let dMovie = MovieDAO.getDownloadedMovie(movieId)
+                dMovie?.isDownloadFinished = true
+            })
+        }
+        
+        load(downloadFrom: movie,
+             downloadTo: dMovie,
+             contentDir: contentDir,
+             downloadJob: downloadJob)
+        
+        addDownload(id: MOVIE_PREFIX + String(movie.id), downloadJob: downloadJob)
         
         DbHelper.storeMovie(movie: dMovie)
     }
     
     static func load(show: Show, episode: EpisodeDetailed) {
-        let prefix = "episode"
-        
         var dShow = ShowDAO.getDownloadedShow(id: show.id)
         
         if (dShow == nil) {
@@ -50,58 +74,104 @@ class ContentDownloader {
         
         let dEpisode = DownloadedEpisode()
         
-        load(prefix: prefix, id: dShow!.id, detailedToDownload: episode, result: dEpisode)
+        let showId = dShow!.id
+        let episodeId = dEpisode.id
+        
+        let downloadJob = DownloadJob {
+            DbHelper.update(updateBlock: { () in
+                let refreshedShow = ShowDAO.getDownloadedShow(id: showId)
+                let refreshedEpisode = ShowDAO.getDownloadedEpisode(episodeId)
+                
+                refreshedEpisode?.isDownloadFinished = true
+                refreshedShow?.isDownloadFinished = true
+            })
+        }
+        
+        let contentDir = getDocumentDir().appendingPathComponent("ororo/\(EPISODE_PREFIX)_\(episode.id)/")
+        
+        load(downloadFrom: episode,
+             downloadTo: dEpisode,
+             contentDir: contentDir,
+             downloadJob: downloadJob)
+        
+        addDownload(id: EPISODE_PREFIX + String(episode.id), downloadJob: downloadJob)
+        addDownload(id: SHOW_PREFIX + String(show.id), downloadJob: downloadJob)
         
         ShowDAO.saveEpisode(episode: dEpisode)
     }
     
-    static internal func load(prefix: String, id: String, detailedToDownload: DetailedContent,
-                    result: DetailedContent) {
+    static internal func getDocumentDir() -> URL {
+        return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first! as URL
+    }
+    
+    static internal func load(downloadFrom: DetailedContent, downloadTo: DetailedContent, contentDir: URL, downloadJob: DownloadJob) {
         
-        let request = try! URLRequest(url: detailedToDownload.getPreparedDownloadUrl(), method: .get)
-        
-        let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!as NSURL
-        
-        let contentDir = documentsUrl.appendingPathComponent("ororo/\(prefix)_\(id)/")!
+        let request = try! URLRequest(url: downloadFrom.getPreparedDownloadUrl(), method: .get)
         
         let contentUrl = contentDir.appendingPathComponent("content.mp4")
         
-        result.setDownloadUrl(url: contentUrl.path)
+        downloadTo.setDownloadUrl(url: contentUrl.path)
         
         let progress = Alamofire.download(request) { (temporaryURL: URL, response: HTTPURLResponse) in
             (contentUrl, [.removePreviousFile, .createIntermediateDirectories])
             }.progress
-        downloads[id] = [progress]
+        downloadJob.progresses.append(progress)
         
-        loadSubtitles(id: id, detailed: detailedToDownload, contentDir: contentDir)
-    
+        loadSubtitles(downloadFrom: downloadFrom,
+                      downloadTo: downloadTo,
+                      contentDir: contentDir,
+                      downloadJob: downloadJob)
     }
     
-    static internal func loadSubtitles(id: String, detailed: DetailedContent, contentDir: URL) {
-        let subtitles = detailed.subtitles.map { (subtile) -> Subtitle in
+    static internal func addDownload(id: String, downloadJob: DownloadJob) {
+        if let storedDownloadJob = downloads[id] {
+            downloadJob.progresses.forEach({ (progress) in
+                storedDownloadJob.progresses.append(progress)
+            })
+        } else {
+            downloads[id] = downloadJob
+        }
+    }
+    
+    static internal func loadSubtitles(downloadFrom: DetailedContent, downloadTo: DetailedContent, contentDir: URL, downloadJob: DownloadJob) {
+        let subtitles = downloadFrom.subtitles.map { (subtile) -> Subtitle in
             let lang = subtile.lang
             let subtitleUrl = contentDir.appendingPathComponent("subtitle_\(lang).srt")
             
-            let request = try! URLRequest(url: detailed.getPreparedSubtitlesDownloadUrl(lang: lang), method: .get)
-            let subtitleProgress = Alamofire.download(request) { (temporaryURL: URL, response: HTTPURLResponse) in
+            let request = try! URLRequest(url: downloadFrom.getPreparedSubtitlesDownloadUrl(lang: lang), method: .get)
+            let progress = Alamofire.download(request) { (temporaryURL: URL, response: HTTPURLResponse) in
                 (subtitleUrl, [.removePreviousFile, .createIntermediateDirectories])
-            }
-            downloads[id]?.append(subtitleProgress.progress)
+            }.progress
+            downloadJob.progresses.append(progress)
             let result = Subtitle()
             result.lang = lang
             result.url = subtitleUrl.path
             return result
         }
         subtitles.forEach { (subtitle) in
-            detailed.subtitles.append(subtitle)
+            downloadTo.subtitles.append(subtitle)
         }
     }
     
-    static func subscribeToDownloadProgress(id: String, listener : ContentDownloadListenerProtocol) {
+    static func subscribeToDownloadProgress(id: Int, requester: SimpleContent, listener : ContentDownloadListenerProtocol) {
         startAsyncIfNotStarted()
-        listeners[id] = listener
-        if let download = downloads[id] {
-            notifyListener(id: id, progresses: download)
+        let identifier = getPrefix(requester: requester) + String(id)
+        listeners[identifier] = listener
+        if let download = downloads[identifier] {
+            notifyListener(identifier: identifier, downloadJob: download)
+        }
+    }
+    
+    static internal func getPrefix(requester: SimpleContent) -> String {
+        switch requester {
+        case is Show:
+            return SHOW_PREFIX
+        case is Movie:
+            return MOVIE_PREFIX
+        case is Episode:
+            return EPISODE_PREFIX
+        default:
+            return "unknown"
         }
     }
     
@@ -113,7 +183,7 @@ class ContentDownloader {
                     sleep(2)
                     DispatchQueue.global().async {
                         downloads.forEach({ (download) in
-                            notifyListener(id: download.0, progresses: download.1)
+                            notifyListener(identifier: download.0, downloadJob: download.1)
                         })
                     }
                 }
@@ -121,30 +191,27 @@ class ContentDownloader {
         }
     }
     
-    static internal func notifyListener(id: String, progresses: [Progress]) {
-        let filmDownload = progresses[0]
+    static internal func notifyListener(identifier: String, downloadJob: DownloadJob) {
+        let filmDownload = downloadJob.progresses[0]
         
         let fractionCompleted = filmDownload.fractionCompleted
         let totalUnitCount = filmDownload.totalUnitCount
         let completedUnitCount = filmDownload.completedUnitCount
         
         if completedUnitCount >= totalUnitCount {
-            let allDownloadsCompleted = progresses.reduce(true, { (result, progress) -> Bool in
+            let allDownloadsCompleted = downloadJob.progresses.reduce(true, { (result, progress) -> Bool in
                 return result && (progress.completedUnitCount >= progress.totalUnitCount)
             })
             if (allDownloadsCompleted) {
-                self.downloads.removeValue(forKey: id)
-                if let listener = listeners[id] {
-                    let move = DbHelper.readDownloadedMovie(id)
-                    DbHelper.update(updateBlock: { () in
-                        move?.isDownloadFinished = true
-                    })
+                self.downloads.removeValue(forKey: identifier)
+                if let listener = listeners[identifier] {
+                    downloadJob.onFinish()
                     listener.finished()
-                    listeners.removeValue(forKey: id)
+                    listeners.removeValue(forKey: identifier)
                 }
             }
         } else {
-            if let listener = listeners[id] {
+            if let listener = listeners[identifier] {
                 listener.updateProgress(percent: Int64(fractionCompleted * 100))
             }
         }

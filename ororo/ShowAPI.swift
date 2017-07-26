@@ -39,9 +39,9 @@ class ShowAPI {
         }
     }
     
-    static func getShow(id: String, completionHandler: @escaping (ShowDetailed) -> Void) {
+    static func getShow(id: Int, completionHandler: @escaping (ShowDetailed) -> Void) {
         
-        Alamofire.request(showURL + id, headers: OroroAPI.getHeader())
+        Alamofire.request(showURL + String(id), headers: OroroAPI.getHeader())
             .responseJSON { response in
                 switch response.result {
                 case .success:

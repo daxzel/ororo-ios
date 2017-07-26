@@ -38,9 +38,15 @@ class ShowDAO {
         }
     }
     
-    static func getDownloadedShow(id: String) -> DownloadedShow? {
+    static func getDownloadedShow(id: Int) -> DownloadedShow? {
         let realm = try! Realm()
         return realm.object(ofType: DownloadedShow.self, forPrimaryKey: id)
+    }
+    
+    static func getDownloadedEpisode(_ id: Int) -> DownloadedEpisode? {
+        let realm =  try! Realm()
+        return realm
+            .object(ofType: DownloadedEpisode.self, forPrimaryKey: id)
     }
     
     static func updateShow(update:() -> Void) {

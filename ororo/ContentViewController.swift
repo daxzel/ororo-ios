@@ -79,30 +79,30 @@ class ContentViewController: UICollectionViewController, UISearchResultsUpdating
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let movie = filteredContent![indexPath.item]
+        let content = filteredContent![indexPath.item]
         
         let movieCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCell", for: indexPath) as UICollectionViewCell
         
         let movieNameLabel = movieCell.viewWithTag(1) as! UILabel
-        movieNameLabel.text = movie.name
+        movieNameLabel.text = content.name
         
         let movieLogo = movieCell.viewWithTag(2) as! UIImageView
         //rounded logo
         movieLogo.layer.cornerRadius = 2.0
         
         movieLogo.clipsToBounds = true
-        ImagesHolder.updateImage(stringUrl: movie.posterThumb, imageView: movieLogo)
+        ImagesHolder.updateImage(stringUrl: content.posterThumb, imageView: movieLogo)
         
         let downloadProgressLabel = movieCell.viewWithTag(3) as! UILabel
         // Download progress label
-        if  let downloadedMovie = movie as? DownloadedMovie {
-            if downloadedMovie.isDownloadFinished == true {
+        if  let downloadedContent = content as? DownloadedContent {
+            if downloadedContent.isDownloadFinished == true {
                 downloadProgressLabel.isHidden = true;
             } else {
                 downloadProgressLabel.isHidden = false;
                 downloadProgressLabel.layer.cornerRadius = 2.0
                 let listener = ContentDownloadListener(downloadProgressLabel: downloadProgressLabel)
-                ContentDownloader.subscribeToDownloadProgress(id: movie.id, listener: listener)
+                ContentDownloader.subscribeToDownloadProgress(id: content.id, requester: downloadedContent, listener: listener)
             }
         } else {
             downloadProgressLabel.isHidden = true
@@ -112,7 +112,7 @@ class ContentViewController: UICollectionViewController, UISearchResultsUpdating
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let content = self.content![indexPath.row]
+        let content = self.filteredContent![indexPath.row]
         switch content {
             case let downloadedContent as DownloadedContent:
                 if downloadedContent.isDownloadFinished {

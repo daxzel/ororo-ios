@@ -51,7 +51,7 @@ class Parser {
     }
     
     static internal func parseContent(json: JSON, content: Content) {
-        content.id = json["id"].stringValue
+        content.id = json["id"].intValue
         content.name = json["name"].stringValue
         content.year = json["year"].stringValue
         content.desc = json["desc"].stringValue

@@ -83,7 +83,7 @@ class MovieViewController: UIViewController {
     
     func initDownloadButton() {
         if let id = movie?.id {
-            if ((DbHelper.readDownloadedMovie(id)) != nil) {
+            if ((MovieDAO.getDownloadedMovie(id)) != nil) {
                 downloadButton.isEnabled = false
             }
         }

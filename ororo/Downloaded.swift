@@ -8,9 +8,13 @@
 
 import Foundation
 
-// Show and Movie
-protocol DownloadedContent: Content {
+// Show, Movie, Episode
+protocol Downloaded {
     var isDownloadFinished: Bool { set get }
+}
+
+// Show and Movie
+protocol DownloadedContent: Content, Downloaded {
 }
 
 class DownloadedMovie: MovieDetailed, DownloadedContent {
@@ -26,7 +30,9 @@ class DownloadedMovie: MovieDetailed, DownloadedContent {
     }
 }
 
-class DownloadedEpisode: EpisodeDetailed {
+class DownloadedEpisode: EpisodeDetailed, Downloaded {
+    dynamic var isDownloadFinished = false
+    
     internal override func getPreparedDownloadUrl() -> URL {
         return URL(fileURLWithPath: downloadUrl)
     }

@@ -9,13 +9,17 @@
 import Foundation
 import RealmSwift
 
-class Episode: Object {
+class Episode: Object, SimpleContent {
     dynamic var id = -1
     dynamic var name = ""
     dynamic var plot = ""
     dynamic var season = 1
     dynamic var number = 1
     dynamic var airdate = ""
+    
+    override static func primaryKey() -> String? {
+        return "id"
+    }
 }
 
 class Show: AbstractContent {

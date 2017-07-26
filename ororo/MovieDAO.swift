@@ -24,4 +24,10 @@ class MovieDAO {
         }
     }
     
+    static func getDownloadedMovie(_ id: Int) -> DownloadedMovie? {
+        let realm =  try! Realm()
+        return realm
+            .object(ofType: DownloadedMovie.self, forPrimaryKey: id)
+    }
+    
 }

@@ -38,9 +38,9 @@ class MovieAPI {
         }
     }
     
-    static func forOneMovie(id: String, completionHandler: @escaping (MovieDetailed) -> Void) {
+    static func forOneMovie(id: Int, completionHandler: @escaping (MovieDetailed) -> Void) {
         
-        Alamofire.request(movieURL + id, headers: OroroAPI.getHeader())
+        Alamofire.request(movieURL + String(id), headers: OroroAPI.getHeader())
             .responseJSON { response in
                 switch response.result {
                 case .success:
