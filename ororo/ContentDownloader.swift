@@ -22,7 +22,6 @@ class ContentDownloader {
     
     static var jobsQueue: DispatchQueue? = nil
     static var downloads: [String:DownloadJob] = [:]
-    static var listeners: [String:ContentDownloadListenerProtocol] = [:]
     
     class DownloadJob {
         var progresses: [Progress] = []
@@ -157,7 +156,17 @@ class ContentDownloader {
     static func subscribeToDownloadProgress(id: Int, requester: SimpleContent, listener : ContentDownloadListenerProtocol) {
         startAsyncIfNotStarted()
         let identifier = getPrefix(requester: requester) + String(id)
-        listeners[identifier] = listener
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "downloadProgress" + identifier), object: nil, queue: nil, using: { (notify) in
+                if let progress = notify.userInfo?["progress"] as? Int64 {
+                    listener.updateProgress(percent: progress)
+                }
+                                                
+            });
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "downloadFinished" + identifier), object: nil, queue: nil, using: { _ in listener.finished() });
+        
+
         if let download = downloads[identifier] {
             notifyListener(identifier: identifier, downloadJob: download)
         }
@@ -204,17 +213,14 @@ class ContentDownloader {
                 return result && (progress.completedUnitCount >= progress.totalUnitCount)
             })
             if (allDownloadsCompleted) {
+                downloadJob.onFinish()
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "downloadFinished" + identifier), object: nil)
                 self.downloads.removeValue(forKey: identifier)
-                if let listener = listeners[identifier] {
-                    downloadJob.onFinish()
-                    listener.finished()
-                    listeners.removeValue(forKey: identifier)
-                }
             }
         } else {
-            if let listener = listeners[identifier] {
-                listener.updateProgress(percent: Int64(fractionCompleted * 100))
-            }
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "downloadProgress" + identifier),
+                                            object: nil,
+                                            userInfo: ["progress" : Int64(fractionCompleted * 100)])
         }
     }
     

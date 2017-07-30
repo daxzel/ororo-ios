@@ -17,8 +17,9 @@ class ContentDownloadListener : ContentDownloadListenerProtocol {
     }
     
     func updateProgress(percent: Int64) {
-        downloadProgressLabel.text = String(percent) + "%"
+        self.downloadProgressLabel.text = String(percent) + "%"
     }
+    
     func finished() {
         downloadProgressLabel.isHidden = true
     }
@@ -110,6 +111,7 @@ class ContentViewController: UICollectionViewController, UISearchResultsUpdating
         
         return movieCell
     }
+    
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let content = self.filteredContent![indexPath.row]
