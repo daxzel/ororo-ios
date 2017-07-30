@@ -17,6 +17,15 @@ class Episode: Object, SimpleContent {
     dynamic var number = 1
     dynamic var airdate = ""
     
+    func copyFieldsTo(content: Episode) {
+        content.id = id
+        content.name = name
+        content.plot = plot
+        content.season = season
+        content.number = number
+        content.airdate = airdate
+    }
+    
     override static func primaryKey() -> String? {
         return "id"
     }

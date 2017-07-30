@@ -101,6 +101,20 @@ class SeasonViewController: UITableViewController, UIPopoverPresentationControll
         let descriptionLabel = cell.contentView.viewWithTag(3) as! UILabel
         descriptionLabel.text = episode.plot
         
+        let progressLabel = cell.contentView.viewWithTag(4) as! UILabel
+        
+        if  let downloadedEpisode = ShowDAO.getDownloadedEpisode(episode.id) {
+            if (!downloadedEpisode.isDownloadFinished) {
+                let listener = ContentDownloadListener(downloadProgressLabel: progressLabel)
+                ContentDownloader.subscribeToDownloadProgress(id: episode.id, requester: episode, listener: listener)
+                progressLabel.isHidden = false
+            } else {
+                progressLabel.isHidden = true
+            }
+        } else {
+            progressLabel.isHidden = true
+        }
+        
         return cell
     }
 }

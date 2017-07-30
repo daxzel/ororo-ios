@@ -41,7 +41,7 @@ class ContentDownloader {
         
         let contentDir = getDocumentDir().appendingPathComponent("ororo/\(MOVIE_PREFIX)_\(movie.id)/")
         
-        let movieId = dMovie.id
+        let movieId = movie.id
         let downloadJob = DownloadJob {
             DbHelper.update(updateBlock: { () in
                 let dMovie = MovieDAO.getDownloadedMovie(movieId)
@@ -73,9 +73,10 @@ class ContentDownloader {
         }
         
         let dEpisode = DownloadedEpisode()
+        episode.copyFieldsTo(content: dEpisode)
         
-        let showId = dShow!.id
-        let episodeId = dEpisode.id
+        let showId = show.id
+        let episodeId = episode.id
         
         let downloadJob = DownloadJob {
             DbHelper.update(updateBlock: { () in
