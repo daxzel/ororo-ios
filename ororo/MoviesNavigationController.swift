@@ -23,5 +23,12 @@ class MoviesNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         (topViewController as! ContentViewController).contentProvider = RemoteMoviesProvider()
+        self.setNeedsStatusBarAppearanceUpdate()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        get {
+            return UIStatusBarStyle.default
+        }
     }
 }
