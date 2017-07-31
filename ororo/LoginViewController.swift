@@ -51,10 +51,7 @@ class LoginHandler: OroroAuthentificationProtocol {
     }
     
     func connectionError() {
-        let alert = UIAlertController(title: "Authentification", message: "Connection error",
-                                      preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-        viewController.present(alert, animated: true, completion: nil)
+        MessageHelper.connectionError(viewController: viewController)
     }
 }
 

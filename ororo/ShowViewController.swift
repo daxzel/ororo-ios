@@ -40,7 +40,7 @@ class ShowViewController: UIViewController {
     
     func initShow() {
         if let id = show?.id {
-            ShowAPI.getShow(id: id) { (showDetailed) in
+            ShowAPI.getShow(id: id, viewController: self) { (showDetailed) in
                 self.episodes = Array(showDetailed.episodes)
                 self.initPagesView(episodes: self.episodes)
             }

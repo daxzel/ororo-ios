@@ -39,7 +39,7 @@ class ShowAPI {
         }
     }
     
-    static func getShow(id: Int, completionHandler: @escaping (ShowDetailed) -> Void) {
+    static func getShow(id: Int, viewController: UIViewController, completionHandler: @escaping (ShowDetailed) -> Void) {
         
         Alamofire.request(showURL + String(id), headers: OroroAPI.getHeader())
             .responseJSON { response in
@@ -51,16 +51,15 @@ class ShowAPI {
                     }
                 case .failure(let error):
                     print(error)
+                    MessageHelper.connectionError(viewController: viewController)
                 }
                 
         }
     }
     
-    static func getEpisodeDetailed(id: Int, completionHandler: @escaping (EpisodeDetailed) -> Void) {
-        
-        Alamofire.request(episodeURL + String(id), headers: OroroAPI.getHeader())
-            .responseJSON { response in
-                switch response.result {
+    static func getEpisodeDetailed(id: Int, viewController: UIViewController, completionHandler: @escaping (EpisodeDetailed) -> Void) {
+        Alamofire.request(episodeURL + String(id), headers: OroroAPI.getHeader()).responseJSON { (response) in
+            switch response.result {
                 case .success:
                     if let data = response.data {
                         let episodeJson = JSON(data: data)
@@ -68,8 +67,15 @@ class ShowAPI {
                     }
                 case .failure(let error):
                     print(error)
-                }
+                    if let data = response.data,
+                        let error = String(data: data, encoding: .utf8) {
+                        print(error)
+                        MessageHelper.connectionError(viewController: viewController, data: error)
+                    } else {
+                        MessageHelper.connectionError(viewController: viewController)
+                    }
                 
+            }
         }
     }
     

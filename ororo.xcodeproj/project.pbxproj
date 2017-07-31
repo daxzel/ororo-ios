@@ -33,6 +33,7 @@
 		4E60E3C51E676205005A433B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E60E3C41E676205005A433B /* Assets.xcassets */; };
 		4E60E3D31E676205005A433B /* ororoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E60E3D21E676205005A433B /* ororoTests.swift */; };
 		4E60E3DE1E676205005A433B /* ororoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E60E3DD1E676205005A433B /* ororoUITests.swift */; };
+		4E733D1C1F2E5B8E00B71D7C /* MessageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E733D1B1F2E5B8E00B71D7C /* MessageHelper.swift */; };
 		4E7C752D1F112ADD001DB5FC /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7C752C1F112ADD001DB5FC /* ContentViewController.swift */; };
 		4E7C75391F115207001DB5FC /* ImagesHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7C75381F115207001DB5FC /* ImagesHolder.swift */; };
 		4E7C753B1F11597D001DB5FC /* DbHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7C753A1F11597D001DB5FC /* DbHelper.swift */; };
@@ -112,6 +113,7 @@
 		4E60E3D91E676205005A433B /* ororoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ororoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E60E3DD1E676205005A433B /* ororoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ororoUITests.swift; sourceTree = "<group>"; };
 		4E60E3DF1E676205005A433B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4E733D1B1F2E5B8E00B71D7C /* MessageHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageHelper.swift; sourceTree = "<group>"; };
 		4E7C752C1F112ADD001DB5FC /* ContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		4E7C75381F115207001DB5FC /* ImagesHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagesHolder.swift; sourceTree = "<group>"; };
 		4E7C753A1F11597D001DB5FC /* DbHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbHelper.swift; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 				4E09BD201F1282B400AF34D9 /* ColorHelper.swift */,
 				4E09BD3F1F14459100AF34D9 /* ContentDownloader.swift */,
 				4E09BD431F158B2300AF34D9 /* CacheHelper.swift */,
+				4E733D1B1F2E5B8E00B71D7C /* MessageHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -701,6 +704,7 @@
 				4E7C753B1F11597D001DB5FC /* DbHelper.swift in Sources */,
 				4EF725D11F24D0E300C67C32 /* Downloaded.swift in Sources */,
 				4E3BFBA81F215EBA00B5B8BB /* LDAlignmentImageView.m in Sources */,
+				4E733D1C1F2E5B8E00B71D7C /* MessageHelper.swift in Sources */,
 				4E60E3BE1E676205005A433B /* AppDelegate.swift in Sources */,
 				4E3BFB9E1F1EC77E00B5B8BB /* MovieAPI.swift in Sources */,
 				4EF725D71F24E1BD00C67C32 /* SeasonViewController.swift in Sources */,

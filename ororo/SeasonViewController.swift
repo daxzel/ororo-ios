@@ -56,7 +56,7 @@ class SeasonViewController: UITableViewController, UIPopoverPresentationControll
         if (popupViewController != nil) {
             popupViewController?.dismiss(animated: true, completion: nil)
             if let episode = actionsToEpisode[sender] {
-                ShowAPI.getEpisodeDetailed(id: episode.id, completionHandler: { (episodeDetailed) in
+                ShowAPI.getEpisodeDetailed(id: episode.id, viewController: self, completionHandler: { (episodeDetailed) in
                     let subtitlesUrl = episodeDetailed.getPreparedSubtitlesDownloadUrl(lang: "en")
                     let downloadUrl = episodeDetailed.getPreparedDownloadUrl()
                     
@@ -72,7 +72,7 @@ class SeasonViewController: UITableViewController, UIPopoverPresentationControll
         if (popupViewController != nil) {
             popupViewController?.dismiss(animated: true, completion: nil)
             if let episode = actionsToEpisode[sender] {
-                ShowAPI.getEpisodeDetailed(id: episode.id, completionHandler: { (episodeDetailed) in
+                ShowAPI.getEpisodeDetailed(id: episode.id, viewController: self, completionHandler: { (episodeDetailed) in
                     ContentDownloader.load(show: self.show!, episode: episodeDetailed)
                 })
             }

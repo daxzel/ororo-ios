@@ -24,7 +24,7 @@ class ContentDownloader {
     static var downloads: [String:DownloadJob] = [:]
     
     class DownloadJob {
-        var progresses: [Progress] = []
+        var progress: Progress? = nil
         let onFinish: () -> Void
         
         init(onFinish: @escaping () -> Void) {
@@ -116,10 +116,9 @@ class ContentDownloader {
         
         downloadTo.setDownloadUrl(url: contentUrl.path)
         
-        let progress = Alamofire.download(request) { (temporaryURL: URL, response: HTTPURLResponse) in
+        downloadJob.progress = Alamofire.download(request) { (temporaryURL: URL, response: HTTPURLResponse) in
             (contentUrl, [.removePreviousFile, .createIntermediateDirectories])
             }.progress
-        downloadJob.progresses.append(progress)
         
         loadSubtitles(downloadFrom: downloadFrom,
                       downloadTo: downloadTo,
@@ -128,16 +127,15 @@ class ContentDownloader {
     }
     
     static internal func addDownload(id: String, downloadJob: DownloadJob) {
-        if let storedDownloadJob = downloads[id] {
-            downloadJob.progresses.forEach({ (progress) in
-                storedDownloadJob.progresses.append(progress)
-            })
+        if let progress = downloads[id]?.progress {
+            progress.addChild(downloadJob.progress!, withPendingUnitCount: 0)
         } else {
             downloads[id] = downloadJob
         }
     }
     
     static internal func loadSubtitles(downloadFrom: DetailedContent, downloadTo: DetailedContent, contentDir: URL, downloadJob: DownloadJob) {
+        var count: Int64 = 1
         let subtitles = downloadFrom.subtitles.map { (subtile) -> Subtitle in
             let lang = subtile.lang
             let subtitleUrl = contentDir.appendingPathComponent("subtitle_\(lang).srt")
@@ -146,10 +144,12 @@ class ContentDownloader {
             let progress = Alamofire.download(request) { (temporaryURL: URL, response: HTTPURLResponse) in
                 (subtitleUrl, [.removePreviousFile, .createIntermediateDirectories])
             }.progress
-            downloadJob.progresses.append(progress)
+            
+            downloadJob.progress?.addChild(progress, withPendingUnitCount: count)
             let result = Subtitle()
             result.lang = lang
             result.url = subtitleUrl.path
+            count += 1
             return result
         }
         subtitles.forEach { (subtitle) in
@@ -194,37 +194,34 @@ class ContentDownloader {
             jobsQueue = DispatchQueue(label: "Content Downloader Jobs Queue")
             jobsQueue?.async {
                 while(true) {
-                    sleep(2)
-                    DispatchQueue.global().async {
-                        downloads.forEach({ (download) in
-                            notifyListener(identifier: download.0, downloadJob: download.1)
-                        })
-                    }
+                    sleep(3)
+                    downloads.forEach({ (download) in
+                        notifyListener(identifier: download.0, downloadJob: download.1)
+                    })
                 }
             }
         }
     }
     
     static internal func notifyListener(identifier: String, downloadJob: DownloadJob) {
-        let filmDownload = downloadJob.progresses[0]
+        if let progress = downloadJob.progress {
+         
+            let fractionCompleted = progress.fractionCompleted
+            let totalUnitCount = progress.totalUnitCount
+            let completedUnitCount = progress.completedUnitCount
+            
+            let isCancled = progress.isCancelled
+            print(isCancled)
         
-        let fractionCompleted = filmDownload.fractionCompleted
-        let totalUnitCount = filmDownload.totalUnitCount
-        let completedUnitCount = filmDownload.completedUnitCount
-        
-        if completedUnitCount >= totalUnitCount {
-            let allDownloadsCompleted = downloadJob.progresses.reduce(true, { (result, progress) -> Bool in
-                return result && (progress.completedUnitCount >= progress.totalUnitCount)
-            })
-            if (allDownloadsCompleted) {
+            if completedUnitCount >= totalUnitCount {
                 downloadJob.onFinish()
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "downloadFinished" + identifier), object: nil)
                 self.downloads.removeValue(forKey: identifier)
-            }
-        } else {
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "downloadProgress" + identifier),
+            } else {
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "downloadProgress" + identifier),
                                             object: nil,
                                             userInfo: ["progress" : Int64(fractionCompleted * 100)])
+            }
         }
     }
     

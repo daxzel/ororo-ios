@@ -33,7 +33,7 @@ class ContentViewController: UICollectionViewController, UISearchResultsUpdating
     var contentProvider: ContentProviderProtocol? = nil
     var content: [Content]? = nil
     var filteredContent: [Content]? = nil
-    let activityView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+    var activityView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
     
     let searchController = UISearchController(searchResultsController: nil)
     
@@ -155,7 +155,6 @@ class ContentViewController: UICollectionViewController, UISearchResultsUpdating
         self.collectionView?.reloadData()
     }
     
-    @available(iOS 8.0, *)
     func updateSearchResults(for searchController: UISearchController) {
         filterContentForSearchText(searchText: searchController.searchBar.text!)
     }
