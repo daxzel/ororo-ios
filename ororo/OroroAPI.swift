@@ -22,6 +22,10 @@ class OroroAPI {
     
     static var auth: (key: String, value: String)? = nil
     
+    static func cleanAuth() {
+        auth = nil
+    }
+    
     static func setUpAuth(user: User) {
         auth = (key: "Authorization", value: user.encryptedUserPassword)
     }

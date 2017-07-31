@@ -32,6 +32,10 @@ class ContentDownloader {
         }
     }
     
+    static func cleanDownloads() {
+        downloads = [:]
+    }
+    
     static func load(movie: MovieDetailed) {
         
         let dMovie = DownloadedMovie()
