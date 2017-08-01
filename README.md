@@ -1,4 +1,4 @@
-# Ororo iOS application (ororo.tv)
+# Ororo iOS application
 
 ![Alt text](/screenshots/1.png?raw=250x)
 ![Alt text](/screenshots/2.png?raw=250x)
