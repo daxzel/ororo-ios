@@ -42,6 +42,9 @@ class SeasonViewController: UITableViewController, UIPopoverPresentationControll
         downloadButton.addTarget(self, action: #selector(SeasonViewController.downloadAction(_:)), for: .touchUpInside)
         actionsToEpisode[downloadButton] = episode
         
+        if ShowDAO.getDownloadedEpisode(episode.id) != nil {
+            downloadButton.isEnabled = false
+        }
         
         if let cellView = tableView.cellForRow(at: indexPath) {
             popupViewController!.popoverPresentationController?.delegate = self
@@ -56,16 +59,26 @@ class SeasonViewController: UITableViewController, UIPopoverPresentationControll
         if (popupViewController != nil) {
             popupViewController?.dismiss(animated: true, completion: nil)
             if let episode = actionsToEpisode[sender] {
-                ShowAPI.getEpisodeDetailed(id: episode.id, viewController: self, completionHandler: { (episodeDetailed) in
-                    let subtitlesUrl = episodeDetailed.getPreparedSubtitlesDownloadUrl(lang: "en")
-                    let downloadUrl = episodeDetailed.getPreparedDownloadUrl()
-                    
-                    let playerController = OroroPlayerViewController(url: downloadUrl, subtitles: subtitlesUrl)
-                    self.present(playerController, animated: true)
-                })
+                
+                if let downloadedEpisode = ShowDAO.getDownloadedEpisode(episode.id),
+                    downloadedEpisode.isDownloadFinished {
+                    runEpisode(episode: downloadedEpisode)
+                } else {
+                    ShowAPI.getEpisodeDetailed(id: episode.id, viewController: self, completionHandler: { (episodeDetailed) in
+                        self.runEpisode(episode: episodeDetailed)
+                    })
+     
+                }
             }
-            
         }
+    }
+    
+    func runEpisode(episode: EpisodeDetailed) {
+        let subtitlesUrl = episode.getPreparedSubtitlesDownloadUrl(lang: "en")
+        let downloadUrl = episode.getPreparedDownloadUrl()
+        
+        let playerController = OroroPlayerViewController(url: downloadUrl, subtitles: subtitlesUrl)
+        self.present(playerController, animated: true)
     }
     
     @IBAction func downloadAction(_ sender: UIButton) {

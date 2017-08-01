@@ -215,12 +215,15 @@ class ContentDownloader {
         
             if completedUnitCount >= totalUnitCount {
                 downloadJob.onFinish()
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "downloadFinished" + identifier), object: nil)
+                DispatchQueue.main.async {
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "downloadFinished" + identifier), object: nil)
+                }
+
                 self.downloads.removeValue(forKey: identifier)
             } else {
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "downloadProgress" + identifier),
-                                            object: nil,
-                                            userInfo: ["progress" : Int64(fractionCompleted * 100)])
+                DispatchQueue.main.async {
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "downloadProgress" + identifier), object: nil, userInfo: ["progress" : Int64(fractionCompleted * 100)])
+                }
             }
         }
     }
