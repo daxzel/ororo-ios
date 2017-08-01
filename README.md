@@ -1,15 +1,8 @@
-Царевский Андрей
 
-5 July
 
-Сделана загрузка фильмов из API в базу данных
-
-9 July
-
-TableViewController пока не использовал, не нужен был
-
-Сделан экран - список фильмов
-Сделан экран - информация о фильме (при клике на фильме)
-(Доп) Сделана возможность воспроизводить фильм в стриминге 
+![Alt text](/screenshots/0.png?raw=true "")
+![Alt text](/screenshots/1.png?raw=true "")
+![Alt text](/screenshots/2.png?raw=true "")
+![Alt text](/screenshots/3.png?raw=true "")
 
 
