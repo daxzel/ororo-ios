@@ -6,7 +6,7 @@
 ![Alt text](/screenshots/4.png?raw=250x)
 ![Alt text](/screenshots/5.png?raw=250x)
 
-*This App is not yet submitted to the App Store (and possibly it will never be). Use Xcode (Mac OS) to install the app on your device*
+*This App is not yet submitted to the App Store (and most probably it will never be). Use Xcode (Mac OS) to install the app on your device*
 
 Instructions: 
   1. Register on https://developer.apple.com/register/
