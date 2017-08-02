@@ -6,8 +6,7 @@
 ![Alt text](/screenshots/4.png?raw=250x)
 ![Alt text](/screenshots/5.png?raw=250x)
 
-*Currently App is not deployed to App Store. So you have build and deploy it yourself.*
-*You need to have Mac OS to do that*
+*This App is not yet submitted to the App Store. Use Xcode (Mac OS) to install the app on your device*
 
 Instructions: 
   1. Register on https://developer.apple.com/register/
