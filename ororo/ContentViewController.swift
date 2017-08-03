@@ -40,8 +40,8 @@ class ContentViewController: UICollectionViewController, UISearchResultsUpdating
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        activityView.center = self.collectionView!.center
-        collectionView!.addSubview(activityView)
+        activityView.center = self.view.center
+        view!.addSubview(activityView)
         activityView.color = UIColor.black
         
         initSearchBar()
