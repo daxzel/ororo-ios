@@ -17,8 +17,9 @@ class ImagesHolder {
         if let image = images[stringUrl] {
             imageView.image = UIImage(data: image!)
         } else {
-            let url = URL(string: stringUrl)
-            downloadImage(url: url!, imageView: imageView)
+            if let url = URL(string: stringUrl) {
+                downloadImage(url: url, imageView: imageView)
+            }
         }
     }
     

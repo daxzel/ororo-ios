@@ -97,7 +97,7 @@ class ContentViewController: UICollectionViewController, UISearchResultsUpdating
         let downloadProgressLabel = movieCell.viewWithTag(3) as! UILabel
         // Download progress label
         if  let downloadedContent = content as? DownloadedContent {
-            if downloadedContent.isDownloadFinished == true {
+            if downloadedContent.isDownloadFinished {
                 downloadProgressLabel.isHidden = true;
             } else {
                 downloadProgressLabel.isHidden = false;

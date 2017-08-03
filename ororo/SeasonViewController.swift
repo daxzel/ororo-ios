@@ -122,7 +122,8 @@ class SeasonViewController: UITableViewController, UIPopoverPresentationControll
                 ContentDownloader.subscribeToDownloadProgress(id: episode.id, requester: episode, listener: listener)
                 progressLabel.isHidden = false
             } else {
-                progressLabel.isHidden = true
+                progressLabel.isHidden = false
+                progressLabel.backgroundColor = UIColor.green
             }
         } else {
             progressLabel.isHidden = true
