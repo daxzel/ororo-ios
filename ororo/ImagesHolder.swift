@@ -31,11 +31,10 @@ class ImagesHolder {
             lastUrls[imageId] = url
             getDataFromUrl(url: url) { (data, response, error)  in
                 guard let data = data, error == nil else { return }
-                DispatchQueue.main.async() { () -> Void in
-                    guard let lastUrl = lastUrls[imageId], lastUrl == url else { return }
-                    self.images[url.absoluteString] = data
-                    imageView.image = UIImage(data: data)
-                }
+                self.images[url.absoluteString] = data
+                
+                guard let lastUrl = lastUrls[imageId], lastUrl == url else { return }
+                imageView.image = UIImage(data: data)
             }
         }
        

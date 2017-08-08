@@ -154,7 +154,7 @@ class ContentViewController: UICollectionViewController, UISearchResultsUpdating
         }
         self.collectionView?.reloadData()
     }
-    
+
     func updateSearchResults(for searchController: UISearchController) {
         filterContentForSearchText(searchText: searchController.searchBar.text!)
     }
