@@ -90,7 +90,7 @@ class ContentViewController: UICollectionViewController, UISearchResultsUpdating
         let movieLogo = movieCell.viewWithTag(2) as! UIImageView
         //rounded logo
         movieLogo.layer.cornerRadius = 2.0
-        
+        movieLogo.restorationIdentifier = "movieLogo" + String(indexPath.item)
         movieLogo.clipsToBounds = true
         ImagesHolder.updateImage(stringUrl: content.posterThumb, imageView: movieLogo)
         

@@ -3,10 +3,35 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "ContentViewController.collectionView(UICollectionView, cellForItemAt : IndexPath) -&gt; UICollectionViewCell:ContentViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "static ContentDownloader.notifyListener(identifier : String, downloadJob : ContentDownloader.DownloadJob) -&gt; ():ContentDownloader.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "progress.isPaused">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "static ContentDownloader.(load(show : Show, episode : EpisodeDetailed) -&gt; ()).(closure #1):ContentDownloader.swift">
+      </ContextState>
+      <ContextState
          contextName = "ShowViewController.createSeasonsViewController(episodes : [Episode], seasonNumber : Int) -&gt; SeasonViewController:ShowViewController.swift">
          <PersistentStrings>
             <PersistentString
                value = "viewController.view">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "static ContentDownloader.load(show : Show, episode : EpisodeDetailed) -&gt; ():ContentDownloader.swift">
+      </ContextState>
+      <ContextState
+         contextName = "static ContentDownloader.(loadSubtitles(downloadFrom : DetailedContent, downloadTo : DetailedContent, contentDir : URL, downloadJob : ContentDownloader.DownloadJob) -&gt; ()).(closure #1).(closure #2):ContentDownloader.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "response.response.statusCode">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

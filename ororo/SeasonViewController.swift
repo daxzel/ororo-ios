@@ -123,7 +123,8 @@ class SeasonViewController: UITableViewController, UIPopoverPresentationControll
                 progressLabel.isHidden = false
             } else {
                 progressLabel.isHidden = false
-                progressLabel.backgroundColor = UIColor.green
+                progressLabel.backgroundColor = ColorHelper.UIColorFromRGB(color: "31A480", alpha: 0.3)
+                progressLabel.text = nil
             }
         } else {
             progressLabel.isHidden = true

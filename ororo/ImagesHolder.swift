@@ -13,27 +13,32 @@ class ImagesHolder {
     
     static var images: [String: Data?] = [:]
     
+    static var lastUrls: [String: URL] = [:]
+    
     static func updateImage(stringUrl: String, imageView: UIImageView) {
         if let image = images[stringUrl] {
             imageView.image = UIImage(data: image!)
         } else {
             if let url = URL(string: stringUrl) {
+                imageView.image = nil
                 downloadImage(url: url, imageView: imageView)
             }
         }
     }
     
     static func downloadImage(url: URL, imageView: UIImageView) {
-        print("Image Download Started \(url.absoluteURL)")
-        getDataFromUrl(url: url) { (data, response, error)  in
-            guard let data = data, error == nil else { return }
-            self.images[url.absoluteString] = data
-            print(response?.suggestedFilename ?? url.lastPathComponent)
-            print("Image Download Finished \(url.absoluteURL)")
-            DispatchQueue.main.async() { () -> Void in
-                imageView.image = UIImage(data: data)
+        if let imageId = imageView.restorationIdentifier {
+            lastUrls[imageId] = url
+            getDataFromUrl(url: url) { (data, response, error)  in
+                guard let data = data, error == nil else { return }
+                DispatchQueue.main.async() { () -> Void in
+                    guard let lastUrl = lastUrls[imageId], lastUrl == url else { return }
+                    self.images[url.absoluteString] = data
+                    imageView.image = UIImage(data: data)
+                }
             }
         }
+       
     }
     
     static func getDataFromUrl(url: URL, completion: @escaping (_ data: Data?, _  response: URLResponse?, _ error: Error?) -> Void) {

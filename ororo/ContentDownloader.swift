@@ -26,6 +26,7 @@ class ContentDownloader {
     class DownloadJob {
         var progress: Progress? = nil
         let onFinish: () -> Void
+        var failed = false
         
         init(onFinish: @escaping () -> Void) {
             self.onFinish = onFinish
@@ -118,7 +119,11 @@ class ContentDownloader {
         
         downloadJob.progress = Alamofire.download(request) { (temporaryURL: URL, response: HTTPURLResponse) in
             (contentUrl, [.removePreviousFile, .createIntermediateDirectories])
-            }.progress
+            }.validate().response(completionHandler: { (response) in
+                if (response.error != nil) {
+                    downloadJob.failed = true
+                }
+            }).progress
         
         loadSubtitles(downloadFrom: downloadFrom,
                       downloadTo: downloadTo,
@@ -143,7 +148,11 @@ class ContentDownloader {
             let request = try! URLRequest(url: downloadFrom.getPreparedSubtitlesDownloadUrl(lang: lang), method: .get)
             let progress = Alamofire.download(request) { (temporaryURL: URL, response: HTTPURLResponse) in
                 (subtitleUrl, [.removePreviousFile, .createIntermediateDirectories])
-            }.progress
+                }.validate().response(completionHandler: { (response) in
+                    if (response.error != nil) {
+                        downloadJob.failed = true
+                    }
+                }).progress
             
             downloadJob.progress?.addChild(progress, withPendingUnitCount: count)
             let result = Subtitle()
@@ -212,7 +221,11 @@ class ContentDownloader {
             
             let isCancled = progress.isCancelled
             print(isCancled)
-        
+            
+            if downloadJob.failed {
+                return
+            }
+            
             if completedUnitCount >= totalUnitCount {
                 downloadJob.onFinish()
                 DispatchQueue.main.async {

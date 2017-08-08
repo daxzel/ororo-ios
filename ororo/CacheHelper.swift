@@ -26,8 +26,11 @@ class CacheHelper {
             MovieAPI.getAllMovies { (result, movies) in
                 switch (result) {
                 case .success:
-                    MovieDAO.saveAll(movies: movies)
-                    defaults.set(true, forKey: moviesLoadedProperty)
+                    //To handle two requests in parallel
+                    if (!defaults.bool(forKey: moviesLoadedProperty)) {
+                        MovieDAO.saveAll(movies: movies)
+                        defaults.set(true, forKey: moviesLoadedProperty)
+                    }
                     completionHandler(MovieDAO.getAll())
                 case .failure:
                     print("forAllMovies failure")
@@ -51,8 +54,11 @@ class CacheHelper {
             ShowAPI.getAllShows { (result, shows) in
                 switch (result) {
                 case .success:
-                    ShowDAO.saveAll(shows: shows)
-                    defaults.set(true, forKey: showsLoadedProperty)
+                    //To handle two requests in parallel
+                    if (!defaults.bool(forKey: showsLoadedProperty)) {
+                        ShowDAO.saveAll(shows: shows)
+                        defaults.set(true, forKey: showsLoadedProperty)
+                    }
                     completionHandler(ShowDAO.getAll())
                 case .failure:
                     print("forAllMovies failure")
