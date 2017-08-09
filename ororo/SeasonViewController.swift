@@ -87,6 +87,7 @@ class SeasonViewController: UITableViewController, UIPopoverPresentationControll
             if let episode = actionsToEpisode[sender] {
                 ShowAPI.getEpisodeDetailed(id: episode.id, viewController: self, completionHandler: { (episodeDetailed) in
                     ContentDownloader.load(show: self.show!, episode: episodeDetailed)
+                    self.tableView.reloadData()
                 })
             }
             

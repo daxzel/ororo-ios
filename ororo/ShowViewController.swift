@@ -30,18 +30,27 @@ class ShowViewController: UIViewController {
     var episodes: [Episode] = []
     var show: Show? = nil
     var pagesContainer: DAPagesContainer? = nil
+    var activityView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        activityViewInit()
         self.title = show?.name
         initShow()
     }
     
+    func activityViewInit() {
+        activityView.center = self.view.center
+        view!.addSubview(activityView)
+        activityView.color = UIColor.black
+        activityView.startAnimating()
+    }
+    
     func initShow() {
         if let id = show?.id {
-            ShowAPI.getShow(id: id, viewController: self) { (showDetailed) in
+            CacheHelper.getShow(id: id, viewController: self) { (showDetailed) in
                 self.episodes = Array(showDetailed.episodes)
+                self.activityView.stopAnimating()
                 self.initPagesView(episodes: self.episodes)
             }
         }

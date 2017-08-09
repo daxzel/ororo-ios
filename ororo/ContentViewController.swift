@@ -61,8 +61,9 @@ class ContentViewController: UICollectionViewController, UISearchResultsUpdating
         contentProvider?.getContent { (content) in
             self.content = content
             self.filteredContent = content
+            
             self.activityView.stopAnimating()
-            self.collectionView?.reloadData()
+            self.applyFilter(searchText: self.searchController.searchBar.text)
         }
     }
     
@@ -122,7 +123,7 @@ class ContentViewController: UICollectionViewController, UISearchResultsUpdating
                 }
             case let movie as Movie:
                 openMovieScreen(movie: movie)
-            case let show as  Show:
+            case let show as Show:
                 openShowScreen(show: show)
             default:
                 print("Unrecognized content type")
@@ -143,16 +144,22 @@ class ContentViewController: UICollectionViewController, UISearchResultsUpdating
         self.navigationController?.pushViewController(viewController!, animated: true)
     }
     
-    func filterContentForSearchText(searchText: String, scope: String = "All") {
-        if searchText.isEmpty {
-            filteredContent = content
-        } else {
-            let lowerCaseSearch = searchText.lowercased()
-            filteredContent = content?.filter { movie in
-                return movie.name.lowercased().contains(lowerCaseSearch)
+    func applyFilter(searchText: String?) {
+        if let searchText = searchText {
+            if searchText.isEmpty {
+                filteredContent = content
+            } else {
+                let lowerCaseSearch = searchText.lowercased()
+                filteredContent = content?.filter { movie in
+                    return movie.name.lowercased().contains(lowerCaseSearch)
+                }
             }
         }
         self.collectionView?.reloadData()
+    }
+    
+    func filterContentForSearchText(searchText: String, scope: String = "All") {
+        applyFilter(searchText: searchText)
     }
 
     func updateSearchResults(for searchController: UISearchController) {

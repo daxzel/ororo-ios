@@ -3,7 +3,15 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "ContentViewController.collectionView(UICollectionView, cellForItemAt : IndexPath) -&gt; UICollectionViewCell:ContentViewController.swift">
+         contextName = "ShowViewController.createSeasonsViewController(episodes : [Episode], seasonNumber : Int) -&gt; SeasonViewController:ShowViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "viewController.view">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "static ContentDownloader.(load(show : Show, episode : EpisodeDetailed) -&gt; ()).(closure #1):ContentDownloader.swift">
       </ContextState>
       <ContextState
          contextName = "static ContentDownloader.notifyListener(identifier : String, downloadJob : ContentDownloader.DownloadJob) -&gt; ():ContentDownloader.swift">
@@ -14,13 +22,26 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "static ContentDownloader.(load(show : Show, episode : EpisodeDetailed) -&gt; ()).(closure #1):ContentDownloader.swift">
-      </ContextState>
-      <ContextState
-         contextName = "ShowViewController.createSeasonsViewController(episodes : [Episode], seasonNumber : Int) -&gt; SeasonViewController:ShowViewController.swift">
+         contextName = "static ContentDownloader.(loadSubtitles(downloadFrom : DetailedContent, downloadTo : DetailedContent, contentDir : URL, downloadJob : ContentDownloader.DownloadJob) -&gt; ()).(closure #1).(closure #2):ContentDownloader.swift">
          <PersistentStrings>
             <PersistentString
-               value = "viewController.view">
+               value = "response.response.statusCode">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "static ContentDownloader.(startAsyncIfNotStarted() -&gt; ()).(closure #1):ContentDownloader.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.downloads">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "static ContentDownloader.(load(downloadFrom : DetailedContent, downloadTo : DetailedContent, contentDir : URL, downloadJob : ContentDownloader.DownloadJob) -&gt; ()).(closure #2):ContentDownloader.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "response.data">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -28,10 +49,21 @@
          contextName = "static ContentDownloader.load(show : Show, episode : EpisodeDetailed) -&gt; ():ContentDownloader.swift">
       </ContextState>
       <ContextState
-         contextName = "static ContentDownloader.(loadSubtitles(downloadFrom : DetailedContent, downloadTo : DetailedContent, contentDir : URL, downloadJob : ContentDownloader.DownloadJob) -&gt; ()).(closure #1).(closure #2):ContentDownloader.swift">
+         contextName = "ContentViewController.collectionView(UICollectionView, cellForItemAt : IndexPath) -&gt; UICollectionViewCell:ContentViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "response.response.statusCode">
+               value = "downloadedContent.isDownloadFinished ">
+            </PersistentString>
+            <PersistentString
+               value = "filtered">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "static ContentDownloader.(loadSubtitles(downloadFrom : DetailedContent, downloadTo : DetailedContent, contentDir : URL, downloadJob : ContentDownloader.DownloadJob) -&gt; ()).(closure #1).(closure #1):ContentDownloader.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "response.statusCode">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

@@ -68,6 +68,18 @@ class CacheHelper {
         
     }
     
+    static func getShow(id: Int, viewController: UIViewController, completionHandler: @escaping (ShowDetailed) -> Void) {
+        
+        if let show = ShowDAO.getDetailedShow(id: id) {
+            completionHandler(show)
+        } else {
+            ShowAPI.getShow(id: id, viewController: viewController) {(show) in
+                ShowDAO.saveShow(show: show)
+                completionHandler(show)
+            }
+        }
+    }
+    
     static func clear() {
         defaults.set(false, forKey: moviesLoadedProperty)
         defaults.set(false, forKey: showsLoadedProperty)

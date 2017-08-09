@@ -119,7 +119,9 @@ class ContentDownloader {
         
         downloadJob.progress = Alamofire.download(request) { (temporaryURL: URL, response: HTTPURLResponse) in
             (contentUrl, [.removePreviousFile, .createIntermediateDirectories])
-            }.validate().response(completionHandler: { (response) in
+            }
+            .validate()
+            .response(completionHandler: { (response) in
                 if (response.error != nil) {
                     downloadJob.failed = true
                 }
@@ -148,7 +150,9 @@ class ContentDownloader {
             let request = try! URLRequest(url: downloadFrom.getPreparedSubtitlesDownloadUrl(lang: lang), method: .get)
             let progress = Alamofire.download(request) { (temporaryURL: URL, response: HTTPURLResponse) in
                 (subtitleUrl, [.removePreviousFile, .createIntermediateDirectories])
-                }.validate().response(completionHandler: { (response) in
+                }
+                .validate()
+                .response(completionHandler: { (response) in
                     if (response.error != nil) {
                         downloadJob.failed = true
                     }
@@ -219,10 +223,7 @@ class ContentDownloader {
             let totalUnitCount = progress.totalUnitCount
             let completedUnitCount = progress.completedUnitCount
             
-            let isCancled = progress.isCancelled
-            print(isCancled)
-            
-            if downloadJob.failed {
+            if downloadJob.failed || totalUnitCount == 0 {
                 return
             }
             

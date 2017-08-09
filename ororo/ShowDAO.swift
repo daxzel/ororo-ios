@@ -31,6 +31,11 @@ class ShowDAO {
         }
     }
     
+    static func getDetailedShow(id: Int) -> ShowDetailed? {
+        let realm = try! Realm()
+        return realm.object(ofType: ShowDetailed.self, forPrimaryKey: id)
+    }
+    
     static func saveEpisode(episode: Episode) {
         let realm = try! Realm()
         try! realm.write {
