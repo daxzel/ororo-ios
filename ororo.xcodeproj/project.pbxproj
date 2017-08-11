@@ -55,6 +55,9 @@
 		A6FE84B51F1953FA0077D1EB /* ororo-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FE84B41F1953FA0077D1EB /* ororo-logo.png */; };
 		A6FE84BA1F1957890077D1EB /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6FE84B91F1957890077D1EB /* Login.storyboard */; };
 		A6FE84BC1F195AC00077D1EB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FE84BB1F195AC00077D1EB /* LoginViewController.swift */; };
+		A6FFFBBF1F3CE8D3007A2A52 /* DownloadJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FFFBBE1F3CE8D3007A2A52 /* DownloadJob.swift */; };
+		A6FFFBC31F3CEE8B007A2A52 /* BackgroundDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FFFBC21F3CEE8B007A2A52 /* BackgroundDownloader.swift */; };
+		A6FFFBC51F3CF145007A2A52 /* DownloadJobDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FFFBC41F3CF145007A2A52 /* DownloadJobDAO.swift */; };
 		B4594AA9D7AF3C8B5569C4A2 /* Pods_ororo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6B9FD0FF163B1BAC0A8AD8 /* Pods_ororo.framework */; };
 		F64448CE77AF4E5B6DFB7909 /* Pods_ororoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 797CA2A4FBB29F91D4DDBCC0 /* Pods_ororoUITests.framework */; };
 /* End PBXBuildFile section */
@@ -136,6 +139,9 @@
 		A6FE84B41F1953FA0077D1EB /* ororo-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ororo-logo.png"; path = "Images/ororo-logo.png"; sourceTree = "<group>"; };
 		A6FE84B91F1957890077D1EB /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		A6FE84BB1F195AC00077D1EB /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		A6FFFBBE1F3CE8D3007A2A52 /* DownloadJob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadJob.swift; sourceTree = "<group>"; };
+		A6FFFBC21F3CEE8B007A2A52 /* BackgroundDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundDownloader.swift; sourceTree = "<group>"; };
+		A6FFFBC41F3CF145007A2A52 /* DownloadJobDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadJobDAO.swift; sourceTree = "<group>"; };
 		B19C57D1067D51EFC87C4C2B /* Pods_ororoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ororoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B561A65847B7916AC76E7A58 /* Pods-ororoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ororoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ororoTests/Pods-ororoTests.release.xcconfig"; sourceTree = "<group>"; };
 		B8DEBED5F035CCEC5326A358 /* Pods-ororoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ororoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ororoUITests/Pods-ororoUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -207,6 +213,7 @@
 				4E3BFB921F1D695000B5B8BB /* SecurityDAO.swift */,
 				4E3BFB941F1EBBC500B5B8BB /* ShowDAO.swift */,
 				4E3BFB961F1EBDC300B5B8BB /* MovieDAO.swift */,
+				A6FFFBC41F3CF145007A2A52 /* DownloadJobDAO.swift */,
 			);
 			name = DAO;
 			sourceTree = "<group>";
@@ -301,11 +308,11 @@
 		4E7C75451F123154001DB5FC /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				A6FFFBC11F3CEB5B007A2A52 /* Download */,
 				4E3BFB981F1EC4F600B5B8BB /* OroroAPI */,
 				4E7C75381F115207001DB5FC /* ImagesHolder.swift */,
 				4E7C753A1F11597D001DB5FC /* DbHelper.swift */,
 				4E09BD201F1282B400AF34D9 /* ColorHelper.swift */,
-				4E09BD3F1F14459100AF34D9 /* ContentDownloader.swift */,
 				4E09BD431F158B2300AF34D9 /* CacheHelper.swift */,
 				4E733D1B1F2E5B8E00B71D7C /* MessageHelper.swift */,
 			);
@@ -329,12 +336,8 @@
 		4E7C75491F12407E001DB5FC /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				A6FFFBC01F3CE930007A2A52 /* Objects */,
 				4E3BFB911F1D693A00B5B8BB /* DAO */,
-				4EE667E11F0C5FCB006B1428 /* Content.swift */,
-				4E3BFB8F1F1D68DA00B5B8BB /* Security.swift */,
-				4EF725D01F24D0E300C67C32 /* Downloaded.swift */,
-				4EF725D21F24D10E00C67C32 /* Show.swift */,
-				4EF725D41F24D16600C67C32 /* Movie.swift */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -376,6 +379,28 @@
 				4EF725CA1F249CB300C67C32 /* EpisodeActions.xib */,
 			);
 			name = StoryBoards;
+			sourceTree = "<group>";
+		};
+		A6FFFBC01F3CE930007A2A52 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				4EE667E11F0C5FCB006B1428 /* Content.swift */,
+				4E3BFB8F1F1D68DA00B5B8BB /* Security.swift */,
+				4EF725D01F24D0E300C67C32 /* Downloaded.swift */,
+				4EF725D21F24D10E00C67C32 /* Show.swift */,
+				4EF725D41F24D16600C67C32 /* Movie.swift */,
+				A6FFFBBE1F3CE8D3007A2A52 /* DownloadJob.swift */,
+			);
+			name = Objects;
+			sourceTree = "<group>";
+		};
+		A6FFFBC11F3CEB5B007A2A52 /* Download */ = {
+			isa = PBXGroup;
+			children = (
+				4E09BD3F1F14459100AF34D9 /* ContentDownloader.swift */,
+				A6FFFBC21F3CEE8B007A2A52 /* BackgroundDownloader.swift */,
+			);
+			name = Download;
 			sourceTree = "<group>";
 		};
 		B30D209418188BEDD786F33B /* Pods */ = {
@@ -709,13 +734,16 @@
 				4E3BFB9E1F1EC77E00B5B8BB /* MovieAPI.swift in Sources */,
 				4EF725D71F24E1BD00C67C32 /* SeasonViewController.swift in Sources */,
 				4E3BFB9A1F1EC51000B5B8BB /* ShowAPI.swift in Sources */,
+				A6FFFBC51F3CF145007A2A52 /* DownloadJobDAO.swift in Sources */,
 				A630AA331F2FB28B0070A7B4 /* SettingsViewController.swift in Sources */,
 				4E3BFB931F1D695000B5B8BB /* SecurityDAO.swift in Sources */,
 				4E3BFB971F1EBDC300B5B8BB /* MovieDAO.swift in Sources */,
 				4EE667E21F0C5FCB006B1428 /* Content.swift in Sources */,
 				4EF725D31F24D10E00C67C32 /* Show.swift in Sources */,
 				4E09BD491F15951F00AF34D9 /* DownloadsNavigationController.swift in Sources */,
+				A6FFFBC31F3CEE8B007A2A52 /* BackgroundDownloader.swift in Sources */,
 				4E3BFB9C1F1EC61D00B5B8BB /* Parser.swift in Sources */,
+				A6FFFBBF1F3CE8D3007A2A52 /* DownloadJob.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

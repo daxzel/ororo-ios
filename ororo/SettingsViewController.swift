@@ -21,7 +21,7 @@ class SettingsViewController: UIViewController {
 
     @IBAction func unloginAction(_ sender: Any) {
         CacheHelper.clear()
-        ContentDownloader.cleanDownloads()
+        BackgroundDownloader.cleanDownloads()
         DbHelper.deleteDb()
         OroroAPI.cleanAuth()
         let storyboard = UIStoryboard(name: "Login", bundle: nil)

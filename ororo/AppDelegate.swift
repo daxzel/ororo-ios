@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
       DbHelper.deleteDb()
       CacheHelper.clear()
+        BackgroundDownloader.startAsync()
         try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, with: [])
         checkUserLogged()
         return true
@@ -32,6 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let targetViewController = targetStoryboard.instantiateInitialViewController() {
                 self.window?.rootViewController = targetViewController
             }
+            BackgroundDownloader.processDownloadJobs()
         }
     }
     

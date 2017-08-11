@@ -104,7 +104,7 @@ class ContentViewController: UICollectionViewController, UISearchResultsUpdating
                 downloadProgressLabel.isHidden = false;
                 downloadProgressLabel.layer.cornerRadius = 2.0
                 let listener = ContentDownloadListener(downloadProgressLabel: downloadProgressLabel)
-                ContentDownloader.subscribeToDownloadProgress(id: content.id, requester: downloadedContent, listener: listener)
+                ContentDownloader.subscribeToDownloadProgress(requester: downloadedContent, listener: listener)
             }
         } else {
             downloadProgressLabel.isHidden = true

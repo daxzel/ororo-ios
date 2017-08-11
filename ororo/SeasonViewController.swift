@@ -120,7 +120,7 @@ class SeasonViewController: UITableViewController, UIPopoverPresentationControll
         if  let downloadedEpisode = ShowDAO.getDownloadedEpisode(episode.id) {
             if (!downloadedEpisode.isDownloadFinished) {
                 let listener = ContentDownloadListener(downloadProgressLabel: progressLabel)
-                ContentDownloader.subscribeToDownloadProgress(id: episode.id, requester: episode, listener: listener)
+                ContentDownloader.subscribeToDownloadProgress(requester: episode, listener: listener)
                 progressLabel.isHidden = false
             } else {
                 progressLabel.isHidden = false
