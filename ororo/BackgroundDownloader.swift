@@ -61,25 +61,40 @@ class BackgroundDownloader {
     
     static internal func startJob(mainJob: MainDownloadJob) -> Progress? {
         let progress = DownloadProgress(originalId: mainJob.originalId, prefix: mainJob.prefix)
-        progress.progress = download(job: mainJob, downloadProgress: progress)
-        var i: Int64 = 0
-        mainJob.childJobs.forEach { (job) in
+        if mainJob.downloadUrl.isEmpty {
+            progress.progress = Progress()
+        } else {
+            progress.progress = download(job: mainJob, downloadProgress: progress)
+        }
+    
+        var total: Int64 = 0
+        if let totalUnitCount = progress.progress?.totalUnitCount {
+            total = totalUnitCount
+        }
+        progress.progress?.totalUnitCount = Int64.max
+        mainJob.getJobs().forEach { (job) in
             if let episodeJob = job as? MainDownloadJob {
                 let childProgress = startJob(mainJob: episodeJob)
-                progress.progress?.addChild(childProgress!, withPendingUnitCount: i)
+                if let child = childProgress {
+                    total += child.totalUnitCount
+                    progress.progress?.addChild(childProgress!, withPendingUnitCount: child.totalUnitCount)
+                }
             } else {
-                progress.progress?.addChild(download(job: mainJob, downloadProgress: progress), withPendingUnitCount: i)
+                let p = download(job: job, downloadProgress: progress)
+                progress.progress?.addChild(p, withPendingUnitCount: p.totalUnitCount)
+                total += p.totalUnitCount
             }
-            i += 1
         }
+        progress.progress?.totalUnitCount = total
         downloads[mainJob.id] = progress
         return progress.progress
     }
     
     static internal func download(job: DownloadJob, downloadProgress: DownloadProgress) -> Progress {
         let request = try! URLRequest(url: job.downloadUrl, method: .get)
+        let path = job.filePath
         return Alamofire.download(request) { (temporaryURL: URL, response: HTTPURLResponse) in
-            (URL(fileURLWithPath: job.filePath), [.removePreviousFile, .createIntermediateDirectories])
+            (URL(fileURLWithPath: path), [.removePreviousFile, .createIntermediateDirectories])
             }
             .validate()
             .response(completionHandler: { (response) in

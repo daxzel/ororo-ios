@@ -29,6 +29,18 @@ class MainDownloadJob: DownloadJob {
     dynamic var originalId = -1
     
     var childJobs = List<DownloadJob>()
+    var mainJobs = List<MainDownloadJob>()
+    
+    func getJobs() -> [DownloadJob] {
+        var jobs: [DownloadJob] = []
+     
+        jobs.append(contentsOf: childJobs)
+        jobs.append(contentsOf: mainJobs.map { (job) -> DownloadJob in
+            job
+        })
+        
+        return jobs
+    }
     
     internal func initialize(content: SimpleContent) {
         id = MainDownloadJob.getId(content: content)

@@ -3,33 +3,6 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "ShowViewController.createSeasonsViewController(episodes : [Episode], seasonNumber : Int) -&gt; SeasonViewController:ShowViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "viewController.view">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "static ContentDownloader.(load(show : Show, episode : EpisodeDetailed) -&gt; ()).(closure #1):ContentDownloader.swift">
-      </ContextState>
-      <ContextState
-         contextName = "static ContentDownloader.notifyListener(identifier : String, downloadJob : ContentDownloader.DownloadJob) -&gt; ():ContentDownloader.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "progress.isPaused">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "static ContentDownloader.(loadSubtitles(downloadFrom : DetailedContent, downloadTo : DetailedContent, contentDir : URL, downloadJob : ContentDownloader.DownloadJob) -&gt; ()).(closure #1).(closure #2):ContentDownloader.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "response.response.statusCode">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "static ContentDownloader.(startAsyncIfNotStarted() -&gt; ()).(closure #1):ContentDownloader.swift">
          <PersistentStrings>
             <PersistentString
@@ -38,15 +11,12 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "static ContentDownloader.(load(downloadFrom : DetailedContent, downloadTo : DetailedContent, contentDir : URL, downloadJob : ContentDownloader.DownloadJob) -&gt; ()).(closure #2):ContentDownloader.swift">
+         contextName = "static ContentDownloader.notifyListener(identifier : String, downloadJob : ContentDownloader.DownloadJob) -&gt; ():ContentDownloader.swift">
          <PersistentStrings>
             <PersistentString
-               value = "response.data">
+               value = "progress.isPaused">
             </PersistentString>
          </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "static ContentDownloader.load(show : Show, episode : EpisodeDetailed) -&gt; ():ContentDownloader.swift">
       </ContextState>
       <ContextState
          contextName = "ContentViewController.collectionView(UICollectionView, cellForItemAt : IndexPath) -&gt; UICollectionViewCell:ContentViewController.swift">
@@ -60,10 +30,78 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "ShowViewController.createSeasonsViewController(episodes : [Episode], seasonNumber : Int) -&gt; SeasonViewController:ShowViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "viewController.view">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "static BackgroundDownloader.notifyListener(identifier : String, downloadJob : BackgroundDownloader.DownloadProgress) -&gt; ():BackgroundDownloader.swift">
+      </ContextState>
+      <ContextState
+         contextName = "static ContentDownloader.load(show : Show, episode : EpisodeDetailed) -&gt; ():ContentDownloader.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "episodeDownloadJob.downloadUrl">
+            </PersistentString>
+            <PersistentString
+               value = "episodeDownloadJobs">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "static BackgroundDownloader.download(job : DownloadJob, downloadProgress : BackgroundDownloader.DownloadProgress) -&gt; Progress:BackgroundDownloader.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "job.downloadUrl">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "static ContentDownloader.load(downloadFrom : DetailedContent, downloadTo : DetailedContent, contentDir : URL, mainDownloadJob : MainDownloadJob) -&gt; ():ContentDownloader.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "mainDownloadJob.downloadUrl ">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "static BackgroundDownloader.startJob(mainJob : MainDownloadJob) -&gt; Progress?:BackgroundDownloader.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "progress.progress?.totalUnitCount">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "static ContentDownloader.(loadSubtitles(downloadFrom : DetailedContent, downloadTo : DetailedContent, contentDir : URL, downloadJob : ContentDownloader.DownloadJob) -&gt; ()).(closure #1).(closure #1):ContentDownloader.swift">
          <PersistentStrings>
             <PersistentString
                value = "response.statusCode">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "static ContentDownloader.(loadSubtitles(downloadFrom : DetailedContent, downloadTo : DetailedContent, contentDir : URL, mainDownloadJob : MainDownloadJob) -&gt; ()).(closure #1):ContentDownloader.swift">
+      </ContextState>
+      <ContextState
+         contextName = "static ContentDownloader.(load(show : Show, episode : EpisodeDetailed) -&gt; ()).(closure #1):ContentDownloader.swift">
+      </ContextState>
+      <ContextState
+         contextName = "static ContentDownloader.(load(downloadFrom : DetailedContent, downloadTo : DetailedContent, contentDir : URL, downloadJob : ContentDownloader.DownloadJob) -&gt; ()).(closure #2):ContentDownloader.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "response.data">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "static ContentDownloader.(loadSubtitles(downloadFrom : DetailedContent, downloadTo : DetailedContent, contentDir : URL, downloadJob : ContentDownloader.DownloadJob) -&gt; ()).(closure #1).(closure #2):ContentDownloader.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "response.response.statusCode">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

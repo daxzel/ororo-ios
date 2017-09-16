@@ -58,7 +58,7 @@ class ContentDownloader {
         
         let episodeDownloadJob = MainDownloadJob()
         episodeDownloadJob.initialize(content: episode)
-        showDownloadJob.childJobs.append(episodeDownloadJob)
+        showDownloadJob.mainJobs.append(episodeDownloadJob)
         
         let contentDir = getDocumentDir().appendingPathComponent("ororo/\(episodeDownloadJob.id)/")
         
@@ -117,7 +117,6 @@ class ContentDownloader {
                 if let progress = notify.userInfo?["progress"] as? Int64 {
                     listener.updateProgress(percent: progress)
                 }
-                                                
             });
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "downloadFinished" + identifier), object: nil, queue: nil, using: { _ in listener.finished() });
