@@ -1,5 +1,9 @@
 # Ororo iOS application
 
+Features:
+ Offline series and movies
+ Online series and movies
+
 https://ororo.tv
 
 ![Alt text](/screenshots/1.png?raw=250x)
