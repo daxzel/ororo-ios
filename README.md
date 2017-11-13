@@ -1,8 +1,8 @@
 # Ororo iOS application
 
 Features:
- Offline series and movies
- Online series and movies
+* Offline series and movies
+* Online series and movies
 
 https://ororo.tv
 
