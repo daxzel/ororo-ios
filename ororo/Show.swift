@@ -51,8 +51,18 @@ class EpisodeDetailed: Episode, DetailedContent {
         return URL(string: downloadUrl)!
     }
     
-    internal func getPreparedSubtitlesDownloadUrl(lang: String) -> URL {
-        let subtitle = subtitles.filter {$0.lang == lang}.first
+    internal func getPreparedSubtitlesDownloadUrl(lang: String = Settings.prefferedSubtitleCode) -> URL {
+        var subtitle: Subtitle?
+        if subtitle == .none {
+            subtitle = subtitles.filter({ $0.lang == lang }).first
+        }
+        if subtitle == .none {
+            subtitle = subtitles.filter({ $0.lang == Settings.defaultSubtitleCode }).first
+        }
+        if subtitle == .none {
+            subtitle = subtitles.first
+        }
+        
         return URL(string: subtitle!.url)!
     }
 }

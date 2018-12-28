@@ -83,6 +83,8 @@ class ShowViewController: UIViewController {
         viewController.show = self.show
         viewController.episodes = episodes
         viewController.title = String(seasonNumber)
+        viewController.showController = self
+        
         return viewController
     }
     

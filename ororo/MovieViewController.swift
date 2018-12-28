@@ -51,7 +51,10 @@ class MovieViewController: UIViewController {
         initDownloadButton()
         
         playButton.layer.cornerRadius = 5.0
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         downloadDetails()
     }
     
@@ -62,6 +65,7 @@ class MovieViewController: UIViewController {
     }
     
     func initLanguageButton() {
+        languageButton.setTitle(Settings.prefferedSubtitleCode.uppercased(), for: .normal)
         languageButton.layer.cornerRadius = 5.0
         dropDown = DropDown()
         dropDown?.anchorView = languageView
@@ -78,7 +82,17 @@ class MovieViewController: UIViewController {
     
     func updateLanguages(languages: [String]) {
         dropDown?.dataSource = languages
-        dropDown?.selectRow(at: dropDown?.dataSource.index(of: "EN"))
+        if let index = languages.index(of: Settings.prefferedSubtitleCode.uppercased()) {
+            dropDown?.selectRow(at: index)
+            languageButton.setTitle(languages[index], for: .normal)
+        } else if let index = languages.index(of: Settings.defaultSubtitleCode.uppercased()) {
+            dropDown?.selectRow(at: index)
+            languageButton.setTitle(languages[index], for: .normal)
+        } else {
+            let index = 0
+            dropDown?.selectRow(at: index)
+            languageButton.setTitle(languages[index], for: .normal)
+        }
     }
     
     func initDownloadButton() {
@@ -92,11 +106,9 @@ class MovieViewController: UIViewController {
     
     func downloadDetails() {
         if let id = movie?.id {
-            if !(movie is MovieDetailed) {
-                MovieAPI.forOneMovie(id: id) { (movieDetailed) in
-                    self.movie = movieDetailed
-                    self.updateLanguages(languages: movieDetailed.subtitles.map({$0.lang.uppercased()}))
-                }
+            MovieAPI.forOneMovie(id: id) { (movieDetailed) in
+                self.movie = movieDetailed
+                self.updateLanguages(languages: movieDetailed.subtitles.map({$0.lang.uppercased()}))
             }
         }
     }
@@ -110,14 +122,13 @@ class MovieViewController: UIViewController {
     
     @IBAction func playAction(_ sender: UIButton) {
         if let detailed = movie as? MovieDetailed {
-            
-            let lang = self.languageButton.titleLabel!.text?.lowercased()
+            let lang = languageButton.titleLabel!.text?.lowercased()
             
             let subtitlesUrl = detailed.getPreparedSubtitlesDownloadUrl(lang: lang!)
             let downloadUrl = detailed.getPreparedDownloadUrl()
             
             let playerController = OroroPlayerViewController(url: downloadUrl, subtitles: subtitlesUrl)
-            self.present(playerController, animated: true)
+            present(playerController, animated: true)
         }
         
     }
@@ -125,5 +136,4 @@ class MovieViewController: UIViewController {
     @IBAction func selectLanguage(_ sender: Any) {
         dropDown?.show()
     }
-    
 }
