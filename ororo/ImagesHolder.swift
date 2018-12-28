@@ -32,9 +32,10 @@ class ImagesHolder {
             getDataFromUrl(url: url) { (data, response, error)  in
                 guard let data = data, error == nil else { return }
                 self.images[url.absoluteString] = data
-                
                 guard let lastUrl = lastUrls[imageId], lastUrl == url else { return }
-                imageView.image = UIImage(data: data)
+                DispatchQueue.main.async {
+                    imageView.image = UIImage(data: data)
+                }
             }
         }
        
@@ -44,7 +45,7 @@ class ImagesHolder {
         URLSession.shared.dataTask(with: url) {
             (data, response, error) in
             completion(data, response, error)
-            }.resume()
+        }.resume()
     }
 
 }
