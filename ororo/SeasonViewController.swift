@@ -76,7 +76,7 @@ class SeasonViewController: UITableViewController, UIPopoverPresentationControll
     }
     
     func runEpisode(episode: EpisodeDetailed) {
-        let subtitlesUrl = episode.getPreparedSubtitlesDownloadUrl(lang: "en")
+        let subtitlesUrl = episode.getPreparedSubtitlesDownloadUrl()
         let downloadUrl = episode.getPreparedDownloadUrl()
         let playerController = OroroPlayerViewController(url: downloadUrl, subtitles: subtitlesUrl)
         showController.present(playerController, animated: true)
