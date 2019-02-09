@@ -300,7 +300,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="572"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <view key="tableFooterView" contentMode="scaleToFill" misplaced="YES" id="WZm-yR-F3m">
+                                <view key="tableFooterView" contentMode="scaleToFill" id="WZm-yR-F3m">
                                     <rect key="frame" x="0.0" y="72" width="375" height="0.0"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -468,7 +468,7 @@
         <image name="tv_show.png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Jb6-dD-Gzt"/>
+        <segue reference="75Y-kP-ALn"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.84345569350000005" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

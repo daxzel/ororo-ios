@@ -502,7 +502,7 @@
 				TargetAttributes = {
 					4E60E3B91E676205005A433B = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = LB6G7FKWX8;
+						DevelopmentTeam = CCD7BSE9EP;
 						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
@@ -850,7 +850,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = LB6G7FKWX8;
+				DEVELOPMENT_TEAM = CCD7BSE9EP;
 				INFOPLIST_FILE = ororo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ororo;
@@ -870,7 +870,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = LB6G7FKWX8;
+				DEVELOPMENT_TEAM = CCD7BSE9EP;
 				INFOPLIST_FILE = ororo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ororo;

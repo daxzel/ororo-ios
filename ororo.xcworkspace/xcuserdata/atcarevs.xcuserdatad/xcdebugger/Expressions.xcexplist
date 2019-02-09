@@ -11,12 +11,7 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "static ContentDownloader.notifyListener(identifier : String, downloadJob : ContentDownloader.DownloadJob) -&gt; ():ContentDownloader.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "progress.isPaused">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "static BackgroundDownloader.notifyListener(identifier : String, downloadJob : BackgroundDownloader.DownloadProgress) -&gt; ():BackgroundDownloader.swift">
       </ContextState>
       <ContextState
          contextName = "ContentViewController.collectionView(UICollectionView, cellForItemAt : IndexPath) -&gt; UICollectionViewCell:ContentViewController.swift">
@@ -38,7 +33,12 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "static BackgroundDownloader.notifyListener(identifier : String, downloadJob : BackgroundDownloader.DownloadProgress) -&gt; ():BackgroundDownloader.swift">
+         contextName = "static ContentDownloader.(loadSubtitles(downloadFrom : DetailedContent, downloadTo : DetailedContent, contentDir : URL, downloadJob : ContentDownloader.DownloadJob) -&gt; ()).(closure #1).(closure #2):ContentDownloader.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "response.response.statusCode">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "static ContentDownloader.load(show : Show, episode : EpisodeDetailed) -&gt; ():ContentDownloader.swift">
@@ -48,6 +48,17 @@
             </PersistentString>
             <PersistentString
                value = "episodeDownloadJobs">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "SeasonViewController.initEpisodesTable():SeasonViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.tableView.autoresizingMask">
+            </PersistentString>
+            <PersistentString
+               value = "tableView">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -98,10 +109,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "static ContentDownloader.(loadSubtitles(downloadFrom : DetailedContent, downloadTo : DetailedContent, contentDir : URL, downloadJob : ContentDownloader.DownloadJob) -&gt; ()).(closure #1).(closure #2):ContentDownloader.swift">
+         contextName = "static ContentDownloader.notifyListener(identifier : String, downloadJob : ContentDownloader.DownloadJob) -&gt; ():ContentDownloader.swift">
          <PersistentStrings>
             <PersistentString
-               value = "response.response.statusCode">
+               value = "progress.isPaused">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

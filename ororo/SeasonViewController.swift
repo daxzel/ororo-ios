@@ -23,6 +23,7 @@ class SeasonViewController: UITableViewController, UIPopoverPresentationControll
     }
     
     func initEpisodesTable() {
+        self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0);
         self.tableView.rowHeight = 80
         self.tableView.register(UINib(nibName: "EpisodeView", bundle: nil), forCellReuseIdentifier: "EpisodeViewCell")
     }
