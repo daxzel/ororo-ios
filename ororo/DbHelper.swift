@@ -40,7 +40,7 @@ class DbHelper {
         }
     }
     
-    static func update(updateBlock: (Void) -> Void) {
+    static func update(updateBlock: () -> Void) {
         let realm =  try! Realm()
         try! realm.write {
             updateBlock()

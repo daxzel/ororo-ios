@@ -14,7 +14,7 @@ class Movie: AbstractContent {
 }
 
 class MovieDetailed: Movie, DetailedContent {
-    dynamic var downloadUrl = ""
+    @objc dynamic var downloadUrl = ""
     var subtitles = List<Subtitle>()
     
     internal func setDownloadUrl(url: String) {

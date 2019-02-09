@@ -26,22 +26,22 @@ protocol Content: SimpleContent {
 }
 
 class Subtitle: Object {
-    dynamic var url = ""
-    dynamic var lang = ""
+    @objc dynamic var url = ""
+    @objc dynamic var lang = ""
 }
 
 // Show and Movie
 class AbstractContent: Object, Content {
-    dynamic var id = -1
-    dynamic var name = ""
-    dynamic var year = ""
-    dynamic var countries = ""
-    dynamic var genres = ""
-    dynamic var desc = ""
-    dynamic var imdbRating = ""
-    dynamic var posterThumb = ""
-    dynamic var backdropUrl = ""
-    dynamic var poster = ""
+    @objc dynamic var id = -1
+    @objc dynamic var name = ""
+    @objc dynamic var year = ""
+    @objc dynamic var countries = ""
+    @objc dynamic var genres = ""
+    @objc dynamic var desc = ""
+    @objc dynamic var imdbRating = ""
+    @objc dynamic var posterThumb = ""
+    @objc dynamic var backdropUrl = ""
+    @objc dynamic var poster = ""
     
     override static func primaryKey() -> String? {
         return "id"

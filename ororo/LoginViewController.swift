@@ -45,8 +45,8 @@ class LoginHandler: OroroAuthentificationProtocol {
     
     func authUnsuccessful() {
         let alert = UIAlertController(title: "Authentification", message: "Unsuccessful",
-                                      preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                                      preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         viewController.present(alert, animated: true, completion: nil)
     }
     

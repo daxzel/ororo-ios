@@ -33,7 +33,7 @@ class ContentViewController: UICollectionViewController, UISearchResultsUpdating
     var contentProvider: ContentProviderProtocol? = nil
     var content: [Content]? = nil
     var filteredContent: [Content]? = nil
-    var activityView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+    var activityView = UIActivityIndicatorView(style: .whiteLarge)
     
     let searchController = UISearchController(searchResultsController: nil)
     

@@ -10,6 +10,6 @@ import Foundation
 import RealmSwift
 
 class User: Object {
-    dynamic var encryptedUserPassword = ""
-    dynamic var email = ""
+    @objc dynamic var encryptedUserPassword = ""
+    @objc dynamic var email = ""
 }

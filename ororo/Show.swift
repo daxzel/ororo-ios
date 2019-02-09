@@ -10,12 +10,12 @@ import Foundation
 import RealmSwift
 
 class Episode: Object, SimpleContent {
-    dynamic var id = -1
-    dynamic var name = ""
-    dynamic var plot = ""
-    dynamic var season = 1
-    dynamic var number = 1
-    dynamic var airdate = ""
+    @objc dynamic var id = -1
+    @objc dynamic var name = ""
+    @objc dynamic var plot = ""
+    @objc dynamic var season = 1
+    @objc dynamic var number = 1
+    @objc dynamic var airdate = ""
     
     func copyFieldsTo(content: Episode) {
         content.id = id
@@ -40,7 +40,7 @@ class ShowDetailed: Show {
 }
 
 class EpisodeDetailed: Episode, DetailedContent {
-    dynamic var downloadUrl = ""
+    @objc dynamic var downloadUrl = ""
     var subtitles = List<Subtitle>()
     
     internal func setDownloadUrl(url: String) {

@@ -4,10 +4,10 @@
 target 'ororo' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
-  pod 'RealmSwift', '~> 2.8'
-  pod 'Alamofire', '~> 4.5'
+  pod 'RealmSwift', '~> 2.10.2'
+  pod 'Alamofire', '~> 4.8.1'
   pod 'SwiftyJSON', '~> 3.1'
-  pod 'DropDown', '~> 2'
+  pod 'DropDown', '~> 2.3.12'
   pod 'DAPagesContainer', '~> 1.0'
 
   # Pods for ororo

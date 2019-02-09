@@ -2,7 +2,7 @@
 
 [![Twitter: @kevinh6113](http://img.shields.io/badge/contact-%40kevinh6113-70a1fb.svg?style=flat)](https://twitter.com/kevinh6113)
 [![License: MIT](http://img.shields.io/badge/license-MIT-70a1fb.svg?style=flat)](https://github.com/AssistoLab/DropDown/blob/master/README.md)
-[![Version](http://img.shields.io/badge/version-2-green.svg?style=flat)](https://github.com/AssistoLab/DropDown)
+[![Version](http://img.shields.io/badge/version-2.3.12-green.svg?style=flat)](https://github.com/AssistoLab/DropDown)
 [![Cocoapods](http://img.shields.io/badge/Cocoapods-available-green.svg?style=flat)](http://cocoadocs.org/docsets/DropDown/)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
@@ -21,7 +21,12 @@ To install [CocoaPods](http://www.cocoapods.org), run `sudo gem install cocoapod
 
 ## Installation 📱
 
-This branch supports Swift 3. If you need Swift 2.2: check `swift-2.2` branch.
+`DropDown` supports Swift 4.2 since version `2.3.4`.
+
+If you need Swift 4.0, use version 2.3.2:
+- Manually: use tag `2.3.2`
+- CocoaPods: `pod 'DropDown', '2.3.2'`
+- Carthage: `github "AssistoLab/DropDown" == 2.3.2`
 
 ### CocoaPods
 
@@ -242,14 +247,19 @@ You can customize these properties of the drop down:
 
 - `textFont`: the font of the text for each cells of the drop down.
 - `textColor`: the color of the text for each cells of the drop down.
+- `selectedTextColor`: the color of the text for selected cells of the drop down.
 - `backgroundColor`: the background color of the drop down.
 - `selectionBackgroundColor`: the background color of the selected cell in the drop down.
 - `cellHeight`: the height of the drop down cells.
+- `dimmedBackgroundColor`: the color of the background (behind the drop down, covering the entire screen).
+- `cornerRadius`: the corner radius of the drop down (see [info](#Issues) below if you encounter any issue)
+- `setupMaskedCorners`: the masked corners of the dropdown. Use this along with `cornerRadius` to set the corner radius only on certain corners.
 
 You can change them through each instance of `DropDown` or via `UIAppearance` like this for example:
 
 ```swift
 DropDown.appearance().textColor = UIColor.black
+DropDown.appearance().selectedTextColor = UIColor.red
 DropDown.appearance().textFont = UIFont.systemFont(ofSize: 15)
 DropDown.appearance().backgroundColor = UIColor.white
 DropDown.appearance().selectionBackgroundColor = UIColor.lightGray
@@ -266,6 +276,18 @@ when calling the `show` method, it returns a tuple like this:
 
 - `canBeDisplayed`: Tells if there is enough height to display the drop down. If its value is `false`, the drop down is not showed.
 - `offscreenHeight`: If the drop down was not able to show all cells from the data source at once, `offscreenHeight` will contain the height needed to display all cells at once (without having to scroll through them). This can be used in a scroll view or table view to scroll enough before showing the drop down.
+
+## Issues
+
+If you experience the compiler error *"Ambiguous use of 'cornerRadius'"* on line:
+```swift
+DropDown.appearance().cornerRadius = 10
+```
+
+Please use intead:
+```swift
+DropDown.appearance().setupCornerRadius(10) // available since v2.3.6
+```
 
 ## Requirements
 

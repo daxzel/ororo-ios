@@ -18,7 +18,7 @@ protocol DownloadedContent: Content, Downloaded {
 }
 
 class DownloadedMovie: MovieDetailed, DownloadedContent {
-    dynamic var isDownloadFinished = false
+    @objc dynamic var isDownloadFinished = false
     
     internal override func getPreparedDownloadUrl() -> URL {
         return URL(fileURLWithPath: downloadUrl)
@@ -31,7 +31,7 @@ class DownloadedMovie: MovieDetailed, DownloadedContent {
 }
 
 class DownloadedEpisode: EpisodeDetailed, Downloaded {
-    dynamic var isDownloadFinished = false
+    @objc dynamic var isDownloadFinished = false
     
     internal override func getPreparedDownloadUrl() -> URL {
         return URL(fileURLWithPath: downloadUrl)
@@ -45,5 +45,5 @@ class DownloadedEpisode: EpisodeDetailed, Downloaded {
 
 
 class DownloadedShow: Show, DownloadedContent {
-    dynamic var isDownloadFinished = false
+    @objc dynamic var isDownloadFinished = false
 }

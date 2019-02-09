@@ -30,7 +30,7 @@ class ShowViewController: UIViewController {
     var episodes: [Episode] = []
     var show: Show? = nil
     var pagesContainer: DAPagesContainer? = nil
-    var activityView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+    var activityView = UIActivityIndicatorView(style: .whiteLarge)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,11 +59,11 @@ class ShowViewController: UIViewController {
     func initPagesView(episodes: [Episode]) {
         pagesContainer = DAPagesContainer()
         
-        pagesContainer?.willMove(toParentViewController: self)
+        pagesContainer?.willMove(toParent: self)
         pagesContainer?.view.frame = pagesView.bounds
         pagesContainer?.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         pagesView.addSubview(pagesContainer!.view)
-        pagesContainer?.didMove(toParentViewController: self)
+        pagesContainer?.didMove(toParent: self)
         pagesContainer?.topBarBackgroundColor = ColorHelper.UIColorFromRGB(color: "2E353D", alpha: 1.0)
         
         let seasons = self.episodes.group { (episode) in

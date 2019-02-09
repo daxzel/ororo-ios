@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'BAB131AC7C1413F5837AB99C7E382510'
-               BlueprintName = 'DAPagesContainer'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'DAPagesContainer.framework'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "B96DB0E5AE2BC52AAC98530C64919C01"
+               BlueprintName = "DAPagesContainer"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "DAPagesContainer.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

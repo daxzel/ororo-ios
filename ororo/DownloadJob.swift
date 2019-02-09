@@ -13,9 +13,9 @@ import Foundation
 import RealmSwift
 
 class DownloadJob: Object {
-    dynamic var downloadUrl = ""
-    dynamic var filePath = ""
-    dynamic var isFinished = false
+    @objc dynamic var downloadUrl = ""
+    @objc dynamic var filePath = ""
+    @objc dynamic var isFinished = false
 }
 
 class MainDownloadJob: DownloadJob {
@@ -24,9 +24,9 @@ class MainDownloadJob: DownloadJob {
     static let MOVIE_PREFIX = "movie"
     static let SHOW_PREFIX = "show"
     
-    dynamic var id = ""
-    dynamic var prefix = ""
-    dynamic var originalId = -1
+    @objc dynamic var id = ""
+    @objc dynamic var prefix = ""
+    @objc dynamic var originalId = -1
     
     var childJobs = List<DownloadJob>()
     var mainJobs = List<MainDownloadJob>()

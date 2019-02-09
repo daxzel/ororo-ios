@@ -25,6 +25,7 @@ internal struct DPDConstant {
 	internal struct UI {
 
 		static let TextColor = UIColor.black
+        static let SelectedTextColor = UIColor.black
 		static let TextFont = UIFont.systemFont(ofSize: 15)
 		static let BackgroundColor = UIColor(white: 0.94, alpha: 1)
 		static let SelectionBackgroundColor = UIColor(white: 0.89, alpha: 1)
@@ -47,8 +48,8 @@ internal struct DPDConstant {
 	internal struct Animation {
 
 		static let Duration = 0.15
-		static let EntranceOptions: UIViewAnimationOptions = [.allowUserInteraction, .curveEaseOut]
-		static let ExitOptions: UIViewAnimationOptions = [.allowUserInteraction, .curveEaseIn]
+		static let EntranceOptions: UIView.AnimationOptions = [.allowUserInteraction, .curveEaseOut]
+		static let ExitOptions: UIView.AnimationOptions = [.allowUserInteraction, .curveEaseIn]
 		static let DownScaleTransform = CGAffineTransform(scaleX: 0.9, y: 0.9)
 
 	}
